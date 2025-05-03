@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title or "Amfibido: A Dojo Duel" }}</title>
+    <meta name="description" content="{{ description or 'Amfibido is an exhilarating 2-player card game where amphibians and reptiles collide in epic battles.' }}">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+      /* Custom color variables */
+      :root {
+        --color-obsidian: #0e1f1a;
+        --color-charcoal: #1b3a32;
+        --color-venomous: #a3ff3f;
+        --color-salamander: #ff6b1f;
+        --color-crimson: #8c1c13;
+        --color-ash: #e8ecea;
+        --color-mist: #a8b2ae;
+        --color-azure: #174c66;
+      }
+
+      /* Modern gradient background */
+      .bg-gradient-dark {
+        background: var(--color-obsidian);
+      }
+
+      /* Glass effect */
+      .backdrop-blur-custom {
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        background-color: rgba(14, 31, 26, 0.8);
+      }
+
+      /* Modern border gradient */
+      .border-gradient {
+        border-image: linear-gradient(to right, var(--color-venomous), var(--color-salamander)) 1;
+      }
+
+      /* Text gradients */
+      .text-gradient-venomous {
+        background: linear-gradient(to right, var(--color-venomous), var(--color-salamander));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .text-gradient-crimson {
+        background: linear-gradient(to right, var(--color-crimson), var(--color-salamander));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      /* Hover effects */
+      .hover-glow {
+        transition: all 0.3s ease;
+      }
+      .hover-glow:hover {
+        filter: drop-shadow(0 0 8px var(--color-venomous));
+      }
+
+      /* Text colors */
+      .text-primary {
+        color: var(--color-ash);
+      }
+      .text-secondary {
+        color: var(--color-mist);
+      }
+      .text-accent {
+        color: var(--color-venomous);
+      }
+      .text-warning {
+        color: var(--color-salamander);
+      }
+      .text-danger {
+        color: var(--color-crimson);
+      }
+
+      /* Background colors */
+      .bg-venomous {
+        background-color: var(--color-venomous);
+      }
+      .bg-venomous\/20 {
+        background-color: rgba(163, 255, 63, 0.2);
+      }
+      .bg-venomous\/30 {
+        background-color: rgba(163, 255, 63, 0.3);
+      }
+      .bg-venomous\/50 {
+        background-color: rgba(163, 255, 63, 0.5);
+      }
+    </style>
+    {# Add other head elements like favicons here #}
+  </head>
+  <body class="bg-gradient-dark text-primary font-sans min-h-screen flex flex-col antialiased">
+    <!-- Modern Header with Glass Effect -->
+    <header class="fixed w-full z-50 border-b border-[#2d5a27]/20 bg-[#2d5a27]/90">
+      <div class="container mx-auto px-4">
+        <nav class="flex items-center justify-between {% if page.url == '/' %}h-32{% else %}h-24{% endif %} py-4">
+          <!-- Studio Branding -->
+          <div class="flex items-center space-x-3">
+            <a href="/" class="flex items-center space-x-3 group hover-glow">
+              <img src="/images/gnome-logo.png" alt="Gnome on the Phone Studios" class="w-12 h-12 transition-all duration-300 group-hover:scale-110">
+              <div class="flex flex-col">
+                <span class="text-base font-medium text-primary group-hover:text-[#2d5a27] transition-colors duration-300">Gnome on the Phone</span>
+                <span class="text-sm font-semibold text-gradient-venomous group-hover:opacity-90 transition-all duration-300">Studios</span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Game Title -->
+          <div class="flex items-center space-x-2">
+            <a href="/" class="hover:opacity-90 transition-opacity duration-300">
+              <img src="/images/logo.png" alt="Amfibido" class="{% if page.url == '/' %}h-32{% else %}h-24{% endif %} w-auto">
+            </a>
+          </div>
+
+          <!-- Navigation Links -->
+          <div class="hidden md:flex items-center space-x-8">
+            <a href="#about" class="text-lg font-medium text-secondary hover:text-[#2d5a27] transition-colors duration-300">About</a>
+            <a href="#gameplay" class="text-lg font-medium text-secondary hover:text-[#2d5a27] transition-colors duration-300">Gameplay</a>
+            <a href="#contact" class="text-lg font-medium text-secondary hover:text-[#2d5a27] transition-colors duration-300">Contact</a>
+            <a href="https://instagram.com/amfibido" target="_blank" rel="noopener noreferrer" class="text-secondary hover:text-[#2d5a27] transition-colors duration-300">
+              <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+              </svg>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Add padding to main content to account for fixed header -->
+    <main class="flex-grow container mx-auto px-6 {% if page.url == '/' %}pt-40{% else %}pt-32{% endif %} relative">
+      {% if page.url == '/' %}
+      <div class="fixed inset-0 -z-10">
+        <img src="/images/dojo.png" alt="Dojo Background" class="w-full h-full object-cover opacity-80">
+        <div class="absolute inset-0 bg-black/20 backdrop-blur-[1px]"></div>
+      </div>
+      <div class="relative bg-[#2d5a27]/90 rounded-xl p-8 backdrop-blur-[1px]">
+        {{ content | safe }}
+      </div>
+      {% else %}
+      {{ content | safe }}
+      {% endif %}
+    </main>
+
+    <footer class="bg-[#2d5a27] text-white py-10 mt-10 relative">
+      <!-- Subtle pattern overlay -->
+      <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm10 17.5c4.142 0 7.5-3.358 7.5-7.5S14.142 2.5 10 2.5 2.5 5.858 2.5 10s3.358 7.5 7.5 7.5zM20 20v20h20V20H20zm10 17.5c-4.142 0-7.5-3.358-7.5-7.5s3.358-7.5 7.5-7.5 7.5 3.358 7.5 7.5-3.358 7.5-7.5 7.5z' fill='%23ffffff' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E');"></div>
+
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+          <div class="mb-6 md:mb-0">
+            <a href="/" class="text-2xl font-headings font-bold flex items-center">
+              <span class="text-white mr-2">Amfibido</span>
+            </a>
+            <p class="text-white/70 mt-2">The ultimate amphibian and reptile card battle</p>
+          </div>
+
+          <div class="flex flex-col items-end">
+            <p class="text-white font-headings mb-2">Connect With Us</p>
+            <div class="flex space-x-4">
+              <a href="mailto:ron@amfibido.com" class="text-white hover:text-white/80 transition-colors duration-200 ease-in-out">
+                ✉️<!-- Email icon -->
+              </a>
+              <a href="https://instagram.com/amfibido" target="_blank" rel="noopener noreferrer" class="text-white hover:text-white/80 transition-colors duration-200 ease-in-out">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-white/20 pt-6 text-center">
+          <p class="text-white/70">© Amfibido {{ build.timestamp | date("yyyy") }}. All Rights Reserved.</p>
+          <div class="mt-4 flex justify-center space-x-6">
+            <a href="#" class="text-white/70 hover:text-white transition-colors duration-200 ease-in-out text-sm">Terms of Service</a>
+            <a href="#" class="text-white/70 hover:text-white transition-colors duration-200 ease-in-out text-sm">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bamboo-like top border but on the bottom -->
+      <div class="absolute top-0 left-0 right-0 h-1 bg-white/20"></div>
+    </footer>
+
+    <!-- Carousel JavaScript -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Carousel elements
+        const carouselSlides = document.querySelector('.carousel-slides');
+        const prevButton = document.querySelector('.carousel-prev');
+        const nextButton = document.querySelector('.carousel-next');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+
+        // Guard: Check if carousel elements exist on this page
+        if (!carouselSlides || !prevButton || !nextButton) return;
+
+        let currentSlide = 0;
+        const slideCount = document.querySelectorAll('.carousel-slide').length;
+
+        // Update carousel position
+        function updateCarousel() {
+          // Update slide position
+          carouselSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+          // Update indicators
+          indicators.forEach((indicator, index) => {
+            indicator.style.opacity = index === currentSlide ? '1' : '0.3';
+          });
+        }
+
+        // Previous slide
+        prevButton.addEventListener('click', () => {
+          currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+          updateCarousel();
+        });
+
+        // Next slide
+        nextButton.addEventListener('click', () => {
+          currentSlide = (currentSlide + 1) % slideCount;
+          updateCarousel();
+        });
+
+        // Indicator buttons
+        indicators.forEach((indicator, index) => {
+          indicator.addEventListener('click', () => {
+            currentSlide = index;
+            updateCarousel();
+          });
+        });
+
+        // Auto-advance carousel every 3 seconds
+        const autoAdvance = setInterval(() => {
+          currentSlide = (currentSlide + 1) % slideCount;
+          updateCarousel();
+        }, 5000);
+
+        // Stop auto-advance on user interaction
+        const carouselContainer = document.querySelector('.carousel-container');
+        carouselContainer.addEventListener('mouseenter', () => {
+          clearInterval(autoAdvance);
+        });
+      });
+    </script>
+  </body>
+</html>
