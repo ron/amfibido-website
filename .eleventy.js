@@ -5,8 +5,11 @@ module.exports = function(eleventyConfig) {
   // Add PostCSS plugin
   // eleventyConfig.addPlugin(eleventyPluginPostcss, {}); // Removed
 
-  // Copy image files to output
+  // Copy files directly to the output
   eleventyConfig.addPassthroughCopy("images");
+  eleventyConfig.addPassthroughCopy("css");
+  eleventyConfig.addPassthroughCopy("js");
+  eleventyConfig.addPassthroughCopy("documents");
 
   // Date filter using Luxon
   eleventyConfig.addFilter("date", (dateObj, format = "yyyy") => {

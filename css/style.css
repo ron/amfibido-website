@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom styles */
+form input[type="email"] {
+  color: #1b3a32; /* charcoal color */
+  background-color: white;
+}
+
+form input[type="email"]::placeholder {
+  color: #1b3a32;
+  opacity: 0.6;
+}

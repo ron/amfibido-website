@@ -1,0 +1,149 @@
+---
+layout: base.njk
+title: "Feedback - Amfibido"
+description: "Share your thoughts and feedback about Amfibido to help us improve the game."
+---
+
+<section class="container mx-auto px-2 md:px-6 mb-20">
+  <div class="max-w-4xl mx-auto">
+    <!-- Header and Description -->
+    <div class="text-center mb-12 border-4 border-venomous/30 p-8 rounded-xl bg-[#2d5a27]/90 shadow-lg transform hover:scale-[1.01] transition-all duration-300">
+      <h1 class="text-5xl font-headings font-bold text-venomous mb-6 drop-shadow-lg">Your Feedback Matters</h1>
+      <p class="text-xl text-primary max-w-3xl mx-auto">Help us make Amfibido even better by sharing your thoughts and experiences with the game.</p>
+    </div>
+
+    <!-- Feedback Form -->
+    <div class="bg-charcoal/40 p-8 rounded-xl shadow-lg">
+      <form id="feedbackForm" class="space-y-6">
+        <div>
+          <label for="rulesUnderstanding" class="block text-lg font-medium text-venomous mb-2">Were the rules easy to understand?</label>
+          <textarea
+            class="w-full px-4 py-3 bg-white border-2 border-mist/10 rounded-md text-black placeholder-gray-500
+                  focus:outline-none focus:ring-2 focus:ring-venomous focus:border-transparent transition-all duration-300"
+            id="rulesUnderstanding"
+            name="rulesUnderstanding"
+            rows="3"
+            placeholder="Please share your thoughts on the rules clarity..."
+            required></textarea>
+        </div>
+
+        <div>
+          <label for="confusingParts" class="block text-lg font-medium text-venomous mb-2">Which parts of the rules were confusing? (If any)</label>
+          <textarea
+            class="w-full px-4 py-3 bg-white border-2 border-mist/10 rounded-md text-black placeholder-gray-500
+                  focus:outline-none focus:ring-2 focus:ring-venomous focus:border-transparent transition-all duration-300"
+            id="confusingParts"
+            name="confusingParts"
+            rows="3"
+            placeholder="Please describe any parts of the rules that were unclear or confusing..."></textarea>
+        </div>
+
+        <div>
+          <label for="enjoyment" class="block text-lg font-medium text-venomous mb-2">Did you enjoy playing the game? Why or why not?</label>
+          <textarea
+            class="w-full px-4 py-3 bg-white border-2 border-mist/10 rounded-md text-black placeholder-gray-500
+                  focus:outline-none focus:ring-2 focus:ring-venomous focus:border-transparent transition-all duration-300"
+            id="enjoyment"
+            name="enjoyment"
+            rows="3"
+            placeholder="Please share your experience playing the game..."></textarea>
+        </div>
+
+        <div>
+          <label for="cardBalance" class="block text-lg font-medium text-venomous mb-2">Are there any cards that felt over or underpowered?</label>
+          <textarea
+            class="w-full px-4 py-3 bg-white border-2 border-mist/10 rounded-md text-black placeholder-gray-500
+                  focus:outline-none focus:ring-2 focus:ring-venomous focus:border-transparent transition-all duration-300"
+            id="cardBalance"
+            name="cardBalance"
+            rows="3"
+            placeholder="Please share your thoughts on card balance..."></textarea>
+        </div>
+
+        <div>
+          <label for="otherComments" class="block text-lg font-medium text-venomous mb-2">Any other comments?</label>
+          <textarea
+            class="w-full px-4 py-3 bg-white border-2 border-mist/10 rounded-md text-black placeholder-gray-500
+                  focus:outline-none focus:ring-2 focus:ring-venomous focus:border-transparent transition-all duration-300"
+            id="otherComments"
+            name="otherComments"
+            rows="3"
+            placeholder="Share any additional thoughts or suggestions..."></textarea>
+        </div>
+
+        <div>
+          <label for="email" class="block text-lg font-medium text-venomous mb-2">Your Email (optional)</label>
+          <input
+            type="email"
+            class="w-full px-4 py-3 bg-white border-2 border-mist/10 rounded-md text-black placeholder-gray-500
+                  focus:outline-none focus:ring-2 focus:ring-venomous focus:border-transparent transition-all duration-300"
+            id="email"
+            name="email"
+            placeholder="your@email.com">
+        </div>
+
+        <div class="pt-4">
+          <button
+            type="submit"
+            class="inline-block bg-venomous/50 text-primary px-10 py-4 rounded-md font-headings font-semibold text-lg hover:bg-venomous/60 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+            Submit Feedback
+          </button>
+        </div>
+      </form>
+
+      <div id="formMessage" class="mt-6"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formData = {
+      rulesUnderstanding: document.getElementById('rulesUnderstanding').value,
+      confusingParts: document.getElementById('confusingParts').value,
+      enjoyment: document.getElementById('enjoyment').value,
+      cardBalance: document.getElementById('cardBalance').value,
+      otherComments: document.getElementById('otherComments').value,
+      email: document.getElementById('email').value
+    };
+
+    const formMessage = document.getElementById('formMessage');
+
+    fetch('https://formspree.io/f/xeoqvypl', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => {
+      if (response.ok) {
+        formMessage.innerHTML = `
+          <div class="bg-[#2d5a27]/70 text-white p-4 rounded-md shadow-md border-l-4 border-venomous">
+            <p class="text-lg font-medium">Thank you for your feedback!</p>
+            <p>Your response has been recorded and will help us improve Amfibido.</p>
+          </div>
+        `;
+        this.reset();
+      } else {
+        formMessage.innerHTML = `
+          <div class="bg-red-900/70 text-white p-4 rounded-md shadow-md border-l-4 border-red-500">
+            <p class="text-lg font-medium">Oops! Something went wrong.</p>
+            <p>There was an error sending your feedback. Please try again later.</p>
+          </div>
+        `;
+      }
+    })
+    .catch(error => {
+      formMessage.innerHTML = `
+        <div class="bg-red-900/70 text-white p-4 rounded-md shadow-md border-l-4 border-red-500">
+          <p class="text-lg font-medium">Oops! Something went wrong.</p>
+          <p>There was an error sending your feedback. Please try again later.</p>
+        </div>
+      `;
+    });
+  });
+</script>
