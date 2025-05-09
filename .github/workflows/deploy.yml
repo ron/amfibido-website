@@ -36,6 +36,7 @@ jobs:
         run: npm run build:prod
         env:
           ELEVENTY_ENV: production
+          NODE_ENV: production
 
       - name: Setup Pages 📄
         uses: actions/configure-pages@v4

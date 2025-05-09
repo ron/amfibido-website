@@ -159,7 +159,7 @@
     <main class="flex-grow container mx-auto px-6 {% if page.url == '/' %}pt-40{% else %}pt-32{% endif %} relative">
       {% if page.url == '/' %}
       <div class="fixed inset-0 -z-10">
-        <img src="/images/dojo.png" alt="Dojo Background" class="w-full h-full object-cover opacity-80">
+        <img src="{{ '/images/dojo.png' | url }}" alt="Dojo Background" class="w-full h-full object-cover opacity-80">
         <div class="absolute inset-0 bg-black/20 backdrop-blur-[1px]"></div>
       </div>
       <div class="relative max-w-6xl mx-auto">
@@ -199,7 +199,7 @@
       <div class="container mx-auto px-6 relative z-10">
         <div class="flex flex-col md:flex-row justify-between items-center mb-8">
           <div class="mb-6 md:mb-0">
-            <a href="/" class="text-2xl font-headings font-bold flex items-center">
+            <a href="{{ '/' | url }}" class="text-2xl font-headings font-bold flex items-center">
               <span class="text-white mr-2">Amfibido</span>
             </a>
             <p class="text-white/70 mt-2">Master the art of combat in this strategic card battle game</p>

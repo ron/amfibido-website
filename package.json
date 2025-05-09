@@ -5,13 +5,14 @@
   "main": ".eleventy.js",
   "scripts": {
     "build:css": "postcss css/style.css -o _site/css/style.css -c tailwind.config.js",
+    "build:css:prod": "ELEVENTY_ENV=production postcss css/style.css -o _site/css/style.css -c tailwind.config.js",
     "watch:css": "postcss css/style.css -o _site/css/style.css --watch -c tailwind.config.js",
     "start:eleventy": "eleventy --serve",
     "start": "npm-run-all build:css --parallel start:eleventy watch:css",
     "build:eleventy": "eleventy",
     "build:eleventy:prod": "ELEVENTY_ENV=production eleventy",
     "build": "npm-run-all build:css build:eleventy",
-    "build:prod": "npm-run-all build:css build:eleventy:prod"
+    "build:prod": "npm-run-all build:css:prod build:eleventy:prod"
   },
   "keywords": [
     "eleventy",
