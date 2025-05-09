@@ -1,0 +1,8 @@
+# Set cache control for CSS and JS
+/css/*
+  Cache-Control: no-cache, no-store, must-revalidate
+  Content-Type: text/css
+
+/js/*
+  Cache-Control: no-cache, no-store, must-revalidate
+  Content-Type: application/javascript

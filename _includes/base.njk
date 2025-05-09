@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title or "Amfibido: A Dojo Duel" }}</title>
-    <meta name="description" content="{{ description or 'Amfibido is an exhilarating 2-player card game where amphibians and reptiles collide in epic battles.' }}">
-    <link rel="stylesheet" href="{{ '/css/style.css' | url }}">
+    <meta name="description" content="{{ description or "Amfibido is an exhilarating 2-player card game where amphibians and reptiles collide in epic battles. Strategize, transform, and knock out your opponent's champions to become the ultimate dojo master." }}">
+    <link rel="stylesheet" href="{{ '/css/style.css' | url }}?v={{ buildTime }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
@@ -234,6 +234,6 @@
     </footer>
 
     <!-- JavaScript -->
-    <script src="{{ '/js/main.js' | url }}"></script>
+    <script src="{{ '/js/main.js' | url }}?v={{ buildTime }}"></script>
   </body>
 </html>

@@ -5,6 +5,9 @@ module.exports = function(eleventyConfig) {
   // Add PostCSS plugin
   // eleventyConfig.addPlugin(eleventyPluginPostcss, {}); // Removed
 
+  // Add a buildTime global data to help with cache busting
+  eleventyConfig.addGlobalData("buildTime", () => Date.now());
+
   // Copy files directly to the output
   eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("css");
