@@ -54,6 +54,6 @@ module.exports = function(eleventyConfig) {
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk",
-    pathPrefix: isProd ? "/amfibido-website/" : "/", // Only use pathPrefix in production
+    pathPrefix: isProd ? "" : "/", // Use empty string for custom domain in production
   };
 };
