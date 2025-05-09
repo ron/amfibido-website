@@ -30,11 +30,17 @@ jobs:
       - name: Build site 🏗️
         run: npm run build
 
+      - name: Archive production artifacts 📦
+        uses: actions/upload-artifact@v3
+        with:
+          name: site-build
+          path: '_site'
+
       - name: Setup Pages 📄
         uses: actions/configure-pages@v3
 
-      - name: Upload artifact ⬆️
-        uses: actions/upload-pages-artifact@v2
+      - name: Upload artifact for GitHub Pages ⬆️
+        uses: actions/upload-pages-artifact@v3
         with:
           path: '_site'
 
