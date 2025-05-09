@@ -8,11 +8,23 @@ module.exports = function(eleventyConfig) {
   // Add a buildTime global data to help with cache busting
   eleventyConfig.addGlobalData("buildTime", () => Date.now());
 
-  // Copy files directly to the output
-  eleventyConfig.addPassthroughCopy("images");
-  eleventyConfig.addPassthroughCopy("css");
+  // Copy static files
+  eleventyConfig.addPassthroughCopy("img");
+  eleventyConfig.addPassthroughCopy("fonts");
   eleventyConfig.addPassthroughCopy("js");
-  eleventyConfig.addPassthroughCopy("documents");
+  eleventyConfig.addPassthroughCopy("css"); // Also copy the source CSS file for reference
+  eleventyConfig.addPassthroughCopy("_headers");
+  eleventyConfig.addPassthroughCopy(".nojekyll");
+
+  // Make sure the processed CSS directory exists
+  eleventyConfig.on('eleventy.before', async () => {
+    const fs = require('fs');
+    const path = require('path');
+
+    if (!fs.existsSync(path.join('_site', 'css'))) {
+      fs.mkdirSync(path.join('_site', 'css'), { recursive: true });
+    }
+  });
 
   // Date filter using Luxon
   eleventyConfig.addFilter("date", (dateObj, format = "yyyy") => {

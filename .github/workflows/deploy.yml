@@ -38,6 +38,13 @@ jobs:
           ELEVENTY_ENV: production
           NODE_ENV: production
 
+      - name: Debug CSS output 🐛
+        run: |
+          echo "CSS file contents:"
+          cat _site/css/style.css | head -20
+          echo "Directory listing:"
+          ls -la _site/css/
+
       - name: Setup Pages 📄
         uses: actions/configure-pages@v4
 

@@ -4,12 +4,12 @@
   "description": "Website for Amfibido game",
   "main": ".eleventy.js",
   "scripts": {
-    "build:css": "postcss css/style.css -o _site/css/style.css -c tailwind.config.js",
-    "build:css:prod": "ELEVENTY_ENV=production postcss css/style.css -o _site/css/style.css -c tailwind.config.js",
-    "watch:css": "postcss css/style.css -o _site/css/style.css --watch -c tailwind.config.js",
-    "start:eleventy": "eleventy --serve",
+    "build:css": "NODE_ENV=development postcss css/style.css -o _site/css/style.css",
+    "build:css:prod": "NODE_ENV=production postcss css/style.css -o _site/css/style.css",
+    "watch:css": "NODE_ENV=development postcss css/style.css -o _site/css/style.css --watch",
+    "start:eleventy": "ELEVENTY_ENV=development eleventy --serve",
     "start": "npm-run-all build:css --parallel start:eleventy watch:css",
-    "build:eleventy": "eleventy",
+    "build:eleventy": "ELEVENTY_ENV=development eleventy",
     "build:eleventy:prod": "ELEVENTY_ENV=production eleventy",
     "build": "npm-run-all build:css build:eleventy",
     "build:prod": "npm-run-all build:css:prod build:eleventy:prod"

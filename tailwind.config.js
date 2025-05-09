@@ -3,8 +3,12 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./**/*.{html,njk,md}", // Scan all html, nunjucks, and markdown files
-    "./_includes/**/*.njk"  // Be specific about includes folder too
+    "./_site/**/*.{html,js}",
+    "./**/*.njk",
+    "./**/*.html",
+    "./**/*.md",
+    "!./node_modules/**/*",  // Explicitly exclude node_modules
+    "!./_site/node_modules/**/*",  // Also exclude node_modules in _site if it exists
   ],
   theme: {
     extend: {
