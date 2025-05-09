@@ -18,7 +18,13 @@ const MAX_HEIGHT = 1920; // Maximum height for any image
 const QUALITY = 85; // Quality level for JPEG compression (0-100)
 const PNG_QUALITY = "65-85"; // Quality range for PNG compression
 const TARGET_MAX_SIZE_MB = 0.5; // Target maximum file size in MB
-const EXEMPT_FOLDERS = ['icons', 'logos']; // Folders to skip optimization
+const EXEMPT_FOLDERS = []; // Empty the exempt folders array to process all images
+
+// Special handling for logos and crests
+const LOGO_MAX_WIDTH = 600; // Smaller max width for logos
+const LOGO_MAX_HEIGHT = 600; // Smaller max height for logos
+const CREST_MAX_WIDTH = 400; // Smaller max width for crests
+const CREST_MAX_HEIGHT = 400; // Smaller max height for crests
 
 // Colors for console output
 const colors = {
@@ -143,23 +149,38 @@ function processImage(filePath) {
     return;
   }
 
+  // Determine max dimensions based on file type
+  let maxWidth = MAX_WIDTH;
+  let maxHeight = MAX_HEIGHT;
+
+  // Special handling for logos and crests
+  if (fileName === 'logo.png') {
+    maxWidth = LOGO_MAX_WIDTH;
+    maxHeight = LOGO_MAX_HEIGHT;
+    log(`  ℹ Using logo-specific dimensions: ${maxWidth}x${maxHeight}`, colors.blue);
+  } else if (fileName === 'crest.png') {
+    maxWidth = CREST_MAX_WIDTH;
+    maxHeight = CREST_MAX_HEIGHT;
+    log(`  ℹ Using crest-specific dimensions: ${maxWidth}x${maxHeight}`, colors.blue);
+  }
+
   // Check if resize is needed
-  const needsResize = dimensions.width > MAX_WIDTH || dimensions.height > MAX_HEIGHT;
+  const needsResize = dimensions.width > maxWidth || dimensions.height > maxHeight;
 
   // Optimize the image based on type
   try {
     // First handle resizing if needed (use ImageMagick for all resize operations)
     let tempResizedFile = filePath;
     if (needsResize) {
-      log(`  ↓ Resizing from ${dimensions.width}x${dimensions.height} to max ${MAX_WIDTH}x${MAX_HEIGHT}`, colors.yellow);
+      log(`  ↓ Resizing from ${dimensions.width}x${dimensions.height} to max ${maxWidth}x${maxHeight}`, colors.yellow);
 
       // Calculate new dimensions maintaining aspect ratio
       let newWidth, newHeight;
       if (dimensions.width > dimensions.height) {
-        newWidth = Math.min(dimensions.width, MAX_WIDTH);
+        newWidth = Math.min(dimensions.width, maxWidth);
         newHeight = Math.round(dimensions.height * (newWidth / dimensions.width));
       } else {
-        newHeight = Math.min(dimensions.height, MAX_HEIGHT);
+        newHeight = Math.min(dimensions.height, maxHeight);
         newWidth = Math.round(dimensions.width * (newHeight / dimensions.height));
       }
 
