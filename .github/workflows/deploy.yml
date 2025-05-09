@@ -32,6 +32,13 @@ jobs:
       - name: Install dependencies 📦
         run: npm ci
 
+      - name: Debug directory structure before build 🔍
+        run: |
+          echo "Current directory:"
+          ls -la
+          echo "CSS source file:"
+          cat css/style.css | head -10
+
       - name: Build site 🏗️
         run: npm run build:prod
         env:
@@ -44,6 +51,8 @@ jobs:
           cat _site/css/style.css | head -20
           echo "Directory listing:"
           ls -la _site/css/
+          echo "Site directory structure:"
+          find _site -type d | sort
 
       - name: Setup Pages 📄
         uses: actions/configure-pages@v4

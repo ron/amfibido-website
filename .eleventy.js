@@ -9,9 +9,10 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addGlobalData("buildTime", () => Date.now());
 
   // Copy static files
-  eleventyConfig.addPassthroughCopy("img");
+  eleventyConfig.addPassthroughCopy("images");
   eleventyConfig.addPassthroughCopy("fonts");
   eleventyConfig.addPassthroughCopy("js");
+  eleventyConfig.addPassthroughCopy("documents");
   eleventyConfig.addPassthroughCopy("css"); // Also copy the source CSS file for reference
   eleventyConfig.addPassthroughCopy("_headers");
   eleventyConfig.addPassthroughCopy(".nojekyll");
