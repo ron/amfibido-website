@@ -13,7 +13,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("fonts");
   eleventyConfig.addPassthroughCopy("js");
   eleventyConfig.addPassthroughCopy("documents");
-  eleventyConfig.addPassthroughCopy("css"); // Also copy the source CSS file for reference
+  // Do NOT copy CSS files - they are processed by PostCSS
   eleventyConfig.addPassthroughCopy("_headers");
   eleventyConfig.addPassthroughCopy(".nojekyll");
 
