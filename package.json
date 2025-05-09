@@ -9,7 +9,9 @@
     "start:eleventy": "eleventy --serve",
     "start": "npm-run-all build:css --parallel start:eleventy watch:css",
     "build:eleventy": "eleventy",
-    "build": "npm-run-all build:css build:eleventy"
+    "build:eleventy:prod": "ELEVENTY_ENV=production eleventy",
+    "build": "npm-run-all build:css build:eleventy",
+    "build:prod": "npm-run-all build:css build:eleventy:prod"
   },
   "keywords": [
     "eleventy",

@@ -22,6 +22,9 @@ module.exports = function(eleventyConfig) {
       timestamp: now
   });
 
+  // Check if this is a production build (GitHub Actions sets this to "production")
+  const isProd = process.env.ELEVENTY_ENV === "production";
+
   // Specify input and output directories
   // eleventyConfig.addPassthroughCopy("css"); // We no longer need this, PostCSS handles CSS
 
@@ -35,6 +38,6 @@ module.exports = function(eleventyConfig) {
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk",
-    pathPrefix: "/amfibido-website/",
+    pathPrefix: isProd ? "/amfibido-website/" : "/", // Only use pathPrefix in production
   };
 };
