@@ -111,14 +111,25 @@
     </style>
   </head>
   <body class="bg-white text-gray-900 font-sans antialiased">
-    
+
     <!-- Simplified Header -->
-    <header class="bg-[#2d5a27] py-6 shadow-lg sticky top-0 z-50">
+    <header class="bg-[#2d5a27] py-3 shadow-lg sticky top-0 z-50">
       <div class="container mx-auto px-4">
-        <div class="flex justify-center items-center">
+        <div class="flex justify-between items-center">
+          <!-- Roca Logo on Left -->
+          <a href="https://www.roca.games" target="_blank" rel="noopener noreferrer" class="hover:opacity-90 transition-opacity duration-300 self-start">
+            <img src="{{ '/images/roca-logo.png' | url }}" alt="Roca Games" class="h-12 w-auto">
+          </a>
+
+          <!-- Amfibido Logo Center -->
           <a href="{{ '/' | url }}" class="hover:opacity-90 transition-opacity duration-300">
             <img src="{{ '/images/logo.png' | url }}" alt="Amfibido" class="h-24 w-auto">
           </a>
+
+          <!-- Empty space on right for balance -->
+          <div class="h-12 w-auto opacity-0 self-start">
+            <img src="{{ '/images/roca-logo.png' | url }}" alt="" class="h-12 w-auto invisible">
+          </div>
         </div>
       </div>
     </header>
@@ -132,15 +143,16 @@
         </div>
         <!-- Overlay gradient for depth -->
         <div class="absolute inset-0 bg-gradient-to-r from-[#2d5a27]/30 to-[#a3ff3f]/20"></div>
-        
+
         <!-- Content Overlay -->
         <div class="absolute inset-0 flex items-center py-8">
           <div class="container mx-auto px-4 md:px-6">
             <div class="max-w-7xl mx-auto">
               <div class="flex gap-8 items-center justify-center h-full">
-                <!-- Flavor Text on Scroll -->
-                <div class="flex items-center justify-center" style="width: 720px; height: 448px; background: url('{{ '/images/landing/scroll.png' | url }}') center/100% 100% no-repeat;">
-                  <div class="text-black leading-relaxed space-y-3 px-20 py-12 w-full" style="font-family: 'Georgia', 'Times New Roman', serif;">
+                <!-- Flavor Text on Scroll - Hidden on mobile -->
+                <div class="hidden md:flex items-center justify-center" style="width: 720px; height: 448px; background: url('{{ '/images/landing/scroll.png' | url }}') center/100% 100% no-repeat;">
+                  <div class="text-black leading-relaxed space-y-3 px-20 py-12 w-full">
+                    <h2 class="text-2xl md:text-3xl font-headings font-bold text-center mb-4">Enter the Tournament of Champions</h2>
                     <p class="text-xl font-medium">From forest temples, ancient fighting pits, and the meanest of city streets, fighters emerge.</p>
                     <p class="text-xl font-medium">Frogs, Toads, Snakes, Crocodiles, and more — each bearing the proud crest of their guild.</p>
                     <p class="text-xl font-medium">Masters of their own unique fighting styles, they've gathered for one purpose: to clash in the <strong>tournament of Champions.</strong></p>
@@ -164,12 +176,22 @@
       <div class="container mx-auto px-4 md:px-6">
         <div class="max-w-4xl mx-auto text-center">
           <h2 class="text-3xl md:text-4xl font-headings font-bold text-white mb-4">Back Our Project & Get Exclusive Cards</h2>
-          <p class="text-lg md:text-xl text-white mb-6">Receive an exclusive elite & champion fighter card if you back the project!</p>
-          <form class="email-form flex flex-col sm:flex-row justify-center items-center gap-4 max-w-2xl mx-auto">
-            <input type="email" name="email" placeholder="Enter your email" required
+          <p class="text-lg md:text-xl text-white mb-6">Receive an exclusive <strong>elite</strong> & <strong>champion</strong> fighter card if you back the project!</p>
+          <!-- Mailchimp Form -->
+          <form action="https://amfibido.us16.list-manage.com/subscribe/post?u=612f57a4d3111090b99807845&amp;id=63e4f2e7d4"
+                method="post"
+                id="mc-embedded-subscribe-form-top"
+                name="mc-embedded-subscribe-form"
+                class="email-form flex flex-col sm:flex-row justify-center items-center gap-4 max-w-2xl mx-auto"
+                novalidate>
+            <input type="email" name="EMAIL" placeholder="Enter your email" required
               class="px-6 py-4 rounded-lg border-2 border-white text-gray-900 bg-white flex-grow w-full sm:w-auto
               focus:outline-none focus:ring-4 focus:ring-white/50 shadow-lg text-lg">
-            <button type="submit"
+            <!-- Honeypot for spam protection -->
+            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+              <input type="text" name="b_612f57a4d3111090b99807845_63e4f2e7d4" tabindex="-1" value="">
+            </div>
+            <button type="submit" name="subscribe"
               class="bg-white text-[#2d5a27] px-10 py-4 rounded-lg font-headings
               font-semibold text-lg hover:bg-gray-100 transition-all duration-300
               transform hover:scale-105 shadow-lg w-full sm:w-auto">
@@ -181,7 +203,7 @@
     </section>
 
     <!-- Product Section -->
-    <section class="py-20 bg-white">
+    <section class="py-10 md:py-20 bg-white">
       <div class="container mx-auto px-4 md:px-6">
         <div class="max-w-7xl mx-auto">
           <div class="grid md:grid-cols-2 gap-12 items-center">
@@ -189,8 +211,9 @@
             <div class="order-2 md:order-1">
               <h2 class="text-4xl md:text-5xl font-headings font-bold text-[#2d5a27] mb-6">Experience the Ultimate Dojo Duel</h2>
               <div class="space-y-4 text-lg text-gray-700 leading-relaxed">
-                <p>Amfibido brings together strategic card gameplay with stunning artwork and deep tactical combat. Choose from 8 unique fighter guilds, each with their own martial arts style and special abilities.</p>
-                <p>Transform your fighters mid-battle, chain devastating combos, and knock out your opponent's champions to claim victory in this best-of-7 tournament.</p>
+                <p>Amfibido is a fast-paced card drafting and dueling game for 2 players. Battle across three lanes known as dojos. Deploy fighters, equip them, and unleash special moves to outwit and outplay your opponent.</p>
+                <p>Transform your fighters mid-battle, chain devastating combos, and knock out your opponent's champions to secure victory in this best-of-7 tournament showdown.</p>
+                <p>With deep tactical gameplay, and endless replayability through a variety of Sensei teachers, every match is competitive and fun.</p>
                 <p class="font-semibold text-[#2d5a27]">2 players | 30-45 min playtime | Ages 10+</p>
               </div>
             </div>
@@ -206,11 +229,11 @@
     </section>
 
     <!-- Gameplay Features Section -->
-    <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section class="py-10 md:py-20 bg-gradient-to-br from-gray-50 to-white">
       <div class="container mx-auto px-4 md:px-6">
         <div class="max-w-7xl mx-auto">
           <div class="grid md:grid-cols-2 gap-8">
-            
+
             <!-- Block 1: Knockout Opponents -->
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-gray-100 hover:shadow-2xl transition-shadow duration-300">
               <div class="p-8">
@@ -221,15 +244,15 @@
                   </div>
                   <h3 class="text-2xl font-headings font-bold text-[#2d5a27]">Knockout Opponents</h3>
                 </div>
-                <!-- Image + Text horizontal layout -->
-                <div class="flex gap-6 items-start">
+                <!-- Image + Text - vertical on mobile, horizontal on desktop -->
+                <div class="flex flex-col md:flex-row gap-6 items-start">
                   <!-- Card Image -->
-                  <div class="w-1/3 flex-shrink-0">
+                  <div class="w-full md:w-1/3 flex-shrink-0">
                     <img src="{{ '/images/card-knockout.png' | url }}" alt="Knockout Card" class="w-full h-auto object-contain rounded-lg shadow-lg">
                   </div>
                   <!-- Text -->
-                  <div class="w-2/3">
-                    <p class="text-gray-700 leading-relaxed">Deliver devastating blows and strategic strikes to knock out your opponent's fighters. Win by eliminating all three of their champions in this best-of-7 tournament.</p>
+                  <div class="w-full md:w-2/3">
+                    <p class="text-gray-700 leading-relaxed">Deliver devastating <strong>knockout</strong> blows in a fight. Opposing fighters that are knocked out need some time to cooldown before they can enter the dojo again.<br />Use these at the right moment to catch your opponent off guard and neutralize multiple fighters.</p>
                   </div>
                 </div>
               </div>
@@ -245,15 +268,15 @@
                   </div>
                   <h3 class="text-2xl font-headings font-bold text-[#2d5a27]">Transform Fighters</h3>
                 </div>
-                <!-- Image + Text horizontal layout -->
-                <div class="flex gap-6 items-start">
+                <!-- Image + Text - vertical on mobile, horizontal on desktop -->
+                <div class="flex flex-col md:flex-row gap-6 items-start">
                   <!-- Card Image -->
-                  <div class="w-1/3 flex-shrink-0">
+                  <div class="w-full md:w-1/3 flex-shrink-0">
                     <img src="{{ '/images/card-transform.png' | url }}" alt="Transform Card" class="w-full h-auto object-contain rounded-lg shadow-lg">
                   </div>
                   <!-- Text -->
-                  <div class="w-2/3">
-                    <p class="text-gray-700 leading-relaxed">Evolve your warriors mid-battle into more powerful forms. Each transformation unlocks new abilities and enhanced stats to turn the tide of combat.</p>
+                  <div class="w-full md:w-2/3">
+                    <p class="text-gray-700 leading-relaxed">Your fighters can <strong>transform</strong> to higher level cards through the process of metamorphosis. Gain access to more powerful cards and abilities before your opponent. <br />Transform into level 5 <strong>champion</strong> cards to gain a major edge in battle.</p>
                   </div>
                 </div>
               </div>
@@ -269,15 +292,15 @@
                   </div>
                   <h3 class="text-2xl font-headings font-bold text-[#2d5a27]">Learn Combo Moves</h3>
                 </div>
-                <!-- Image + Text horizontal layout -->
-                <div class="flex gap-6 items-start">
+                <!-- Image + Text - vertical on mobile, horizontal on desktop -->
+                <div class="flex flex-col md:flex-row gap-6 items-start">
                   <!-- Card Image -->
-                  <div class="w-1/3 flex-shrink-0">
+                  <div class="w-full md:w-1/3 flex-shrink-0">
                     <img src="{{ '/images/card-headlock.png' | url }}" alt="Headlock Combo Card" class="w-full h-auto object-contain rounded-lg shadow-lg">
                   </div>
                   <!-- Text -->
-                  <div class="w-2/3">
-                    <p class="text-gray-700 leading-relaxed">Master devastating combo moves that amplify your damage output and overwhelm your opponents. Some combo's can be used multiple times by boomeranging them back to your hand.</p>
+                  <div class="w-full md:w-2/3">
+                    <p class="text-gray-700 leading-relaxed">Master devastating <strong>combo moves</strong> that amplify your damage output and overwhelm your opponents. Some combo's can be used multiple times by boomeranging them back to your hand.</p>
                   </div>
                 </div>
               </div>
@@ -293,15 +316,15 @@
                   </div>
                   <h3 class="text-2xl font-headings font-bold text-[#2d5a27]">Pick a Sensei</h3>
                 </div>
-                <!-- Image + Text horizontal layout -->
-                <div class="flex gap-6 items-start">
+                <!-- Image + Text - vertical on mobile, horizontal on desktop -->
+                <div class="flex flex-col md:flex-row gap-6 items-start">
                   <!-- Card Image -->
-                  <div class="w-1/3 flex-shrink-0">
+                  <div class="w-full md:w-1/3 flex-shrink-0">
                     <img src="{{ '/images/card-sensei.png' | url }}" alt="Sensei Card" class="w-full h-auto object-contain rounded-lg shadow-lg">
                   </div>
                   <!-- Text -->
-                  <div class="w-2/3">
-                    <p class="text-gray-700 leading-relaxed">Choose from 15 unique sensei masters, each with their own unique fighting style and abilities. From karate masters to boxing guru's, find the one that best suits your strategy.</p>
+                  <div class="w-full md:w-2/3">
+                    <p class="text-gray-700 leading-relaxed">Choose from 15 unique <strong>sensei masters</strong>, each with their own unique teaching style and abilities. Sensei's will guide your fighters and give them extra abilities. <br />From karate experts to boxing guru's, find the one that best suits your strategy.</p>
                   </div>
                 </div>
               </div>
@@ -313,11 +336,11 @@
     </section>
 
     <!-- Game Manual Section -->
-    <section class="py-16 bg-white">
+    <section class="py-8 md:py-16 bg-white">
       <div class="container mx-auto px-4 md:px-6">
         <div class="max-w-4xl mx-auto text-center">
           <h2 class="text-4xl font-headings font-bold text-[#2d5a27] mb-6">Learn the Rules</h2>
-          <p class="text-xl text-gray-700 mb-8">Download the complete game manual to master the art of combat and discover all the strategies Amfibido has to offer.</p>
+          <p class="text-xl text-gray-700 mb-8">Download the complete game manual to discover all the strategies Amfibido has to offer.</p>
           <a href="{{ '/documents/Amfibido Game Manual.pdf' | url }}" target="_blank"
              class="inline-flex items-center gap-3 bg-[#2d5a27] text-white px-8 py-4 rounded-lg font-headings font-semibold text-lg hover:bg-[#234520] transition-all duration-300 transform hover:scale-105 shadow-lg">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -330,11 +353,11 @@
     </section>
 
     <!-- Video Section -->
-    <section class="py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section class="py-10 md:py-20 bg-gradient-to-br from-gray-50 to-white">
       <div class="container mx-auto px-4 md:px-6">
         <div class="max-w-5xl mx-auto text-center">
           <h2 class="text-4xl md:text-5xl font-headings font-bold text-[#2d5a27] mb-6">Watch Amfibido in Action</h2>
-          <p class="text-xl text-gray-700 mb-10">See the gameplay, learn the strategies, and discover why Amfibido is the ultimate card battle experience.</p>
+          <p class="text-xl text-gray-700 mb-10">See the gameplay, learn the strategies, and discover why Amfibido is so much fun to play.</p>
           <button id="openVideoModal" class="inline-flex items-center gap-3 bg-[#a3ff3f] text-[#2d5a27] px-10 py-5 rounded-lg font-headings font-bold text-xl hover:bg-[#8fe62f] transition-all duration-300 transform hover:scale-105 shadow-xl">
             <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
               <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z"></path>
@@ -364,7 +387,7 @@
     </div>
 
     <!-- Testimonials Section -->
-    <section class="py-20 bg-white">
+    <section class="py-10 md:py-20 bg-white">
       <div class="container mx-auto px-4 md:px-6">
         <div class="max-w-7xl mx-auto">
           <h2 class="text-4xl md:text-5xl font-headings font-bold text-[#2d5a27] text-center mb-16">What Players Are Saying</h2>
@@ -419,13 +442,23 @@
     <section class="bg-gradient-to-r from-[#2d5a27] to-[#a3ff3f] py-16">
       <div class="container mx-auto px-4 md:px-6">
         <div class="max-w-4xl mx-auto text-center">
-          <h2 class="text-3xl md:text-4xl font-headings font-bold text-white mb-4">Join the Amfibido Revolution</h2>
-          <p class="text-lg md:text-xl text-white mb-6">Sign up now and receive an exclusive elite & champion fighter card when you back the project!</p>
-          <form class="email-form flex flex-col sm:flex-row justify-center items-center gap-4 max-w-2xl mx-auto">
-            <input type="email" name="email" placeholder="Enter your email" required
+          <h2 class="text-3xl md:text-4xl font-headings font-bold text-white mb-4">Stay Updated!</h2>
+          <p class="text-lg md:text-xl text-white mb-6">Sign up now and receive an exclusive <strong>elite</strong> & <strong>champion</strong> fighter card when you back the project!</p>
+          <!-- Mailchimp Form -->
+          <form action="https://amfibido.us16.list-manage.com/subscribe/post?u=612f57a4d3111090b99807845&amp;id=63e4f2e7d4"
+                method="post"
+                id="mc-embedded-subscribe-form-bottom"
+                name="mc-embedded-subscribe-form"
+                class="email-form flex flex-col sm:flex-row justify-center items-center gap-4 max-w-2xl mx-auto"
+                novalidate>
+            <input type="email" name="EMAIL" placeholder="Enter your email" required
               class="px-6 py-4 rounded-lg border-2 border-white text-gray-900 bg-white flex-grow w-full sm:w-auto
               focus:outline-none focus:ring-4 focus:ring-white/50 shadow-lg text-lg">
-            <button type="submit"
+            <!-- Honeypot for spam protection -->
+            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+              <input type="text" name="b_612f57a4d3111090b99807845_63e4f2e7d4" tabindex="-1" value="">
+            </div>
+            <button type="submit" name="subscribe"
               class="bg-white text-[#2d5a27] px-10 py-4 rounded-lg font-headings
               font-semibold text-lg hover:bg-gray-100 transition-all duration-300
               transform hover:scale-105 shadow-lg w-full sm:w-auto">
@@ -458,53 +491,53 @@
 
     <!-- JavaScript -->
     <script>
-      // Email form handling
+      // Mailchimp form handling with AJAX submission and redirect
       document.querySelectorAll('.email-form').forEach(form => {
         form.addEventListener('submit', function(e) {
           e.preventDefault();
 
-          const email = this.querySelector('input[type="email"]').value;
+          const emailInput = this.querySelector('input[name="EMAIL"]');
+          const email = emailInput.value;
           const button = this.querySelector('button[type="submit"]');
           const originalButtonText = button.textContent;
 
+          // Basic email validation
+          if (!email || !email.includes('@')) {
+            alert('Please enter a valid email address');
+            return;
+          }
+
+          // Disable button and show loading state
           button.disabled = true;
           button.textContent = 'Sending...';
 
-          fetch('https://formspree.io/f/xeoqvypl', {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email: email })
-          })
-          .then(response => {
-            if (response.ok) {
-              const successMessage = document.createElement('div');
-              successMessage.className = 'mt-4 p-4 bg-green-100 text-green-800 rounded-lg text-center font-medium';
-              successMessage.textContent = 'Success! You\'ll receive your exclusive fighter cards when you back the project!';
+          // Get form action and convert to JSONP endpoint for AJAX
+          const formAction = this.getAttribute('action');
+          const submitUrl = formAction.replace('/post?', '/post-json?') + '&EMAIL=' + encodeURIComponent(email) + '&c=?';
 
-              this.parentNode.insertBefore(successMessage, this.nextSibling);
-              this.reset();
+          // Use JSONP to submit to Mailchimp
+          const script = document.createElement('script');
+          script.src = submitUrl;
+          document.body.appendChild(script);
 
-              setTimeout(() => successMessage.remove(), 5000);
-            } else {
-              throw new Error('Network response was not ok');
+          // Create a global callback for Mailchimp's JSONP response
+          window.mailchimpCallback = function(data) {
+            // Clean up
+            document.body.removeChild(script);
+            delete window.mailchimpCallback;
+
+            // Redirect to thank you page regardless of response
+            // (even if already subscribed, we want to show thank you page)
+            window.location.href = '{{ "/thankyou" | url }}';
+          };
+
+          // Fallback: redirect after 2 seconds if no response
+          setTimeout(() => {
+            if (window.mailchimpCallback) {
+              delete window.mailchimpCallback;
+              window.location.href = '{{ "/thankyou" | url }}';
             }
-          })
-          .catch(error => {
-            const errorMessage = document.createElement('div');
-            errorMessage.className = 'mt-4 p-4 bg-red-100 text-red-800 rounded-lg text-center font-medium';
-            errorMessage.textContent = 'There was an error. Please try again later.';
-
-            this.parentNode.insertBefore(errorMessage, this.nextSibling);
-
-            setTimeout(() => errorMessage.remove(), 5000);
-          })
-          .finally(() => {
-            button.disabled = false;
-            button.textContent = originalButtonText;
-          });
+          }, 2000);
         });
       });
 
