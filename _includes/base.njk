@@ -112,13 +112,13 @@
   </head>
   <body class="bg-gradient-dark text-primary font-sans min-h-screen flex flex-col antialiased">
     <!-- Modern Header with Glass Effect -->
-    <header class="fixed w-full z-50 bg-[#2d5a27]/90">
+    <header class="w-full z-50 bg-[#2d5a27]/90">
       <div class="container mx-auto px-4">
         <nav class="flex items-center justify-between {% if page.url == '/' %}h-32{% else %}h-24{% endif %} py-4">
           <!-- Studio Branding -->
           <div class="hidden md:flex items-center space-x-3">
             <a href="{{ '/' | url }}" class="flex items-center space-x-3 group">
-              <img src="{{ '/images/roca-logo.png' | url }}" alt="Gnome on the Phone Studios" class="w-28 h-28 transition-all duration-300 group-hover:scale-110">
+              <img src="{{ '/images/roca-logo.png' | url }}" alt="Gnome on the Phone Studios" class="w-36 h-36 transition-all duration-300 group-hover:scale-110">
 
             </a>
           </div>
@@ -177,8 +177,8 @@
       </div>
     </header>
 
-    <!-- Add padding to main content to account for fixed header -->
-    <main class="flex-grow container mx-auto px-6 {% if page.url == '/' %}pt-40{% else %}pt-32{% endif %} relative">
+    <!-- Main content -->
+    <main class="flex-grow container mx-auto px-6 relative">
       {% if page.url == '/' %}
       <div class="fixed inset-0 -z-10">
         <img src="{{ '/images/dojo.png' | url }}" alt="Dojo Background" class="w-full h-full object-cover opacity-80">
