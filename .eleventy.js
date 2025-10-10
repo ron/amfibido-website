@@ -16,6 +16,9 @@ module.exports = function(eleventyConfig) {
   // Do NOT copy CSS files - they are processed by PostCSS
   eleventyConfig.addPassthroughCopy("_headers");
   eleventyConfig.addPassthroughCopy(".nojekyll");
+  // Copy SEO files
+  eleventyConfig.addPassthroughCopy("robots.txt");
+  eleventyConfig.addPassthroughCopy("sitemap.xml");
 
   // Make sure the processed CSS directory exists
   eleventyConfig.on('eleventy.before', async () => {

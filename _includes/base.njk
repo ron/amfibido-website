@@ -3,8 +3,34 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title or "Amfibido: A Dojo Duel" }}</title>
+    <title>{{ title or "Amfibido: A Dojo Duel Card Game" }}</title>
     <meta name="description" content="{{ description or "Amfibido is an exhilarating 2-player card game where amphibians and reptiles collide in epic battles. Strategize, transform, and knock out your opponent's champions to become the ultimate dojo master." }}">
+
+    <!-- Additional SEO Meta Tags -->
+    <meta name="keywords" content="card game, 2-player game, strategy game, tabletop game, amphibians, reptiles, dojo, martial arts, kickstarter, board game">
+    <meta name="author" content="Gnome on the Phone Studios">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://amfibido.com{{ page.url }}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://amfibido.com{{ page.url }}">
+    <meta property="og:title" content="{{ title or 'Amfibido: A Dojo Duel Card Game' }}">
+    <meta property="og:description" content="{{ description or 'Amfibido is an exhilarating 2-player card game where amphibians and reptiles collide in epic battles. Strategize, transform, and knock out your opponent\'s champions to become the ultimate dojo master.' }}">
+    <meta property="og:image" content="https://amfibido.com{{ '/images/logo.png' | url }}">
+    <meta property="og:site_name" content="Amfibido">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://amfibido.com{{ page.url }}">
+    <meta property="twitter:title" content="{{ title or 'Amfibido: A Dojo Duel Card Game' }}">
+    <meta property="twitter:description" content="{{ description or 'Amfibido is an exhilarating 2-player card game where amphibians and reptiles collide in epic battles. Strategize, transform, and knock out your opponent\'s champions to become the ultimate dojo master.' }}">
+    <meta property="twitter:image" content="https://amfibido.com{{ '/images/logo.png' | url }}">
+
     <link rel="stylesheet" href="{{ '/css/style.css' | url }}?v={{ buildTime }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,6 +39,37 @@
     <!-- Favicon -->
     <link rel="icon" href="{{ '/images/favicon.png' | url }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ '/images/favicon.png' | url }}">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Game",
+      "name": "Amfibido: A Dojo Duel",
+      "description": "Amfibido is an exhilarating 2-player card game where amphibians and reptiles collide in epic battles. Strategize, transform, and knock out your opponent's champions to become the ultimate dojo master.",
+      "url": "https://amfibido.com{{ page.url }}",
+      "image": "https://amfibido.com{{ '/images/logo.png' | url }}",
+      "genre": "Card Game",
+      "numberOfPlayers": "2",
+      "playTime": "30-45 minutes",
+      "ageRange": "10+",
+      "gameLocation": "Tabletop",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Gnome on the Phone Studios",
+        "url": "https://www.roca.games"
+      },
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/PreOrder",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Coming soon to Kickstarter"
+      },
+      "gamePlatform": "Tabletop",
+      "gameItem": "Card Game"
+    }
+    </script>
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5R1CRKZ1F"></script>
