@@ -4,35 +4,25 @@ title: "Amfibido: A Dojo Duel Card Game | 2-Player Strategy Battle"
 description: "Amfibido is an exhilarating 2-player card game where amphibians and reptiles collide in epic battles. Strategize, transform, and knock out your opponent's champions to become the ultimate dojo master."
 ---
 
-<section class="hero relative py-20 mb-16 rounded-xl overflow-hidden">
-  <!-- Styled background with thematic colors -->
-  <div class="absolute inset-0 bg-[#2d5a27]/90 border-8 border-mist/10 rounded-xl shadow-xl"></div>
+<section class="py-10 md:py-20 bg-white">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="max-w-7xl mx-auto">
 
-  <!-- Decorative pattern overlay -->
-  <div class="absolute inset-0 opacity-30" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBkPSJNMzAgMzBMMCAwIDMwIDMwIDYwIDAgMzAgMzBaIiBmaWxsPSIjYTNmZjNmIiBmaWxsLW9wYWNpdHk9IjAuNSIvPjwvc3ZnPg==')"></div>
-
-  <!-- Content with carousel -->
-  <div class="relative z-10 container mx-auto px-12">
-    <div class="max-w-6xl mx-auto">
-      <div class="flex flex-col md:flex-row items-center gap-12">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
         <!-- Text Content -->
-        <div class="md:flex-1 text-center md:text-left">
-          <div class="mx-auto md:mx-0 mb-6">
-            <img src="{{ '/images/belt.png' | url }}" alt="Amfibido Belt" class="w-full aspect-[7/1] object-cover">
-          </div>
-          <h1 class="text-4xl font-headings font-bold text-primary mb-6 drop-shadow-sm">Master the Dojo, Rule the Ring.</h1>
-          <div class="bg-charcoal/80 backdrop-blur-sm p-6 rounded-lg shadow-md mb-10 border border-mist/10">
-            <p class="text-base md:text-xl mb-6 leading-relaxed text-primary">Amfibido is an exhilarating 2-player card game where amphibians and reptiles collide in epic battles. Strategize your moves, transform your fighters into powerful new forms, and knock out your opponent's champions.</p>
-            <p class="text-base md:text-xl leading-relaxed text-primary">The first to claim victory in a best of 7 series becomes the ultimate dojo master!</p>
+        <div class="order-2 md:order-1">
+          <h1 class="text-4xl md:text-5xl font-headings font-bold text-[#2d5a27] mb-6">Master the Dojo, Rule the Ring</h1>
+          <div class="space-y-4 text-lg text-gray-700 leading-relaxed">
+            <p>Amfibido is an exhilarating 2-player card game where amphibians and reptiles collide in epic battles. Strategize your moves, transform your fighters into powerful new forms, and knock out your opponent's champions.</p>
+            <p>The first to claim victory in a best of 7 series becomes the ultimate dojo master!</p>
+            <p class="font-semibold text-[#2d5a27]">2 players | 30-45 min playtime | Ages 10+</p>
           </div>
         </div>
-
         <!-- Card Carousel -->
-        <div class="md:w-[300px] w-full mx-auto md:mx-0 md:ml-auto">
-          <div class="relative">
-            <div class="carousel-container aspect-[2.5/3.5] overflow-hidden rounded-xl border-2 border-mist/20 shadow-2xl bg-charcoal">
+        <div class="order-1 md:order-2 flex justify-center">
+          <div class="relative rounded-2xl shadow-2xl overflow-hidden w-full max-w-xs">
+            <div class="carousel-container aspect-[2.5/3.5] overflow-hidden bg-gray-100">
               <div class="carousel-slides flex transition-transform duration-300 ease-in-out h-full">
-                <!-- Slides -->
                 <div class="carousel-slide w-full flex-shrink-0">
                   <img src="{{ '/images/card-alligator.png' | url }}" alt="Alligator Fighter Card" class="w-full h-full object-contain">
                 </div>
@@ -50,26 +40,24 @@ description: "Amfibido is an exhilarating 2-player card game where amphibians an
                 </div>
               </div>
             </div>
-
             <!-- Carousel Navigation -->
-            <button class="carousel-prev absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-charcoal/70 w-8 h-8 rounded-full shadow-lg flex items-center justify-center border border-venomous/30 focus:outline-none hover:bg-venomous/20 transition-all duration-300 z-10">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-venomous" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <button class="carousel-prev absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4 bg-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center focus:outline-none hover:bg-gray-100 transition-all duration-300 z-10">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#2d5a27]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            <button class="carousel-next absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-charcoal/70 w-8 h-8 rounded-full shadow-lg flex items-center justify-center border border-venomous/30 focus:outline-none hover:bg-venomous/20 transition-all duration-300 z-10">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-venomous" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <button class="carousel-next absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4 bg-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center focus:outline-none hover:bg-gray-100 transition-all duration-300 z-10">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#2d5a27]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             </button>
-
             <!-- Carousel Indicators -->
-            <div class="carousel-indicators flex justify-center absolute bottom-0 left-0 right-0 mb-2 space-x-1.5">
-              <button class="carousel-indicator w-2 h-2 rounded-full bg-venomous opacity-100 focus:outline-none transition-opacity duration-300 shadow"></button>
-              <button class="carousel-indicator w-2 h-2 rounded-full bg-venomous opacity-30 focus:outline-none transition-opacity duration-300 shadow"></button>
-              <button class="carousel-indicator w-2 h-2 rounded-full bg-venomous opacity-30 focus:outline-none transition-opacity duration-300 shadow"></button>
-              <button class="carousel-indicator w-2 h-2 rounded-full bg-venomous opacity-30 focus:outline-none transition-opacity duration-300 shadow"></button>
-              <button class="carousel-indicator w-2 h-2 rounded-full bg-venomous opacity-30 focus:outline-none transition-opacity duration-300 shadow"></button>
+            <div class="carousel-indicators flex justify-center absolute bottom-4 left-0 right-0 space-x-2">
+              <button class="carousel-indicator w-2 h-2 rounded-full bg-[#2d5a27] opacity-100 focus:outline-none transition-opacity duration-300"></button>
+              <button class="carousel-indicator w-2 h-2 rounded-full bg-[#2d5a27] opacity-30 focus:outline-none transition-opacity duration-300"></button>
+              <button class="carousel-indicator w-2 h-2 rounded-full bg-[#2d5a27] opacity-30 focus:outline-none transition-opacity duration-300"></button>
+              <button class="carousel-indicator w-2 h-2 rounded-full bg-[#2d5a27] opacity-30 focus:outline-none transition-opacity duration-300"></button>
+              <button class="carousel-indicator w-2 h-2 rounded-full bg-[#2d5a27] opacity-30 focus:outline-none transition-opacity duration-300"></button>
             </div>
           </div>
         </div>
@@ -78,23 +66,22 @@ description: "Amfibido is an exhilarating 2-player card game where amphibians an
   </div>
 </section>
 
-<section class="video relative py-14 mb-14 rounded-xl overflow-hidden">
-  <div class="absolute inset-0 bg-[#2d5a27]/90 border-8 border-mist/10 rounded-xl shadow-xl"></div>
-  <div class="relative z-10 container mx-auto px-12">
-    <div class="max-w-6xl mx-auto">
-      <div class="flex flex-col md:flex-row items-center gap-8">
-        <div class="md:w-1/2 order-1 md:order-1">
-          <div class="rounded-xl overflow-hidden border-2 border-mist/20 shadow-2xl bg-charcoal">
+<section class="py-10 md:py-20 bg-gradient-to-br from-gray-50 to-white">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="order-1 md:order-1">
+          <div class="rounded-2xl overflow-hidden shadow-2xl">
             <div class="w-full aspect-[16/9]">
               <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/sCV98bm-EgM" title="Amfibido Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
           </div>
         </div>
-        <div class="md:w-1/2 text-center md:text-left md:pl-8 order-2 md:order-2">
-          <h2 class="text-4xl font-headings font-bold text-primary mb-4">Amfibido on YouTube</h2>
-          <p class="text-base md:text-xl mb-6 text-primary">Watch videos about how to play, tips & tricks and full gameplay on youtube.</p>
-          <a href="https://www.youtube.com/@amfibido" class="inline-block bg-venomous/50 text-primary px-10 py-4 rounded-md font-headings font-semibold text-lg hover:bg-venomous/60 transition-all duration-300 transform hover:scale-105 hover:shadow-lg" target="_blank" rel="noopener">
-            Visit the channel
+        <div class="order-2 md:order-2 text-center md:text-left">
+          <h2 class="text-4xl md:text-5xl font-headings font-bold text-[#2d5a27] mb-6">Watch Amfibido in Action</h2>
+          <p class="text-lg text-gray-700 mb-8 leading-relaxed">Watch videos about how to play, tips & tricks and full gameplay on YouTube.</p>
+          <a href="https://www.youtube.com/@amfibido" class="inline-block bg-[#2d5a27] text-white px-10 py-4 rounded-lg font-headings font-semibold text-lg hover:bg-[#234520] transition-all duration-300 transform hover:scale-105 shadow-lg" target="_blank" rel="noopener">
+            Visit the Channel
           </a>
         </div>
       </div>
@@ -102,43 +89,41 @@ description: "Amfibido is an exhilarating 2-player card game where amphibians an
   </div>
 </section>
 
-<section class="fighters relative py-14 mb-14 rounded-xl overflow-hidden">
-  <div class="absolute inset-0 bg-[#2d5a27]/90 border-8 border-mist/10 rounded-xl shadow-xl"></div>
-  <div class="relative z-10 container mx-auto px-12">
-    <div class="max-w-6xl mx-auto">
-      <div class="flex flex-col md:flex-row items-center gap-8">
-        <div class="md:w-1/4 md:pl-0">
-          <div class="w-[300px]">
-            <img src="{{ '/images/meetfighters.png' | url }}" alt="Meet the Fighters" class="w-full aspect-square object-cover rounded-lg border-4 border-white shadow-xl">
-          </div>
-        </div>
-        <div class="md:w-3/4 text-center md:text-left md:pl-8">
-          <h2 class="text-4xl font-headings font-bold text-primary mb-4">Meet the Fighters</h2>
-          <p class="text-base md:text-xl mb-6 text-primary">Discover a diverse roster of amphibian and reptile warriors, each with unique abilities and fighting styles. From agile frogs to powerful crocodiles, choose your champion and master their techniques.</p>
-          <a href="{{ '/fighters' | url }}" class="inline-block bg-venomous/50 text-primary px-10 py-4 rounded-md font-headings font-semibold text-lg hover:bg-venomous/60 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+<section class="py-10 md:py-20 bg-white">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="order-2 md:order-1">
+          <h2 class="text-4xl md:text-5xl font-headings font-bold text-[#2d5a27] mb-6">Meet the Fighters</h2>
+          <p class="text-lg text-gray-700 mb-8 leading-relaxed">Discover a diverse roster of amphibian and reptile warriors, each with unique abilities and fighting styles. From agile frogs to powerful crocodiles, choose your champion and master their techniques.</p>
+          <a href="{{ '/fighters' | url }}" class="inline-block bg-[#2d5a27] text-white px-10 py-4 rounded-lg font-headings font-semibold text-lg hover:bg-[#234520] transition-all duration-300 transform hover:scale-105 shadow-lg">
             View All Fighters
           </a>
         </div>
+        <div class="order-1 md:order-2 flex justify-center">
+          <div class="rounded-2xl shadow-2xl overflow-hidden w-64">
+            <img src="{{ '/images/meetfighters.png' | url }}" alt="Meet the Fighters" class="w-full h-full object-cover">
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="gameplay relative py-14 mb-14 rounded-xl overflow-hidden">
-  <div class="absolute inset-0 bg-[#2d5a27]/90 border-8 border-mist/10 rounded-xl shadow-xl"></div>
-  <div class="relative z-10 container mx-auto px-12">
-    <div class="max-w-6xl mx-auto">
-      <div class="flex flex-col md:flex-row items-center gap-8">
-        <div class="md:w-3/4 text-center md:text-left order-2 md:order-1 md:pr-8">
-          <h2 class="text-4xl font-headings font-bold text-primary mb-4">Gameplay</h2>
-          <p class="text-base md:text-xl mb-6 text-primary">Learn the art of combat in Amfibido. Master card combinations, special moves, and strategic transformations to outmaneuver your opponent and claim victory in the dojo.</p>
-          <a href="{{ '/gameplay' | url }}" class="inline-block bg-venomous/50 text-primary px-10 py-4 rounded-md font-headings font-semibold text-lg hover:bg-venomous/60 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+<section class="py-10 md:py-20 bg-gradient-to-br from-gray-50 to-white">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="order-2 md:order-1">
+          <h2 class="text-4xl md:text-5xl font-headings font-bold text-[#2d5a27] mb-6">Master the Gameplay</h2>
+          <p class="text-lg text-gray-700 mb-8 leading-relaxed">Learn the art of combat in Amfibido. Master card combinations, special moves, and strategic transformations to outmaneuver your opponent and claim victory in the dojo.</p>
+          <a href="{{ '/gameplay' | url }}" class="inline-block bg-[#2d5a27] text-white px-10 py-4 rounded-lg font-headings font-semibold text-lg hover:bg-[#234520] transition-all duration-300 transform hover:scale-105 shadow-lg">
             Learn to Play
           </a>
         </div>
-        <div class="md:w-1/4 order-1 md:order-2">
-          <div class="w-[300px] mx-auto">
-            <img src="{{ '/images/gameplay.png' | url }}" alt="Gameplay" class="w-full aspect-square object-cover rounded-lg border-4 border-white shadow-xl">
+        <div class="order-1 md:order-2 flex justify-center">
+          <div class="rounded-2xl shadow-2xl overflow-hidden w-64">
+            <img src="{{ '/images/gameplay.png' | url }}" alt="Gameplay" class="w-full h-full object-cover">
           </div>
         </div>
       </div>
@@ -147,25 +132,27 @@ description: "Amfibido is an exhilarating 2-player card game where amphibians an
 </section>
 
 <!-- FAQ Section for SEO -->
-<section class="container mx-auto px-6 mb-16">
-  <div class="max-w-4xl mx-auto">
-    <h2 class="text-3xl font-headings font-bold text-primary mb-8 text-center">Frequently Asked Questions</h2>
-    <div class="space-y-6">
-      <div class="bg-charcoal/40 p-6 rounded-lg">
-        <h3 class="text-xl font-headings font-semibold text-venomous mb-2">How many players can play Amfibido?</h3>
-        <p class="text-primary">Amfibido is designed for 2 players, making it perfect for head-to-head strategic battles.</p>
-      </div>
-      <div class="bg-charcoal/40 p-6 rounded-lg">
-        <h3 class="text-xl font-headings font-semibold text-venomous mb-2">How long does a game take?</h3>
-        <p class="text-primary">Each game typically lasts 30-45 minutes, providing the perfect length for an engaging strategic experience.</p>
-      </div>
-      <div class="bg-charcoal/40 p-6 rounded-lg">
-        <h3 class="text-xl font-headings font-semibold text-venomous mb-2">What age is Amfibido suitable for?</h3>
-        <p class="text-primary">Amfibido is recommended for ages 10 and up, offering strategic depth that appeals to both younger and adult players.</p>
-      </div>
-      <div class="bg-charcoal/40 p-6 rounded-lg">
-        <h3 class="text-xl font-headings font-semibold text-venomous mb-2">When will Amfibido be available?</h3>
-        <p class="text-primary">Amfibido is coming soon to Kickstarter! Sign up for updates to be notified when the campaign launches.</p>
+<section class="py-10 md:py-20 bg-white">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-headings font-bold text-[#2d5a27] mb-12 text-center">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div class="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl shadow-lg border-2 border-gray-100">
+          <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-2">How many players can play Amfibido?</h3>
+          <p class="text-gray-700">Amfibido is designed for 2 players, making it perfect for head-to-head strategic battles.</p>
+        </div>
+        <div class="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl shadow-lg border-2 border-gray-100">
+          <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-2">How long does a game take?</h3>
+          <p class="text-gray-700">Each game typically lasts 30-45 minutes, providing the perfect length for an engaging strategic experience.</p>
+        </div>
+        <div class="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl shadow-lg border-2 border-gray-100">
+          <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-2">What age is Amfibido suitable for?</h3>
+          <p class="text-gray-700">Amfibido is recommended for ages 10 and up, offering strategic depth that appeals to both younger and adult players.</p>
+        </div>
+        <div class="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl shadow-lg border-2 border-gray-100">
+          <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-2">When will Amfibido be available?</h3>
+          <p class="text-gray-700">Amfibido is coming soon to Kickstarter! Sign up for updates to be notified when the campaign launches.</p>
+        </div>
       </div>
     </div>
   </div>

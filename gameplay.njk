@@ -4,144 +4,126 @@ title: "How to Play Amfibido | Game Rules & Strategy Guide"
 description: "Learn how to play Amfibido, the strategic card battle game featuring amphibian and reptile fighters in epic dojo duels. Master combos, transformations, and knockout techniques."
 ---
 
-<section class="container mx-auto px-2 md:px-6 mb-20">
-  <div class="max-w-7xl mx-auto">
-    <!-- Header and Description -->
-    <div class="text-center mb-16 border-4 border-venomous/30 p-8 rounded-xl bg-[#2d5a27]/90 shadow-lg transform hover:scale-[1.01] transition-all duration-300">
-      <h1 class="text-5xl font-headings font-bold text-venomous mb-6 drop-shadow-lg">How to Play</h1>
-      <p class="text-xl text-primary max-w-3xl mx-auto mb-6">Master the art of combat in Amfibido, where strategic card play and timing is everything. Discover powerful techniques to dominate the dojo!</p>
-      <a href="{{ '/documents/Amfibido Game Manual.pdf' | url }}" download class="inline-flex items-center bg-venomous/80 text-obsidian px-6 py-3 rounded-md font-headings font-semibold hover:bg-venomous transition-all duration-300 mt-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
-        Download Complete Game Manual (PDF)
-      </a>
-    </div>
+<section class="py-10 md:py-20 bg-white">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="max-w-7xl mx-auto">
+      <!-- Header and Description -->
+      <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-headings font-bold text-[#2d5a27] mb-6">How to Play</h1>
+        <p class="text-xl text-gray-700 max-w-3xl mx-auto mb-8 leading-relaxed">Master the art of combat in Amfibido, where strategic card play and timing is everything. Discover powerful techniques to dominate the dojo!</p>
+        <a href="{{ '/documents/Amfibido Game Manual.pdf' | url }}" target="_blank" class="inline-flex items-center bg-[#2d5a27] text-white px-8 py-4 rounded-lg font-headings font-semibold text-lg hover:bg-[#234520] transition-all duration-300 transform hover:scale-105 shadow-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Download Game Manual (PDF)
+        </a>
+      </div>
 
-    <!-- First Section: Fight -->
-    <div class="relative py-12 mb-16 rounded-xl overflow-hidden transform hover:shadow-2xl transition-all duration-300">
-      <div class="absolute inset-0 bg-[#2d5a27]/90 border-8 border-mist/10 rounded-xl shadow-xl"></div>
-      <div class="relative z-10 px-6">
-        <div class="flex flex-col md:flex-row items-center gap-8">
-          <div class="md:w-1/2">
-            <div class="h-[300px] md:h-[920px]">
-              <img src="{{ '/images/gameplay/fight.png' | url }}" alt="Field Your Fighters" class="w-full h-full object-contain">
+      <!-- First Section: Fight -->
+      <div class="bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-gray-100 p-8 mb-12">
+          <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+              <div class="h-[300px] md:h-[920px]">
+                <img src="{{ '/images/gameplay/fight.png' | url }}" alt="Field Your Fighters" class="w-full h-full object-contain">
+              </div>
             </div>
-          </div>
-          <div class="md:w-1/2 text-center md:text-left">
-            <h2 class="text-3xl font-headings font-bold text-venomous mb-8 drop-shadow-md inline-block relative after:content-[''] after:absolute after:w-1/2 after:h-1 after:bg-venomous/50 after:bottom-0 after:left-0 after:rounded-full md:after:left-0 after:left-1/4 pb-3">The Basics</h2>
+            <div class="md:w-1/2 text-center md:text-left">
+              <h2 class="text-3xl md:text-4xl font-headings font-bold text-[#2d5a27] mb-8">The Basics</h2>
 
-            <div class="mb-6 bg-charcoal/40 p-4 rounded-lg hover:bg-charcoal/60 transition-all duration-300 transform hover:translate-x-1 border-l-4 border-venomous shadow-md">
-              <h3 class="text-2xl font-headings font-semibold text-venomous mb-2 flex items-center">
-                <span class="inline-block w-6 h-6 bg-venomous rounded-full mr-2 flex-shrink-0"></span>
-                Field Your Fighters
-              </h3>
-              <p class="text-base md:text-lg text-primary mb-0 pl-8">Deploy your fighters across three distinct Dojos to prepare for combat.</p>
-            </div>
+              <div class="mb-6 bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl shadow-lg border-2 border-gray-100">
+                <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-3">
+                  Field Your Fighters
+                </h3>
+                <p class="text-base text-gray-700 leading-relaxed">Deploy your fighters across three distinct Dojos to prepare for combat.</p>
+              </div>
 
-            <div class="mb-6 bg-charcoal/40 p-4 rounded-lg hover:bg-charcoal/60 transition-all duration-300 transform hover:translate-x-1 border-l-4 border-venomous shadow-md">
-              <h3 class="text-2xl font-headings font-semibold text-venomous mb-2 flex items-center">
-                <span class="inline-block w-6 h-6 bg-venomous rounded-full mr-2 flex-shrink-0"></span>
+              <div class="mb-6 bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl shadow-lg border-2 border-gray-100">
+                <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-3">
                 Power Them Up
-              </h3>
-              <p class="text-base md:text-lg text-primary mb-0 pl-8">Equip your fighters with powerful gear to boost their stats and give them an edge in battle.</p>
+                </h3>
+                <p class="text-base text-gray-700 leading-relaxed">Equip your fighters with powerful gear to boost their stats and give them an edge in battle.</p>
             </div>
 
-            <div class="mb-6 bg-charcoal/40 p-4 rounded-lg hover:bg-charcoal/60 transition-all duration-300 transform hover:translate-x-1 border-l-4 border-venomous shadow-md">
-              <h3 class="text-2xl font-headings font-semibold text-venomous mb-2 flex items-center">
-                <span class="inline-block w-6 h-6 bg-venomous rounded-full mr-2 flex-shrink-0"></span>
+              <div class="mb-6 bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl shadow-lg border-2 border-gray-100">
+                <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-3">
                 Unleash Combo Moves
-              </h3>
-              <p class="text-base md:text-lg text-primary mb-0 pl-8">Strategically execute powerful fighting techniques to outwit and overpower your opponents.</p>
+                </h3>
+                <p class="text-base text-gray-700 leading-relaxed">Strategically execute powerful fighting techniques to outwit and overpower your opponents.</p>
             </div>
 
-            <div class="mb-6 bg-charcoal/40 p-4 rounded-lg hover:bg-charcoal/60 transition-all duration-300 transform hover:translate-x-1 border-l-4 border-venomous shadow-md">
-              <h3 class="text-2xl font-headings font-semibold text-venomous mb-2 flex items-center">
-                <span class="inline-block w-6 h-6 bg-venomous rounded-full mr-2 flex-shrink-0"></span>
+              <div class="mb-6 bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl shadow-lg border-2 border-gray-100">
+                <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-3">
                 Claim Victory
-              </h3>
-              <p class="text-base md:text-lg text-primary mb-0 pl-8">Win 2 out of 3 Dojo battles in a round to emerge victorious.</p>
+                </h3>
+                <p class="text-base text-gray-700 leading-relaxed">Win 2 out of 3 Dojo battles in a round to emerge victorious.</p>
             </div>
 
-            <div class="mb-0 bg-charcoal/40 p-4 rounded-lg hover:bg-charcoal/60 transition-all duration-300 transform hover:translate-x-1 border-l-4 border-venomous shadow-md">
-              <h3 class="text-2xl font-headings font-semibold text-venomous mb-2 flex items-center">
-                <span class="inline-block w-6 h-6 bg-venomous rounded-full mr-2 flex-shrink-0"></span>
+              <div class="mb-0 bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl shadow-lg border-2 border-gray-100">
+                <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-3">
                 Become the Champion
-              </h3>
-              <p class="text-base md:text-lg text-primary mb-0 pl-8">Secure 4 rounds to dominate the game and claim ultimate victory!</p>
+                </h3>
+                <p class="text-base text-gray-700 leading-relaxed">Secure 4 rounds to dominate the game and claim ultimate victory!</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Second Section: Knockout -->
-    <div class="relative py-12 mb-16 rounded-xl overflow-hidden transform hover:shadow-2xl transition-all duration-300">
-      <div class="absolute inset-0 bg-[#2d5a27]/90 border-8 border-mist/10 rounded-xl shadow-xl"></div>
-      <div class="relative z-10 px-6">
-        <div class="flex flex-col md:flex-row items-center gap-8">
-          <div class="md:w-1/2 order-2 md:order-1 text-center md:text-left md:pl-8">
-            <h2 class="text-3xl font-headings font-bold text-venomous mb-8 drop-shadow-md inline-block relative after:content-[''] after:absolute after:w-1/2 after:h-1 after:bg-venomous/50 after:bottom-0 after:left-0 after:rounded-full md:after:left-0 after:left-1/4 pb-3">Special Techniques</h2>
+      <!-- Second Section: Knockout -->
+      <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-xl overflow-hidden border-2 border-gray-100 p-8 mb-12">
+          <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2 order-2 md:order-1 text-center md:text-left">
+              <h2 class="text-3xl md:text-4xl font-headings font-bold text-[#2d5a27] mb-8">Special Techniques</h2>
 
-            <div class="mb-6 bg-charcoal/40 p-6 rounded-lg hover:bg-charcoal/60 transition-all duration-300 transform hover:translate-x-1 border-l-4 border-venomous shadow-md">
-              <h3 class="text-2xl font-headings font-semibold text-venomous mb-4 flex items-center">
-                <span class="inline-block w-8 h-8 bg-venomous rounded-full mr-3 flex-shrink-0 animate-pulse"></span>
-                Devastating Knockouts
-              </h3>
-              <p class="text-base md:text-lg text-primary pl-11">Some fighters pack a <span class="text-venomous font-bold">devastating punch</span> that can knock out an opponent in a single hit, leaving them <span class="text-venomous font-bold">incapacitated</span> in the next round!</p>
-            </div>
+              <div class="mb-6 bg-white p-6 rounded-xl shadow-lg border-2 border-gray-100">
+                <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-3">
+                  Devastating Knockouts
+                </h3>
+                <p class="text-base text-gray-700 leading-relaxed">Some fighters pack a <span class="text-[#2d5a27] font-bold">devastating punch</span> that can knock out an opponent in a single hit, leaving them <span class="text-[#2d5a27] font-bold">incapacitated</span> in the next round!</p>
+              </div>
 
-            <div class="mb-0 bg-charcoal/40 p-6 rounded-lg hover:bg-charcoal/60 transition-all duration-300 transform hover:translate-x-1 border-l-4 border-venomous shadow-md">
-              <h3 class="text-2xl font-headings font-semibold text-venomous mb-4 flex items-center">
-                <span class="inline-block w-8 h-8 bg-venomous rounded-full mr-3 flex-shrink-0 animate-pulse"></span>
-                Remember and Unleash Combo Moves
-              </h3>
-              <p class="text-base md:text-lg text-primary pl-11">Some fighting moves never truly leave the fight! <span class="text-venomous font-bold">Boomerang cards</span> bounce back, ready to be <span class="text-venomous font-bold">used again</span> when the timing is right.</p>
-            </div>
+              <div class="mb-0 bg-white p-6 rounded-xl shadow-lg border-2 border-gray-100">
+                <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-3">
+                  Remember and Unleash Combo Moves
+                </h3>
+                <p class="text-base text-gray-700 leading-relaxed">Some fighting moves never truly leave the fight! <span class="text-[#2d5a27] font-bold">Boomerang cards</span> bounce back, ready to be <span class="text-[#2d5a27] font-bold">used again</span> when the timing is right.</p>
+              </div>
           </div>
           <div class="md:w-1/2 order-1 md:order-2">
             <div class="h-[250px] md:h-[600px] mx-auto">
               <img src="{{ '/images/gameplay/knockout.png' | url }}" alt="Devastating Knockouts" class="w-full h-full object-contain">
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Third Section: Transform -->
-    <div class="relative py-12 mb-16 rounded-xl overflow-hidden transform hover:shadow-2xl transition-all duration-300">
-      <div class="absolute inset-0 bg-[#2d5a27]/90 border-8 border-mist/10 rounded-xl shadow-xl"></div>
-      <div class="relative z-10 px-6">
-        <div class="flex flex-col md:flex-row items-center gap-8">
-          <div class="md:w-1/2">
-            <div class="h-[300px] md:h-[350px]">
-              <img src="{{ '/images/gameplay/transform.png' | url }}" alt="Epic Transformations" class="w-full h-full object-contain">
-            </div>
-          </div>
-          <div class="md:w-1/2 text-center md:text-left">
-            <h2 class="text-3xl font-headings font-bold text-venomous mb-8 drop-shadow-md inline-block relative after:content-[''] after:absolute after:w-1/2 after:h-1 after:bg-venomous/50 after:bottom-0 after:left-0 after:rounded-full md:after:left-0 after:left-1/4 pb-3">Advanced Strategy</h2>
-
-            <div class="mb-0 bg-charcoal/40 p-6 rounded-lg hover:bg-charcoal/60 transition-all duration-300 transform hover:translate-x-1 border-l-4 border-venomous shadow-md">
-              <h3 class="text-2xl font-headings font-semibold text-venomous mb-4 flex items-center">
-                <span class="inline-block w-8 h-8 bg-venomous rounded-full mr-3 flex-shrink-0 animate-pulse"></span>
-                Epic Transformations
-              </h3>
-              <p class="text-base md:text-lg text-primary pl-11">Watch as your fighters undergo <span class="text-venomous font-bold">metamorphosis</span>, transforming into higher-level warriors with <span class="text-venomous font-bold">enhanced abilities</span>, catching your opponent off-guard at critical moments!</p>
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <!-- Final Section -->
-    <div class="relative py-12 mb-12 rounded-xl overflow-hidden transform hover:shadow-2xl transition-all duration-300">
-      <div class="absolute inset-0 bg-[#2d5a27]/90 border-8 border-mist/10 rounded-xl shadow-xl"></div>
-      <div class="relative z-10 px-12">
+      <!-- Third Section: Transform -->
+      <div class="bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-gray-100 p-8 mb-12">
+          <div class="flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+              <div class="h-[300px] md:h-[350px]">
+                <img src="{{ '/images/gameplay/transform.png' | url }}" alt="Epic Transformations" class="w-full h-full object-contain">
+              </div>
+            </div>
+            <div class="md:w-1/2 text-center md:text-left">
+              <h2 class="text-3xl md:text-4xl font-headings font-bold text-[#2d5a27] mb-8">Advanced Strategy</h2>
+
+              <div class="mb-0 bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl shadow-lg border-2 border-gray-100">
+                <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-3">
+                  Epic Transformations
+                </h3>
+                <p class="text-base text-gray-700 leading-relaxed">Watch as your fighters undergo <span class="text-[#2d5a27] font-bold">metamorphosis</span>, transforming into higher-level warriors with <span class="text-[#2d5a27] font-bold">enhanced abilities</span>, catching your opponent off-guard at critical moments!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <!-- Final Section -->
+      <div class="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-xl overflow-hidden border-2 border-gray-100 p-8">
         <div class="text-center">
-          <h2 class="text-3xl font-headings font-bold text-venomous mb-8 drop-shadow-md inline-block relative after:content-[''] after:absolute after:w-1/3 after:h-1 after:bg-venomous/50 after:bottom-0 after:left-1/3 after:rounded-full pb-3">Dynamic Gameplay</h2>
-          <div class="max-w-3xl mx-auto bg-charcoal/40 p-6 rounded-lg border-t-4 border-venomous shadow-lg hover:bg-charcoal/60 transition-all duration-300">
-            <p class="text-base md:text-lg text-primary mb-4">After each round, gain access to <span class="text-venomous font-bold">more powerful cards</span>. Discover ways to unleash the <span class="text-venomous font-bold">legendary Level 5 Champion cards</span>, turning the tide of battle in your favor.</p>
-            <p class="text-base md:text-lg text-primary">Amfibido features <span class="text-venomous font-bold">8 unique types</span> of amphibian and reptilian fighters, each with distinct abilities. No two games are ever the same, ensuring an <span class="text-venomous font-bold">exciting and dynamic experience</span> every time you play!</p>
+          <h2 class="text-3xl md:text-4xl font-headings font-bold text-[#2d5a27] mb-8">Dynamic Gameplay</h2>
+          <div class="max-w-3xl mx-auto bg-white p-6 rounded-xl shadow-lg border-2 border-gray-100">
+            <p class="text-base text-gray-700 mb-4 leading-relaxed">After each round, gain access to <span class="text-[#2d5a27] font-bold">more powerful cards</span>. Discover ways to unleash the <span class="text-[#2d5a27] font-bold">legendary Level 5 Champion cards</span>, turning the tide of battle in your favor.</p>
+            <p class="text-base text-gray-700 leading-relaxed">Amfibido features <span class="text-[#2d5a27] font-bold">8 unique types</span> of amphibian and reptilian fighters, each with distinct abilities. No two games are ever the same, ensuring an <span class="text-[#2d5a27] font-bold">exciting and dynamic experience</span> every time you play!</p>
           </div>
         </div>
       </div>
@@ -150,12 +132,14 @@ description: "Learn how to play Amfibido, the strategic card battle game featuri
 </section>
 
 <!-- Navigation Links -->
-<section class="container mx-auto px-2 md:px-6 mb-10">
-  <div class="max-w-7xl mx-auto">
-    <div class="flex justify-center">
-      <a href="{{ '/fighters' | url }}" class="inline-block bg-venomous/50 text-primary px-10 py-4 rounded-md font-headings font-semibold text-lg hover:bg-venomous/60 transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-        Meet the Fighters →
-      </a>
+<section class="py-8 md:py-12 bg-white">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex justify-center">
+        <a href="{{ '/fighters' | url }}" class="inline-block bg-[#2d5a27] text-white px-10 py-4 rounded-lg font-headings font-semibold text-lg hover:bg-[#234520] transition-all duration-300 transform hover:scale-105 shadow-lg">
+          Meet the Fighters →
+        </a>
+      </div>
     </div>
   </div>
 </section>
