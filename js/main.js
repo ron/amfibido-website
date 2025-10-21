@@ -7,6 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Form handling
   initFormHandling();
+
+  // Mailchimp form handling
+  initMailchimpForms();
 });
 
 // Mobile menu initialization
@@ -81,10 +84,11 @@ function initCarousel() {
 
 // Form handling initialization
 function initFormHandling() {
-  const emailForm = document.querySelector('form');
+  // Only handle forms that specifically need Formspree (like feedback forms)
+  const feedbackForm = document.querySelector('form.feedback-form');
 
-  if (emailForm) {
-    emailForm.addEventListener('submit', function(e) {
+  if (feedbackForm) {
+    feedbackForm.addEventListener('submit', function(e) {
       e.preventDefault();
 
       const email = this.querySelector('input[type="email"]').value;
@@ -111,7 +115,7 @@ function initFormHandling() {
           successMessage.textContent = 'Thanks for your interest! We\'ll keep you updated.';
 
           // Insert after form
-          emailForm.parentNode.insertBefore(successMessage, emailForm.nextSibling);
+          feedbackForm.parentNode.insertBefore(successMessage, feedbackForm.nextSibling);
 
           // Reset the form
           this.reset();
@@ -126,7 +130,7 @@ function initFormHandling() {
         errorMessage.textContent = 'There was an error sending your message. Please try again later.';
 
         // Insert after form
-        emailForm.parentNode.insertBefore(errorMessage, emailForm.nextSibling);
+        feedbackForm.parentNode.insertBefore(errorMessage, feedbackForm.nextSibling);
       })
       .finally(() => {
         // Restore button state
@@ -135,4 +139,51 @@ function initFormHandling() {
       });
     });
   }
+}
+
+// Mailchimp form handling with redirect
+function initMailchimpForms() {
+  const mailchimpForms = document.querySelectorAll('.mailchimp-form');
+
+  mailchimpForms.forEach(form => {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const email = this.querySelector('input[name="EMAIL"]').value;
+      const button = this.querySelector('button[type="submit"]');
+      const originalButtonText = button.textContent;
+
+      // Validate email
+      if (!email || !email.includes('@')) {
+        return;
+      }
+
+      // Show loading state
+      button.disabled = true;
+      button.textContent = 'Signing up...';
+
+      // Get form action URL and convert to JSONP endpoint
+      const formAction = this.getAttribute('action');
+      const url = formAction.replace('/post?', '/post-json?');
+
+      // Create JSONP request
+      const params = new URLSearchParams(new FormData(this));
+      const jsonpUrl = `${url}&${params.toString()}&c=?`;
+
+      // Use fetch with JSONP-like approach
+      fetch(jsonpUrl, {
+        method: 'GET',
+        mode: 'no-cors'
+      })
+      .then(() => {
+        // Redirect to thank you page
+        window.location.href = '/thankyou/';
+      })
+      .catch(() => {
+        // Even on error, redirect to thank you page
+        // (Mailchimp often returns CORS errors even when successful)
+        window.location.href = '/thankyou/';
+      });
+    });
+  });
 }
