@@ -41,7 +41,7 @@ description: "Download the official Amfibido game manual and learn how to play."
 </section>
 
 <!-- Chat Widget -->
-<div id="chat-widget" class="fixed bottom-6 right-6 z-50">
+<div id="chat-widget" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
   <!-- Chat Button -->
   <button id="chat-toggle"
           class="w-14 h-14 bg-[#2d5a27] hover:bg-[#234520] text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
@@ -55,15 +55,22 @@ description: "Download the official Amfibido game manual and learn how to play."
   </button>
 
   <!-- Chat Window -->
-  <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden">
+  <div id="chat-window" class="hidden fixed sm:absolute inset-x-0 bottom-0 sm:inset-auto sm:bottom-20 sm:right-0 w-full sm:w-96 h-[85vh] sm:h-auto bg-white sm:rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col">
     <!-- Header -->
-    <div class="bg-[#2d5a27] text-white px-4 py-3">
-      <h3 class="font-headings font-semibold">Ask about the rules</h3>
-      <p class="text-sm text-green-100">Powered by AI</p>
+    <div class="bg-[#2d5a27] text-white px-4 py-3 flex items-center justify-between shrink-0">
+      <div>
+        <h3 class="font-headings font-semibold">Ask about the rules</h3>
+        <p class="text-sm text-green-100">Powered by AI</p>
+      </div>
+      <button id="chat-close-mobile" class="sm:hidden p-2 hover:bg-[#234520] rounded-lg transition-colors" aria-label="Close chat">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
     </div>
 
     <!-- Messages -->
-    <div id="chat-messages" class="h-80 overflow-y-auto p-4 space-y-3 bg-gray-50">
+    <div id="chat-messages" class="flex-1 sm:h-80 overflow-y-auto p-4 space-y-3 bg-gray-50">
       <div class="flex justify-start">
         <div class="bg-white rounded-lg px-4 py-2 shadow-sm max-w-[85%] border border-gray-100">
           <p class="text-gray-700 text-sm">I'm Mr Minami, I know everything about the Amfibido rules. Ask away!</p>
@@ -72,16 +79,16 @@ description: "Download the official Amfibido game manual and learn how to play."
     </div>
 
     <!-- Input -->
-    <div class="p-3 border-t border-gray-200 bg-white">
+    <div class="p-3 border-t border-gray-200 bg-white shrink-0 safe-area-bottom">
       <form id="chat-form" class="flex gap-2">
         <input type="text"
                id="chat-input"
                placeholder="Ask a question..."
-               class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2d5a27] focus:border-transparent text-sm"
+               class="flex-1 px-4 py-3 sm:py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2d5a27] focus:border-transparent text-base sm:text-sm"
                autocomplete="off">
         <button type="submit"
                 id="chat-submit"
-                class="px-4 py-2 bg-[#2d5a27] text-white rounded-lg hover:bg-[#234520] transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                class="px-4 py-3 sm:py-2 bg-[#2d5a27] text-white rounded-lg hover:bg-[#234520] transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
           </svg>
@@ -90,6 +97,12 @@ description: "Download the official Amfibido game manual and learn how to play."
     </div>
   </div>
 </div>
+
+<style>
+  .safe-area-bottom {
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+  }
+</style>
 
 <script>
 (function() {
@@ -107,15 +120,20 @@ description: "Download the official Amfibido game manual and learn how to play."
   let isOpen = false;
   let history = [];
 
-  chatToggle.addEventListener('click', () => {
-    isOpen = !isOpen;
+  const chatCloseMobile = document.getElementById('chat-close-mobile');
+
+  function toggleChat(open) {
+    isOpen = open;
     chatWindow.classList.toggle('hidden', !isOpen);
     iconOpen.classList.toggle('hidden', isOpen);
     iconClose.classList.toggle('hidden', !isOpen);
     if (isOpen) {
       chatInput.focus();
     }
-  });
+  }
+
+  chatToggle.addEventListener('click', () => toggleChat(!isOpen));
+  chatCloseMobile.addEventListener('click', () => toggleChat(false));
 
   function parseMarkdown(text) {
     return text
