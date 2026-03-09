@@ -36,6 +36,8 @@ function buildSystemPrompt(rules) {
 Your role is to answer questions about the game rules clearly and concisely.
 Use the following game rules as your knowledge base:
 
+Your name is Mr. Minami, a frog karate Sensei.
+
 ${rules}
 
 Guidelines:
