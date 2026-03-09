@@ -117,6 +117,17 @@ description: "Download the official Amfibido game manual and learn how to play."
     }
   });
 
+  function parseMarkdown(text) {
+    return text
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/`(.+?)`/g, '<code class="bg-gray-100 px-1 rounded text-sm">$1</code>')
+      .replace(/^\d+\.\s+(.+)$/gm, '<li>$1</li>')
+      .replace(/(<li>.*<\/li>)/s, '<ol class="list-decimal list-inside space-y-1 my-2">$1</ol>')
+      .replace(/^[-•]\s+(.+)$/gm, '<li>$1</li>')
+      .replace(/\n/g, '<br>');
+  }
+
   function addMessage(content, isUser) {
     const wrapper = document.createElement('div');
     wrapper.className = `flex ${isUser ? 'justify-end' : 'justify-start'}`;
@@ -126,9 +137,14 @@ description: "Download the official Amfibido game manual and learn how to play."
       ? 'bg-[#2d5a27] text-white rounded-lg px-4 py-2 max-w-[85%]'
       : 'bg-white rounded-lg px-4 py-2 shadow-sm max-w-[85%] border border-gray-100';
 
-    const text = document.createElement('p');
+    const text = document.createElement('div');
     text.className = `text-sm ${isUser ? '' : 'text-gray-700'}`;
-    text.textContent = content;
+    
+    if (isUser) {
+      text.textContent = content;
+    } else {
+      text.innerHTML = parseMarkdown(content);
+    }
 
     bubble.appendChild(text);
     wrapper.appendChild(bubble);
