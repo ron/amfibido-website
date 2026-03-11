@@ -117,7 +117,7 @@ export default {
 				body: JSON.stringify({
 					model: 'openrouter/free',
 					messages,
-					max_tokens: 500,
+					max_tokens: 2000,
 				}),
 			});
 
