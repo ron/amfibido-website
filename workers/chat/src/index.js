@@ -6,43 +6,58 @@ const ALLOWED_ORIGINS = [
 ];
 
 const RULES_URL = 'https://amfibido.com/context/rules.md';
+const CARDS_URL = 'https://amfibido.com/context/cards.md';
 
 let cachedRules = null;
+let cachedCards = null;
 let cacheTime = 0;
 const CACHE_DURATION = 60 * 60 * 1000; // 1 hour
 
-async function getRules() {
-	const now = Date.now();
-	if (cachedRules && (now - cacheTime) < CACHE_DURATION) {
-		return cachedRules;
-	}
-
+async function fetchWithCache(url, cached) {
 	try {
-		const response = await fetch(RULES_URL);
+		const response = await fetch(url);
 		if (response.ok) {
-			cachedRules = await response.text();
-			cacheTime = now;
-			return cachedRules;
+			return await response.text();
 		}
 	} catch (error) {
-		console.error('Failed to fetch rules:', error);
+		console.error(`Failed to fetch ${url}:`, error);
 	}
-
-	return cachedRules || 'Rules not available.';
+	return cached || '';
 }
 
-function buildSystemPrompt(rules) {
+async function getContext() {
+	const now = Date.now();
+	if (cachedRules && cachedCards && (now - cacheTime) < CACHE_DURATION) {
+		return { rules: cachedRules, cards: cachedCards };
+	}
+
+	const [rules, cards] = await Promise.all([
+		fetchWithCache(RULES_URL, cachedRules),
+		fetchWithCache(CARDS_URL, cachedCards),
+	]);
+
+	cachedRules = rules;
+	cachedCards = cards;
+	cacheTime = now;
+
+	return { rules, cards };
+}
+
+function buildSystemPrompt(rules, cards) {
 	return `You are a friendly and helpful assistant for the Amfibido board game.
-Your role is to answer questions about the game rules clearly and concisely.
-Use the following game rules as your knowledge base:
+Your role is to answer questions about the game rules and cards clearly and concisely.
 
 Your name is Mr. Minami, a frog karate Sensei.
 
+## Game Rules
 ${rules}
 
+## Card Reference
+${cards}
+
 Guidelines:
-- Answer based on the rules above
-- If something isn't covered in the rules, say you don't have that information
+- Answer based on the rules and cards above
+- If something isn't covered in the rules or cards, say you don't have that information
 - Keep responses brief but complete
 - Be friendly and helpful`;
 }
@@ -82,8 +97,8 @@ export default {
 				});
 			}
 
-			const rules = await getRules();
-			const systemPrompt = buildSystemPrompt(rules);
+			const { rules, cards } = await getContext();
+			const systemPrompt = buildSystemPrompt(rules, cards);
 
 			const messages = [
 				{ role: 'system', content: systemPrompt },
