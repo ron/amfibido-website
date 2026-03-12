@@ -11,3 +11,6 @@ If the game reaches round 9 (after multiple drawn rounds), players continue draw
 - Level III cards: Rounds 5-6
 - Level IV cards: Rounds 7-8 (and round 9+)
 - Level V cards: Only obtained through special card abilities, never drawn during normal draft phase
+
+## Switcheroo
+Switcheroo allows you to move or switch with a fighter or equipment to ANY of your other dojos - including empty dojos. You do NOT need something in the target dojo to "switch" with. The name "switcheroo" is just the action name.

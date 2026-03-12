@@ -9,18 +9,29 @@ description: "Download the official Amfibido game manual and learn how to play."
     <div class="max-w-4xl mx-auto">
       <h1 class="text-4xl md:text-5xl font-headings font-bold text-[#2d5a27] mb-8 text-center">Rules</h1>
 
-      <p class="text-lg text-gray-700 leading-relaxed text-center mb-12 max-w-2xl mx-auto">
-        Learn how to play Amfibido with our comprehensive game manual or watch the rules explanation video below.
-      </p>
-
-      <div class="text-center mb-12">
-        <a href="{{ '/documents/Amfibido Game Manual.pdf' | url }}" target="_blank" rel="noopener noreferrer"
-           class="inline-flex items-center gap-3 bg-[#2d5a27] text-white px-8 py-4 rounded-lg font-headings font-semibold text-xl hover:bg-[#234520] transition-all duration-300 transform hover:scale-105 shadow-lg">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-          </svg>
-          Download Game Manual (PDF)
-        </a>
+      <div class="flex flex-col sm:flex-row items-stretch justify-center gap-12 mb-12">
+        <!-- PDF Section -->
+        <div class="flex flex-col items-center text-center">
+          <p class="text-lg text-gray-700 leading-relaxed mb-6 max-w-sm">
+            Learn how to play Amfibido with our comprehensive game manual or watch the rules explanation video below.
+          </p>
+          <a href="{{ '/documents/Amfibido Game Manual.pdf' | url }}" target="_blank" rel="noopener noreferrer"
+             class="mt-auto inline-flex items-center gap-3 bg-[#2d5a27] text-white px-8 py-4 rounded-lg font-headings font-semibold text-xl hover:bg-[#234520] transition-all duration-300 transform hover:scale-105 shadow-lg">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            Download Game Manual (PDF)
+          </a>
+          <span class="text-sm text-gray-600 mt-3">Read the rules</span>
+        </div>
+        <!-- Ask Mr. Minami Section -->
+        <div class="flex flex-col items-center text-center">
+          <img src="{{ '/images/mr-minami.png' | url }}" alt="Mr. Minami" class="w-40 h-40 object-contain mb-3">
+          <button type="button" id="ask-minami-btn" class="mt-auto inline-flex items-center gap-3 bg-[#2d5a27] text-white px-8 py-4 rounded-lg font-headings font-semibold text-xl hover:bg-[#234520] transition-all duration-300 transform hover:scale-105 shadow-lg cursor-pointer">
+            Ask Mr. Minami
+          </button>
+          <span class="text-sm text-gray-600 mt-3">Get answers to all your rules questions</span>
+        </div>
       </div>
 
       <!-- Rules Video -->
@@ -131,6 +142,11 @@ description: "Download the official Amfibido game manual and learn how to play."
 
   chatToggle.addEventListener('click', () => toggleChat(!isOpen));
   chatCloseMobile.addEventListener('click', () => toggleChat(false));
+
+  const askMinamiBtn = document.getElementById('ask-minami-btn');
+  if (askMinamiBtn) {
+    askMinamiBtn.addEventListener('click', () => toggleChat(true));
+  }
 
   function parseMarkdown(text) {
     return text
