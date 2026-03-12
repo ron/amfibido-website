@@ -7,9 +7,11 @@ const ALLOWED_ORIGINS = [
 
 const RULES_URL = 'https://amfibido.com/context/rules.md';
 const CARDS_URL = 'https://amfibido.com/context/cards.md';
+const REMINDERS_URL = 'https://amfibido.com/context/reminders.md';
 
 let cachedRules = null;
 let cachedCards = null;
+let cachedReminders = null;
 let cacheTime = 0;
 const CACHE_DURATION = 60 * 60 * 1000; // 1 hour
 
@@ -27,27 +29,33 @@ async function fetchWithCache(url, cached) {
 
 async function getContext() {
 	const now = Date.now();
-	if (cachedRules && cachedCards && (now - cacheTime) < CACHE_DURATION) {
-		return { rules: cachedRules, cards: cachedCards };
+	if (cachedRules && cachedCards && cachedReminders && (now - cacheTime) < CACHE_DURATION) {
+		return { rules: cachedRules, cards: cachedCards, reminders: cachedReminders };
 	}
 
-	const [rules, cards] = await Promise.all([
+	const [rules, cards, reminders] = await Promise.all([
 		fetchWithCache(RULES_URL, cachedRules),
 		fetchWithCache(CARDS_URL, cachedCards),
+		fetchWithCache(REMINDERS_URL, cachedReminders),
 	]);
 
 	cachedRules = rules;
 	cachedCards = cards;
+	cachedReminders = reminders;
 	cacheTime = now;
 
-	return { rules, cards };
+	return { rules, cards, reminders };
 }
 
-function buildSystemPrompt(rules, cards) {
+function buildSystemPrompt(rules, cards, reminders) {
 	return `You are a friendly and helpful assistant for the Amfibido board game.
 Your role is to answer questions about the game rules and cards clearly and concisely.
-
+Do not answer questions that are not related to the game.
+Also do not give strategy advice, focus on correct rulings only.
 Your name is Mr. Minami, a frog karate Sensei.
+
+## Important Reminders (prioritize these over other context)
+${reminders}
 
 ## Game Rules
 ${rules}
@@ -56,9 +64,10 @@ ${rules}
 ${cards}
 
 Guidelines:
-- Answer based on the rules and cards above
-- If something isn't covered in the rules or cards, say you don't have that information
-- Keep responses brief but complete
+- Answer based on the rules, cards, and reminders above
+- Prioritize information from the Reminders section when there might be confusion
+- If something isn't covered, say you don't have that information
+- Keep responses brief but complete, maximum 4 sentences
 - Be friendly and helpful`;
 }
 
@@ -97,8 +106,8 @@ export default {
 				});
 			}
 
-			const { rules, cards } = await getContext();
-			const systemPrompt = buildSystemPrompt(rules, cards);
+			const { rules, cards, reminders } = await getContext();
+			const systemPrompt = buildSystemPrompt(rules, cards, reminders);
 
 			const messages = [
 				{ role: 'system', content: systemPrompt },
@@ -117,7 +126,7 @@ export default {
 				body: JSON.stringify({
 					model: 'openrouter/free',
 					messages,
-					max_tokens: 2000,
+					max_tokens: 1000,
 				}),
 			});
 
