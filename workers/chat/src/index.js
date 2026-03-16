@@ -81,6 +81,26 @@ function getCorsHeaders(request) {
 	};
 }
 
+async function logConversation(db, conversationId, origin, userMessage, assistantReply) {
+	try {
+		await db.batch([
+			db.prepare(`
+				INSERT INTO conversations (id, origin)
+				VALUES (?, ?)
+				ON CONFLICT(id) DO UPDATE SET updated_at = datetime('now')
+			`).bind(conversationId, origin),
+			db.prepare(`
+				INSERT INTO messages (conversation_id, role, content) VALUES (?, 'user', ?)
+			`).bind(conversationId, userMessage),
+			db.prepare(`
+				INSERT INTO messages (conversation_id, role, content) VALUES (?, 'assistant', ?)
+			`).bind(conversationId, assistantReply),
+		]);
+	} catch (error) {
+		console.error('Failed to log conversation:', error);
+	}
+}
+
 export default {
 	async fetch(request, env, ctx) {
 		const corsHeaders = getCorsHeaders(request);
@@ -97,7 +117,7 @@ export default {
 		}
 
 		try {
-			const { message, history = [] } = await request.json();
+			const { message, history = [], conversationId = crypto.randomUUID() } = await request.json();
 
 			if (!message || typeof message !== 'string') {
 				return new Response(JSON.stringify({ error: 'Message is required' }), {
@@ -142,7 +162,10 @@ export default {
 			const data = await response.json();
 			const reply = data.choices?.[0]?.message?.content || "Sorry, I couldn't generate a response.";
 
-			return new Response(JSON.stringify({ reply }), {
+			const origin = request.headers.get('Origin') || 'unknown';
+			ctx.waitUntil(logConversation(env.DB, conversationId, origin, message, reply));
+
+			return new Response(JSON.stringify({ reply, conversationId }), {
 				headers: { ...corsHeaders, 'Content-Type': 'application/json' },
 			});
 		} catch (error) {

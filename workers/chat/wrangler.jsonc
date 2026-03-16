@@ -12,6 +12,13 @@
 	},
 	"compatibility_flags": [
 		"nodejs_compat"
+	],
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "chat-logs",
+			"database_id": "237e1274-7a9f-456b-8952-df86f0aa2926"
+		}
 	]
 	/**
 	 * Smart Placement

@@ -127,6 +127,7 @@ description: "Download the official Amfibido game manual and learn how to play."
 
   let isOpen = false;
   let history = [];
+  let conversationId = null;
 
   const chatCloseMobile = document.getElementById('chat-close-mobile');
 
@@ -222,7 +223,7 @@ description: "Download the official Amfibido game manual and learn how to play."
       const response = await fetch(WORKER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, history }),
+        body: JSON.stringify({ message, history, conversationId }),
       });
 
       const data = await response.json();
@@ -232,6 +233,7 @@ description: "Download the official Amfibido game manual and learn how to play."
         addMessage('Sorry, something went wrong. Please try again.', false);
       } else {
         addMessage(data.reply, false);
+        if (data.conversationId) conversationId = data.conversationId;
         history.push({ role: 'user', content: message });
         history.push({ role: 'assistant', content: data.reply });
         if (history.length > 20) history = history.slice(-20);
