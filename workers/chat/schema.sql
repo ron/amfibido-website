@@ -2,7 +2,8 @@ CREATE TABLE IF NOT EXISTS conversations (
   id TEXT PRIMARY KEY,
   created_at TEXT DEFAULT (datetime('now')),
   updated_at TEXT DEFAULT (datetime('now')),
-  origin TEXT
+  origin TEXT,
+  emailed_at TEXT
 );
 
 CREATE TABLE IF NOT EXISTS messages (

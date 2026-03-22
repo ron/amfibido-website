@@ -13,8 +13,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
-        headings: ['Poppins', 'sans-serif'] // Custom font family for headings
+        sans: ['Plus Jakarta Sans', ...defaultTheme.fontFamily.sans],
+        headings: ['Space Grotesk', 'sans-serif']
       },
       colors: { // Extend the default palette with our custom colors
         'primary': '#228B22',   // Forest Green

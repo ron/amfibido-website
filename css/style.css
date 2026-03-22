@@ -2,6 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Button Component Styles */
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-8 py-4 rounded-lg font-headings font-semibold text-lg transition-colors duration-200 shadow-md;
+  }
+
+  .btn-primary {
+    @apply bg-[#2d5a27] text-white hover:bg-[#234520];
+  }
+
+  .btn-accent {
+    @apply bg-[#ff6b1f] text-white hover:bg-[#e55a10];
+  }
+
+  .btn-outline {
+    @apply bg-transparent border-2 border-[#2d5a27] text-[#2d5a27] hover:bg-[#2d5a27] hover:text-white shadow-none;
+  }
+
+  .btn-sm {
+    @apply px-6 py-3 text-base;
+  }
+
+  .btn-lg {
+    @apply px-10 py-5 text-xl;
+  }
+}
+
+/* Section Divider - Subtle wave pattern */
+.section-divider {
+  position: relative;
+  height: 4rem;
+  background: linear-gradient(to bottom, #fafaf8 0%, #fafaf8 50%, #fafaf8 100%);
+  overflow: hidden;
+}
+
+.section-divider::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #e5e5e5, transparent);
+}
+
+/* Decorative dot pattern for backgrounds */
+.bg-dots {
+  background-image: radial-gradient(#2d5a27 0.5px, transparent 0.5px);
+  background-size: 20px 20px;
+  background-position: 0 0;
+  opacity: 0.03;
+}
+
+/* Subtle gradient overlay for sections */
+.section-gradient {
+  background: linear-gradient(135deg, rgba(45, 90, 39, 0.02) 0%, transparent 50%, rgba(255, 107, 31, 0.02) 100%);
+}
+
 /* Custom styles */
 form input[type="email"] {
   color: #1b3a32; /* charcoal color */

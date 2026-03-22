@@ -4,7 +4,7 @@ title: "Rules | Amfibido"
 description: "Download the official Amfibido game manual and learn how to play."
 ---
 
-<section class="py-10 md:py-20 bg-white">
+<section class="py-10 md:py-20 bg-[#fafaf8]">
   <div class="container mx-auto px-4 md:px-6">
     <div class="max-w-4xl mx-auto">
       <h1 class="text-4xl md:text-5xl font-headings font-bold text-[#2d5a27] mb-8 text-center">Rules</h1>
@@ -16,7 +16,7 @@ description: "Download the official Amfibido game manual and learn how to play."
             Learn how to play Amfibido with our comprehensive game manual or watch the rules explanation video below.
           </p>
           <a href="{{ '/documents/Amfibido Game Manual.pdf' | url }}" target="_blank" rel="noopener noreferrer"
-             class="mt-auto inline-flex items-center gap-3 bg-[#2d5a27] text-white px-8 py-4 rounded-lg font-headings font-semibold text-xl hover:bg-[#234520] transition-all duration-300 transform hover:scale-105 shadow-lg">
+             class="mt-auto inline-flex items-center gap-3 bg-[#ff6b1f] text-white px-8 py-4 rounded-lg font-headings font-semibold text-xl hover:bg-[#e55a10] transition-colors duration-200 shadow-md">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
             </svg>
@@ -27,7 +27,7 @@ description: "Download the official Amfibido game manual and learn how to play."
         <!-- Ask Mr. Minami Section -->
         <div class="flex flex-col items-center text-center">
           <img src="{{ '/images/mr-minami.png' | url }}" alt="Mr. Minami" class="w-40 h-40 object-contain mb-3">
-          <button type="button" id="ask-minami-btn" class="mt-auto inline-flex items-center gap-3 bg-[#2d5a27] text-white px-8 py-4 rounded-lg font-headings font-semibold text-xl hover:bg-[#234520] transition-all duration-300 transform hover:scale-105 shadow-lg cursor-pointer">
+          <button type="button" id="ask-minami-btn" class="mt-auto inline-flex items-center gap-3 bg-[#2d5a27] text-white px-8 py-4 rounded-lg font-headings font-semibold text-xl hover:bg-[#234520] transition-colors duration-200 shadow-md cursor-pointer">
             Ask Mr. Minami
           </button>
           <span class="text-sm text-gray-600 mt-3">Get answers to all your rules questions</span>
@@ -36,7 +36,7 @@ description: "Download the official Amfibido game manual and learn how to play."
 
       <!-- Rules Video -->
       <div>
-        <div class="aspect-video bg-gray-100 rounded-2xl border-2 border-gray-200 flex items-center justify-center">
+          <div class="aspect-video bg-gray-100 rounded-xl border border-gray-200 flex items-center justify-center">
           <div class="text-center text-gray-500">
             <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
@@ -64,7 +64,7 @@ description: "Download the official Amfibido game manual and learn how to play."
 </button>
 
 <!-- Chat Window -->
-<div id="chat-window" class="hidden fixed z-50 inset-x-0 bottom-0 sm:inset-auto sm:bottom-24 sm:right-6 w-full sm:w-[450px] h-[50vh] sm:h-[600px] bg-white sm:rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col">
+<div id="chat-window" class="hidden fixed z-50 inset-x-0 bottom-0 sm:inset-auto sm:bottom-24 sm:right-6 w-full sm:w-[450px] h-[50vh] sm:h-[600px] bg-white sm:rounded-xl shadow-lg border border-gray-200 overflow-hidden flex flex-col">
     <!-- Header -->
     <div class="bg-[#2d5a27] text-white px-4 py-3 flex items-center justify-between shrink-0">
       <div>
@@ -82,7 +82,7 @@ description: "Download the official Amfibido game manual and learn how to play."
     <div id="chat-messages" class="flex-1 sm:h-80 overflow-y-auto p-4 space-y-3 bg-gray-50">
       <div class="flex justify-start">
         <div class="bg-white rounded-lg px-4 py-2 shadow-sm max-w-[85%] border border-gray-100">
-          <p class="text-gray-700 text-sm">I'm Mr Minami, I know everything about the Amfibido rules. Ask away!</p>
+          <p class="text-gray-700 text-sm">I'm Mr Minami, I know everything about the Amfibido rules. Bear with me, I might still make some mistakes.</p>
         </div>
       </div>
     </div>

@@ -1,0 +1,1 @@
+This folder contains the built output assets for the worker "chat" generated at 2026-03-16T19:29:45.337Z.

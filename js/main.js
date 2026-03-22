@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Mailchimp form handling
   initMailchimpForms();
+
+  // FAQ accordion
+  initFaqAccordion();
 });
 
 // Mobile menu initialization
@@ -139,6 +142,46 @@ function initFormHandling() {
       });
     });
   }
+}
+
+// FAQ Accordion functionality
+function initFaqAccordion() {
+  const faqAccordion = document.getElementById('faq-accordion');
+  if (!faqAccordion) return;
+
+  const triggers = faqAccordion.querySelectorAll('.faq-trigger');
+
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const faqItem = trigger.closest('.faq-item');
+      const content = faqItem.querySelector('.faq-content');
+      const icon = trigger.querySelector('.faq-icon');
+      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+
+      // Close all other items
+      triggers.forEach(otherTrigger => {
+        if (otherTrigger !== trigger) {
+          const otherItem = otherTrigger.closest('.faq-item');
+          const otherContent = otherItem.querySelector('.faq-content');
+          const otherIcon = otherTrigger.querySelector('.faq-icon');
+          otherTrigger.setAttribute('aria-expanded', 'false');
+          otherContent.classList.add('hidden');
+          otherIcon.style.transform = 'rotate(0deg)';
+        }
+      });
+
+      // Toggle current item
+      if (isExpanded) {
+        trigger.setAttribute('aria-expanded', 'false');
+        content.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      } else {
+        trigger.setAttribute('aria-expanded', 'true');
+        content.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      }
+    });
+  });
 }
 
 // Mailchimp form handling with redirect

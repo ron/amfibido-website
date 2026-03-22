@@ -101,9 +101,134 @@ async function logConversation(db, conversationId, origin, userMessage, assistan
 	}
 }
 
+async function sendConversationEmail(env, conversation, messages) {
+	const formattedMessages = messages.map(m => {
+		const role = m.role === 'user' ? '👤 User' : '🐸 Mr. Minami';
+		return `${role}:\n${m.content}`;
+	}).join('\n\n---\n\n');
+
+	const emailBody = `
+New conversation from ${conversation.origin}
+Started: ${conversation.created_at}
+Conversation ID: ${conversation.id}
+
+${'='.repeat(50)}
+
+${formattedMessages}
+`;
+
+	const response = await fetch('https://api.resend.com/emails', {
+		method: 'POST',
+		headers: {
+			'Authorization': `Bearer ${env.RESEND_API_KEY}`,
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
+			from: 'Mr. Minami <minami@amfibido.com>',
+			to: 'ron@amfibido.com',
+			subject: `Amfibido Chat: ${messages[0]?.content?.slice(0, 50) || 'New conversation'}...`,
+			text: emailBody,
+		}),
+	});
+
+	if (!response.ok) {
+		const error = await response.text();
+		throw new Error(`Resend error: ${error}`);
+	}
+
+	return response.json();
+}
+
+async function processUnsentConversations(env) {
+	const { results: conversations } = await env.DB.prepare(`
+		SELECT * FROM conversations 
+		WHERE emailed_at IS NULL 
+		AND created_at <= datetime('now', '-15 minutes')
+	`).all();
+
+	console.log(`Found ${conversations.length} conversations to email`);
+
+	for (const conversation of conversations) {
+		try {
+			const { results: messages } = await env.DB.prepare(`
+				SELECT role, content, created_at 
+				FROM messages 
+				WHERE conversation_id = ? 
+				ORDER BY created_at ASC
+			`).bind(conversation.id).all();
+
+			if (messages.length === 0) continue;
+
+			await sendConversationEmail(env, conversation, messages);
+
+			await env.DB.prepare(`
+				UPDATE conversations SET emailed_at = datetime('now') WHERE id = ?
+			`).bind(conversation.id).run();
+
+			console.log(`Emailed conversation ${conversation.id}`);
+		} catch (error) {
+			console.error(`Failed to email conversation ${conversation.id}:`, error);
+		}
+	}
+}
+
 export default {
+	async scheduled(event, env, ctx) {
+		ctx.waitUntil(processUnsentConversations(env));
+	},
+
 	async fetch(request, env, ctx) {
+		const url = new URL(request.url);
 		const corsHeaders = getCorsHeaders(request);
+
+		if (url.pathname === '/test-email') {
+			try {
+				const { results: conversations } = await env.DB.prepare(`
+					SELECT * FROM conversations 
+					WHERE emailed_at IS NULL 
+					AND created_at <= datetime('now', '-15 minutes')
+				`).all();
+				
+				const results = [];
+				for (const conversation of conversations) {
+					try {
+						const { results: messages } = await env.DB.prepare(`
+							SELECT role, content, created_at 
+							FROM messages 
+							WHERE conversation_id = ? 
+							ORDER BY created_at ASC
+						`).bind(conversation.id).all();
+
+						if (messages.length === 0) {
+							results.push({ id: conversation.id, status: 'skipped', reason: 'no messages' });
+							continue;
+						}
+
+						await sendConversationEmail(env, conversation, messages);
+						
+						await env.DB.prepare(`
+							UPDATE conversations SET emailed_at = datetime('now') WHERE id = ?
+						`).bind(conversation.id).run();
+
+						results.push({ id: conversation.id, status: 'sent' });
+					} catch (error) {
+						results.push({ id: conversation.id, status: 'error', error: error.message });
+					}
+				}
+				
+				return new Response(JSON.stringify({ 
+					found: conversations.length, 
+					results 
+				}), {
+					headers: { 'Content-Type': 'application/json' },
+				});
+			} catch (error) {
+				return new Response(JSON.stringify({ error: error.message, stack: error.stack }), {
+					status: 500,
+					headers: { 'Content-Type': 'application/json' },
+				});
+			}
+		}
 
 		if (request.method === 'OPTIONS') {
 			return new Response(null, { headers: corsHeaders });
@@ -117,7 +242,10 @@ export default {
 		}
 
 		try {
-			const { message, history = [], conversationId = crypto.randomUUID() } = await request.json();
+			const body = await request.json();
+			const message = body.message;
+			const history = body.history || [];
+			const conversationId = body.conversationId || crypto.randomUUID();
 
 			if (!message || typeof message !== 'string') {
 				return new Response(JSON.stringify({ error: 'Message is required' }), {

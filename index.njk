@@ -32,7 +32,7 @@ description: "Amfibido is an exhilarating 2-player card game where amphibians an
   </div>
 </section>
 
-<section class="py-10 md:py-20 bg-white">
+<section class="py-10 md:py-20 bg-[#fafaf8]">
   <div class="container mx-auto px-4 md:px-6">
     <div class="max-w-7xl mx-auto">
 
@@ -48,7 +48,7 @@ description: "Amfibido is an exhilarating 2-player card game where amphibians an
         </div>
         <!-- Card Carousel -->
         <div class="order-1 md:order-2 flex justify-center">
-          <div class="relative rounded-2xl shadow-2xl overflow-hidden w-full max-w-xs">
+          <div class="relative rounded-xl shadow-md overflow-hidden w-full max-w-xs">
             <div class="carousel-container aspect-[2.5/3.5] overflow-hidden bg-gray-100">
               <div class="carousel-slides flex transition-transform duration-300 ease-in-out h-full">
                 <div class="carousel-slide w-full flex-shrink-0">
@@ -94,12 +94,12 @@ description: "Amfibido is an exhilarating 2-player card game where amphibians an
   </div>
 </section>
 
-<section class="py-10 md:py-20 bg-gradient-to-br from-gray-50 to-white">
+<section class="py-10 md:py-20 bg-[#fafaf8]">
   <div class="container mx-auto px-4 md:px-6">
     <div class="max-w-7xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div class="order-1 md:order-1">
-          <div class="rounded-2xl overflow-hidden shadow-2xl">
+          <div class="rounded-xl overflow-hidden shadow-md">
             <div class="w-full aspect-[16/9]">
               <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/sCV98bm-EgM" title="Amfibido Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
@@ -108,7 +108,7 @@ description: "Amfibido is an exhilarating 2-player card game where amphibians an
         <div class="order-2 md:order-2 text-center md:text-left">
           <h2 class="text-4xl md:text-5xl font-headings font-bold text-[#2d5a27] mb-6">Watch Amfibido in Action</h2>
           <p class="text-lg text-gray-700 mb-8 leading-relaxed">Watch videos about how to play, tips & tricks and full gameplay on YouTube.</p>
-          <a href="https://www.youtube.com/@amfibido" class="inline-block bg-[#2d5a27] text-white px-10 py-4 rounded-lg font-headings font-semibold text-lg hover:bg-[#234520] transition-all duration-300 transform hover:scale-105 shadow-lg" target="_blank" rel="noopener">
+          <a href="https://www.youtube.com/@amfibido" class="btn btn-accent" target="_blank" rel="noopener">
             Visit the Channel
           </a>
         </div>
@@ -117,19 +117,55 @@ description: "Amfibido is an exhilarating 2-player card game where amphibians an
   </div>
 </section>
 
-<section class="py-10 md:py-20 bg-white">
-  <div class="container mx-auto px-4 md:px-6">
-    <div class="max-w-7xl mx-auto">
+<!-- Full-width CTA Section - Visual Break -->
+<section class="relative py-16 md:py-24 overflow-hidden">
+  <!-- Background with gradient -->
+  <div class="absolute inset-0 bg-gradient-to-br from-[#2d5a27] via-[#1b3a32] to-[#0e1f1a]"></div>
+  <!-- Decorative pattern overlay -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-0 left-0 w-full h-full" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cpath d=&quot;M30 0L60 30L30 60L0 30z&quot; fill=&quot;none&quot; stroke=&quot;%23ffffff&quot; stroke-width=&quot;0.5&quot;/%3E%3C/svg%3E'); background-size: 60px 60px;"></div>
+  </div>
+  
+  <div class="relative container mx-auto px-4 md:px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-5xl font-headings font-bold text-white mb-6">
+        Ready to Enter the Dojo?
+      </h2>
+      <p class="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+        Play Amfibido online for free on Tabletopia. Challenge friends or join our community to find opponents.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="https://tabletopia.com/games/amfibido" target="_blank" rel="noopener noreferrer" 
+           class="btn btn-accent btn-lg gap-3">
+          <img src="{{ '/images/tabletopia-logo.png' | url }}" alt="" class="h-7 w-7">
+          Play on Tabletopia
+        </a>
+        <a href="https://discord.gg/M4tSD26j" target="_blank" rel="noopener noreferrer" 
+           class="btn btn-outline btn-lg border-white text-white hover:bg-white hover:text-[#2d5a27] gap-3">
+          <img src="{{ '/images/discord-logo.png' | url }}" alt="" class="h-6 w-6">
+          Join Discord
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="py-10 md:py-20 bg-[#fafaf8] relative">
+  <!-- Subtle decorative gradient -->
+  <div class="absolute inset-0 section-gradient pointer-events-none"></div>
+  <div class="relative container mx-auto px-4 md:px-6">
+    <div class="max-w-5xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div class="order-2 md:order-1">
-          <h2 class="text-4xl md:text-5xl font-headings font-bold text-[#2d5a27] mb-6">Meet the Fighters</h2>
+          <span class="inline-block text-sm font-semibold text-[#ff6b1f] uppercase tracking-wider mb-3">8 Unique Species</span>
+          <h2 class="text-3xl md:text-4xl font-headings font-bold text-[#2d5a27] mb-6">Meet the Fighters</h2>
           <p class="text-lg text-gray-700 mb-8 leading-relaxed">Discover a diverse roster of amphibian and reptile warriors, each with unique abilities and fighting styles. From agile frogs to powerful crocodiles, choose your champion and master their techniques.</p>
-          <a href="{{ '/fighters' | url }}" class="inline-block bg-[#2d5a27] text-white px-10 py-4 rounded-lg font-headings font-semibold text-lg hover:bg-[#234520] transition-all duration-300 transform hover:scale-105 shadow-lg">
+          <a href="{{ '/fighters' | url }}" class="btn btn-primary">
             View All Fighters
           </a>
         </div>
         <div class="order-1 md:order-2 flex justify-center">
-          <div class="rounded-2xl shadow-2xl overflow-hidden w-64">
+          <div class="rounded-xl shadow-md overflow-hidden w-64">
             <img src="{{ '/images/meetfighters.png' | url }}" alt="Meet the Fighters" class="w-full h-full object-cover">
           </div>
         </div>
@@ -138,19 +174,20 @@ description: "Amfibido is an exhilarating 2-player card game where amphibians an
   </div>
 </section>
 
-<section class="py-10 md:py-20 bg-gradient-to-br from-gray-50 to-white">
+<section class="py-10 md:py-20 bg-[#fafaf8]">
   <div class="container mx-auto px-4 md:px-6">
-    <div class="max-w-7xl mx-auto">
+    <div class="max-w-5xl mx-auto">
       <div class="grid md:grid-cols-2 gap-12 items-center">
         <div class="order-2 md:order-1">
-          <h2 class="text-4xl md:text-5xl font-headings font-bold text-[#2d5a27] mb-6">Master the Gameplay</h2>
+          <span class="inline-block text-sm font-semibold text-[#ff6b1f] uppercase tracking-wider mb-3">Learn the Rules</span>
+          <h2 class="text-3xl md:text-4xl font-headings font-bold text-[#2d5a27] mb-6">Master the Gameplay</h2>
           <p class="text-lg text-gray-700 mb-8 leading-relaxed">Learn the art of combat in Amfibido. Master card combinations, special moves, and strategic transformations to outmaneuver your opponent and claim victory in the dojo.</p>
-          <a href="{{ '/gameplay' | url }}" class="inline-block bg-[#2d5a27] text-white px-10 py-4 rounded-lg font-headings font-semibold text-lg hover:bg-[#234520] transition-all duration-300 transform hover:scale-105 shadow-lg">
+          <a href="{{ '/gameplay' | url }}" class="btn btn-accent">
             Learn to Play
           </a>
         </div>
         <div class="order-1 md:order-2 flex justify-center">
-          <div class="rounded-2xl shadow-2xl overflow-hidden w-64">
+          <div class="rounded-xl shadow-md overflow-hidden w-64">
             <img src="{{ '/images/gameplay.png' | url }}" alt="Gameplay" class="w-full h-full object-cover">
           </div>
         </div>
@@ -160,26 +197,54 @@ description: "Amfibido is an exhilarating 2-player card game where amphibians an
 </section>
 
 <!-- FAQ Section for SEO -->
-<section class="py-10 md:py-20 bg-white">
+<section class="py-10 md:py-20 bg-[#fafaf8]">
   <div class="container mx-auto px-4 md:px-6">
-    <div class="max-w-4xl mx-auto">
+    <div class="max-w-3xl mx-auto">
       <h2 class="text-3xl md:text-4xl font-headings font-bold text-[#2d5a27] mb-12 text-center">Frequently Asked Questions</h2>
-      <div class="space-y-6">
-        <div class="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl shadow-lg border-2 border-gray-100">
-          <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-2">How many players can play Amfibido?</h3>
-          <p class="text-gray-700">Amfibido is designed for 2 players, making it perfect for head-to-head strategic battles.</p>
+      <div class="space-y-3" id="faq-accordion">
+        <div class="faq-item bg-white rounded-lg border border-gray-200 overflow-hidden">
+          <button class="faq-trigger w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors duration-150" aria-expanded="false">
+            <h3 class="text-lg font-headings font-semibold text-[#2d5a27] pr-4">How many players can play Amfibido?</h3>
+            <svg class="faq-icon w-5 h-5 text-[#ff6b1f] flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="faq-content hidden px-5 pb-5">
+            <p class="text-gray-700">Amfibido is designed for 2 players, making it perfect for head-to-head strategic battles.</p>
+          </div>
         </div>
-        <div class="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl shadow-lg border-2 border-gray-100">
-          <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-2">How long does a game take?</h3>
-          <p class="text-gray-700">Each game typically lasts 30-45 minutes, providing the perfect length for an engaging strategic experience.</p>
+        <div class="faq-item bg-white rounded-lg border border-gray-200 overflow-hidden">
+          <button class="faq-trigger w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors duration-150" aria-expanded="false">
+            <h3 class="text-lg font-headings font-semibold text-[#2d5a27] pr-4">How long does a game take?</h3>
+            <svg class="faq-icon w-5 h-5 text-[#ff6b1f] flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="faq-content hidden px-5 pb-5">
+            <p class="text-gray-700">Each game typically lasts 30-45 minutes, providing the perfect length for an engaging strategic experience.</p>
+          </div>
         </div>
-        <div class="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl shadow-lg border-2 border-gray-100">
-          <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-2">What age is Amfibido suitable for?</h3>
-          <p class="text-gray-700">Amfibido is recommended for ages 10 and up, offering strategic depth that appeals to both younger and adult players.</p>
+        <div class="faq-item bg-white rounded-lg border border-gray-200 overflow-hidden">
+          <button class="faq-trigger w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors duration-150" aria-expanded="false">
+            <h3 class="text-lg font-headings font-semibold text-[#2d5a27] pr-4">What age is Amfibido suitable for?</h3>
+            <svg class="faq-icon w-5 h-5 text-[#ff6b1f] flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="faq-content hidden px-5 pb-5">
+            <p class="text-gray-700">Amfibido is recommended for ages 10 and up, offering strategic depth that appeals to both younger and adult players.</p>
+          </div>
         </div>
-        <div class="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl shadow-lg border-2 border-gray-100">
-          <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-2">When will Amfibido be available?</h3>
-          <p class="text-gray-700">Amfibido is currently in development! Sign up for updates to be notified about the release.</p>
+        <div class="faq-item bg-white rounded-lg border border-gray-200 overflow-hidden">
+          <button class="faq-trigger w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors duration-150" aria-expanded="false">
+            <h3 class="text-lg font-headings font-semibold text-[#2d5a27] pr-4">When will Amfibido be available?</h3>
+            <svg class="faq-icon w-5 h-5 text-[#ff6b1f] flex-shrink-0 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="faq-content hidden px-5 pb-5">
+            <p class="text-gray-700">Amfibido is currently in development! Sign up for updates to be notified about the release.</p>
+          </div>
         </div>
       </div>
     </div>
