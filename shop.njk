@@ -12,11 +12,41 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
         <h1 class="text-4xl md:text-5xl font-headings font-bold text-[#2d5a27] mb-4">Shop</h1>
         <p class="text-lg text-gray-700 max-w-2xl mx-auto">
           Get your own copy of Amfibido and bring the dojo battles to your table.
-          All products ship within Europe.
         </p>
       </div>
 
+      <!-- Loading State -->
+      <div id="shop-loading" class="text-center py-16">
+        <div class="inline-block w-8 h-8 border-4 border-[#2d5a27]/20 border-t-[#2d5a27] rounded-full animate-spin"></div>
+        <p class="mt-4 text-gray-600">Loading shop...</p>
+      </div>
+
+      <!-- Coming Soon Banner (hidden by default) -->
+      <div id="shop-unavailable" class="hidden mb-8">
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 md:p-6 text-center">
+          <p class="text-amber-800 font-medium mb-3">
+            🌍 We're not shipping to <span id="user-country">your country</span> yet, but we're working on it! <br />Leave your email and we'll let you know when Amfibido becomes available in your area.
+          </p>
+          <form action="https://amfibido.us16.list-manage.com/subscribe/post?u=612f57a4d3111090b99807845&amp;id=63e4f2e7d4"
+                method="post"
+                id="mc-embedded-subscribe-form-shop"
+                name="mc-embedded-subscribe-form"
+                class="flex flex-col sm:flex-row justify-center items-center gap-3 max-w-md mx-auto"
+                target="_blank">
+            <input type="email" name="EMAIL" placeholder="Enter your email" required
+                   class="w-full sm:w-auto flex-1 px-4 py-2 rounded-lg border border-amber-300 focus:outline-none focus:ring-2 focus:ring-[#2d5a27] focus:border-transparent text-sm">
+            <input type="hidden" name="COUNTRY" id="mc-country" value="">
+            <input type="hidden" name="SHOP" value="true">
+            <button type="submit" name="subscribe"
+                    class="btn btn-primary px-6 py-2 text-sm whitespace-nowrap">
+              Notify Me
+            </button>
+          </form>
+        </div>
+      </div>
+
       <!-- Products Grid -->
+      <div id="shop-products" class="hidden">
       <div class="grid md:grid-cols-3 gap-8 mb-16">
         <!-- Product 1: Amfibido Game -->
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl">
@@ -30,7 +60,7 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
             </p>
             <div class="flex items-center justify-between mt-auto">
               <span class="text-2xl font-bold text-[#2d5a27]">€22,99</span>
-              <a href="#" class="btn btn-primary px-6 py-2">
+              <a href="#" class="btn btn-primary px-6 py-2 buy-btn" data-product="game">
                 Buy Now
               </a>
             </div>
@@ -49,7 +79,7 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
             </p>
             <div class="flex items-center justify-between mt-auto">
               <span class="text-2xl font-bold text-[#2d5a27]">€33,99</span>
-              <a href="#" class="btn btn-primary px-6 py-2">
+              <a href="#" class="btn btn-primary px-6 py-2 buy-btn" data-product="game-playmats">
                 Buy Now
               </a>
             </div>
@@ -72,7 +102,7 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
             </p>
             <div class="flex items-center justify-between mt-auto">
               <span class="text-2xl font-bold text-[#2d5a27]">€39,99</span>
-              <a href="#" class="btn btn-accent px-6 py-2">
+              <a href="#" class="btn btn-accent px-6 py-2 buy-btn" data-product="bundle">
                 Buy Now
               </a>
             </div>
@@ -84,9 +114,78 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
       <div class="bg-[#2d5a27]/10 rounded-2xl p-8 text-center">
         <h3 class="text-xl font-headings font-bold text-[#2d5a27] mb-2">Interested in buying more than one?</h3>
         <p class="text-gray-700">
-          Contact us at <a href="mailto:ron@amfibido.com" class="text-[#2d5a27] font-semibold hover:underline">ron@amfibido.com</a>
+          Contact us by <a href="mailto:ron@amfibido.com" class="text-[#2d5a27] font-semibold hover:underline">email</a>
         </p>
       </div>
+      </div><!-- end #shop-products -->
     </div>
   </div>
 </section>
+
+<script>
+(function() {
+  const SUPPORTED_COUNTRIES = ['NL', 'DE', 'GB', 'BE'];
+
+  const STRIPE_LINKS = {
+    NL: {
+      game: 'https://buy.stripe.com/5kQ8wQ5Yf2VWf8w3jW7bW04',
+      'game-playmats': 'https://buy.stripe.com/8x2fZi3Q77cce4s07K7bW08',
+      bundle: 'https://buy.stripe.com/3cI3cw2M3gMMaSg6w87bW0c'
+    },
+    DE: {
+      game: 'https://buy.stripe.com/14A14ogCT4000dCcUw7bW03',
+      'game-playmats': 'https://buy.stripe.com/00wbJ2dqHbss3pO3jW7bW07',
+      bundle: 'https://buy.stripe.com/4gMbJ23Q70NO8K8f2E7bW0b'
+    },
+    GB: {
+      game: 'https://buy.stripe.com/14AdRagCT5442lK1bO7bW01',
+      'game-playmats': 'https://buy.stripe.com/aFa3cwdqHbss4tS1bO7bW05',
+      bundle: 'https://buy.stripe.com/dRmbJ21HZ7ccd0o9Ik7bW09'
+    },
+    BE: {
+      game: 'https://buy.stripe.com/3cIbJ2fyP400bWk9Ik7bW02',
+      'game-playmats': 'https://buy.stripe.com/6oU28s2M3400gcA9Ik7bW06',
+      bundle: 'https://buy.stripe.com/8x214o1HZ7cc4tS7Ac7bW0a'
+    }
+  };
+
+  function showShop(countryCode, isSupported) {
+    document.getElementById('shop-loading').classList.add('hidden');
+    document.getElementById('shop-products').classList.remove('hidden');
+
+    if (isSupported) {
+      const links = STRIPE_LINKS[countryCode] || STRIPE_LINKS['NL'];
+      document.querySelectorAll('.buy-btn').forEach(btn => {
+        const product = btn.dataset.product;
+        if (links[product]) {
+          btn.href = links[product];
+        }
+      });
+    } else {
+      document.getElementById('shop-unavailable').classList.remove('hidden');
+      document.querySelectorAll('.buy-btn').forEach(btn => {
+        btn.removeAttribute('href');
+        btn.classList.add('opacity-50', 'cursor-not-allowed', 'pointer-events-none');
+        btn.textContent = 'Unavailable';
+      });
+    }
+  }
+
+  fetch('https://ipapi.co/json/')
+    .then(res => res.json())
+    .then(data => {
+      const country = data.country_code;
+      const countryName = data.country_name;
+      const isSupported = SUPPORTED_COUNTRIES.includes(country);
+      if (!isSupported && countryName) {
+        document.getElementById('user-country').textContent = countryName;
+        document.getElementById('mc-country').value = countryName;
+      }
+      showShop(country, isSupported);
+    })
+    .catch(() => {
+      // On error, show shop with default NL links
+      showShop('NL', true);
+    });
+})();
+</script>

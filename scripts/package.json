@@ -1,0 +1,11 @@
+{
+  "name": "amfibido-scripts",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "create-payment-links": "node create-stripe-payment-links.js"
+  },
+  "dependencies": {
+    "stripe": "^17.5.0"
+  }
+}
