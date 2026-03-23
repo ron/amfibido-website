@@ -73,16 +73,24 @@ function initCarousel() {
   });
 
   // Auto-advance carousel every 5 seconds
-  const autoAdvance = setInterval(() => {
+  let autoAdvance = setInterval(() => {
     currentSlide = (currentSlide + 1) % slideCount;
     updateCarousel();
   }, 5000);
 
-  // Stop auto-advance on user interaction
+  // Stop auto-advance on user interaction, restart on mouse leave
   const carouselContainer = document.querySelector('.carousel-container');
-  carouselContainer.addEventListener('mouseenter', () => {
-    clearInterval(autoAdvance);
-  });
+  if (carouselContainer) {
+    carouselContainer.addEventListener('mouseenter', () => {
+      clearInterval(autoAdvance);
+    });
+    carouselContainer.addEventListener('mouseleave', () => {
+      autoAdvance = setInterval(() => {
+        currentSlide = (currentSlide + 1) % slideCount;
+        updateCarousel();
+      }, 5000);
+    });
+  }
 }
 
 // Form handling initialization

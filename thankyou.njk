@@ -139,11 +139,17 @@
   <body class="bg-[#fafaf8] text-gray-900 font-sans antialiased">
 
     <!-- Header -->
-    <header class="bg-[#2d5a27] py-6 shadow-lg sticky top-0 z-50">
-      <div class="container mx-auto px-4">
+    <header class="relative z-50 shadow-lg overflow-hidden sticky top-0">
+      <!-- Background with centered header.png that repeats on sides - showing bottom half -->
+      <div class="absolute inset-0 bg-[#1a4a1c]">
+        <div class="absolute inset-0" style="background: url('{{ '/images/header.png' | url }}') center bottom / auto 280% repeat-x;"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#1a4a1c]/40 via-transparent to-[#1a4a1c]/40"></div>
+      </div>
+      
+      <div class="relative container mx-auto px-4 py-6">
         <div class="flex justify-center items-center">
-          <a href="{{ '/' | url }}" class="hover:opacity-90 transition-opacity duration-300">
-            <img src="{{ '/images/logo.png' | url }}" alt="Amfibido" class="h-24 w-auto">
+          <a href="{{ '/' | url }}" class="hover:scale-105 transition-transform duration-300">
+            <img src="{{ '/images/logo-short.png' | url }}" alt="Amfibido" class="h-16 md:h-20 w-auto drop-shadow-lg">
           </a>
         </div>
       </div>
