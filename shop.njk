@@ -117,10 +117,96 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
           Contact us by <a href="mailto:ron@amfibido.com" class="text-[#2d5a27] font-semibold hover:underline">email</a>
         </p>
       </div>
+
+      <!-- Terms & Privacy Link -->
+      <div class="mt-8 text-center">
+        <a href="{{ '/terms' | url }}" class="inline-flex items-center text-gray-600 hover:text-[#2d5a27] transition-colors">
+          <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+          </svg>
+          Terms, Conditions & Privacy Policy
+        </a>
+      </div>
       </div><!-- end #shop-products -->
     </div>
   </div>
 </section>
+
+<!-- Checkout Modal -->
+<div id="checkout-modal" class="fixed inset-0 z-50 hidden">
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="modal-backdrop"></div>
+  
+  <!-- Modal Content -->
+  <div class="absolute inset-0 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative">
+      <!-- Close Button -->
+      <button id="modal-close" class="absolute top-4 right-4 p-2 text-gray-400 hover:text-gray-600 transition-colors z-10">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+
+      <div class="p-6 md:p-8">
+        <!-- Product Image -->
+        <div class="bg-gray-100 rounded-xl p-6 mb-6">
+          <img id="modal-image" src="" alt="" class="w-full max-w-sm mx-auto object-contain">
+        </div>
+
+        <!-- Product Info -->
+        <h2 id="modal-title" class="text-2xl font-headings font-bold text-[#2d5a27] mb-2"></h2>
+        <p id="modal-price" class="text-3xl font-bold text-[#2d5a27] mb-4"></p>
+        
+        <!-- What's Included -->
+        <div class="mb-6">
+          <h3 class="font-semibold text-gray-900 mb-3">What's included:</h3>
+          <ul id="modal-includes" class="space-y-2 text-gray-700">
+          </ul>
+        </div>
+
+        <!-- Shipping Info -->
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <div class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-[#2d5a27] mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
+            </svg>
+            <div>
+              <p class="font-medium text-gray-900">Shipping within EU</p>
+              <p class="text-sm text-gray-600">Shipping costs calculated at checkout. Estimated delivery: 3-7 business days.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terms Checkbox -->
+        <div class="mb-6">
+          <label class="flex items-start gap-3 cursor-pointer group">
+            <input type="checkbox" id="terms-checkbox" class="mt-1 w-5 h-5 rounded border-gray-300 text-[#2d5a27] focus:ring-[#2d5a27] cursor-pointer">
+            <span class="text-gray-700 text-sm">
+              I agree to the <a href="{{ '/terms' | url }}" target="_blank" class="text-[#2d5a27] hover:underline font-medium">Terms, Conditions & Privacy Policy</a>
+            </span>
+          </label>
+          <p id="terms-error" class="text-red-500 text-sm mt-2 hidden">Please accept the terms and conditions to continue.</p>
+        </div>
+
+        <!-- Checkout Button -->
+        <button id="modal-checkout-btn" class="w-full btn btn-primary py-4 text-lg font-semibold flex items-center justify-center gap-2">
+          <span>Proceed to Checkout</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </button>
+
+        <!-- Secure Payment Note -->
+        <p class="text-center text-gray-500 text-sm mt-4 flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+          </svg>
+          Secure payment via Stripe
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
 (function() {
@@ -149,17 +235,139 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
     }
   };
 
+  const PRODUCT_DATA = {
+    game: {
+      title: 'Amfibido Game',
+      price: '€22,99',
+      image: '{{ "/images/shop/amfibido-game.png" | url }}',
+      includes: [
+        '108 Fighter cards (18 unique fighters)',
+        '18 Dojo cards for varied gameplay',
+        '2 Reference cards',
+        'Full rulebook'
+      ]
+    },
+    'game-playmats': {
+      title: 'Amfibido Game + 2 Playmats',
+      price: '€33,99',
+      image: '{{ "/images/shop/amfibido-game-playmats.png" | url }}',
+      includes: [
+        '108 Fighter cards (18 unique fighters)',
+        '18 Dojo cards for varied gameplay',
+        '2 Reference cards',
+        'Full rulebook',
+        '2× Premium soft rubber playmats (40×25 cm)',
+        'Perfect playing surface with card placement guides'
+      ]
+    },
+    bundle: {
+      title: 'Amfibido Complete Bundle',
+      price: '€39,99',
+      image: '{{ "/images/shop/amfibido-game-playmats-dice.png" | url }}',
+      includes: [
+        '108 Fighter cards (18 unique fighters)',
+        '18 Dojo cards for varied gameplay',
+        '2 Reference cards',
+        'Full rulebook',
+        '2× Premium soft rubber playmats (40×25 cm)',
+        'Dice bag with 18 dice (6× D6, 6× D12, 6× D20)',
+        'Everything you need for the ultimate dojo experience'
+      ]
+    }
+  };
+
+  let currentStripeLink = null;
+  let currentCountry = 'NL';
+
+  // Modal elements
+  const modal = document.getElementById('checkout-modal');
+  const modalBackdrop = document.getElementById('modal-backdrop');
+  const modalClose = document.getElementById('modal-close');
+  const modalImage = document.getElementById('modal-image');
+  const modalTitle = document.getElementById('modal-title');
+  const modalPrice = document.getElementById('modal-price');
+  const modalIncludes = document.getElementById('modal-includes');
+  const termsCheckbox = document.getElementById('terms-checkbox');
+  const termsError = document.getElementById('terms-error');
+  const checkoutBtn = document.getElementById('modal-checkout-btn');
+
+  function openModal(productKey) {
+    const product = PRODUCT_DATA[productKey];
+    const links = STRIPE_LINKS[currentCountry] || STRIPE_LINKS['NL'];
+    currentStripeLink = links[productKey];
+
+    // Populate modal
+    modalImage.src = product.image;
+    modalImage.alt = product.title;
+    modalTitle.textContent = product.title;
+    modalPrice.textContent = product.price;
+    
+    // Build includes list
+    modalIncludes.innerHTML = product.includes.map(item => 
+      `<li class="flex items-start gap-2">
+        <svg class="w-5 h-5 text-[#2d5a27] shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+        </svg>
+        <span>${item}</span>
+      </li>`
+    ).join('');
+
+    // Reset state
+    termsCheckbox.checked = false;
+    termsError.classList.add('hidden');
+
+    // Show modal
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+    currentStripeLink = null;
+  }
+
+  function handleCheckout() {
+    if (!termsCheckbox.checked) {
+      termsError.classList.remove('hidden');
+      termsCheckbox.focus();
+      return;
+    }
+    
+    if (currentStripeLink) {
+      window.location.href = currentStripeLink;
+    }
+  }
+
+  // Event listeners
+  modalBackdrop.addEventListener('click', closeModal);
+  modalClose.addEventListener('click', closeModal);
+  checkoutBtn.addEventListener('click', handleCheckout);
+  
+  termsCheckbox.addEventListener('change', () => {
+    if (termsCheckbox.checked) {
+      termsError.classList.add('hidden');
+    }
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+
   function showShop(countryCode, isSupported) {
+    currentCountry = countryCode;
     document.getElementById('shop-loading').classList.add('hidden');
     document.getElementById('shop-products').classList.remove('hidden');
 
     if (isSupported) {
-      const links = STRIPE_LINKS[countryCode] || STRIPE_LINKS['NL'];
       document.querySelectorAll('.buy-btn').forEach(btn => {
-        const product = btn.dataset.product;
-        if (links[product]) {
-          btn.href = links[product];
-        }
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          openModal(btn.dataset.product);
+        });
       });
     } else {
       document.getElementById('shop-unavailable').classList.remove('hidden');
@@ -184,7 +392,6 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
       showShop(country, isSupported);
     })
     .catch(() => {
-      // On error, show shop with default NL links
       showShop('NL', true);
     });
 })();
