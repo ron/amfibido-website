@@ -4,157 +4,483 @@ title: "How to Play Amfibido | Game Rules & Strategy Guide"
 description: "Learn how to play Amfibido, the strategic card battle game featuring amphibian and reptile fighters in epic dojo duels. Master combos, transformations, and knockout techniques."
 ---
 
-<section class="py-10 md:py-20 bg-[#fafaf8]">
+<!-- Game Phases Animation -->
+<section class="py-6 md:py-10 bg-gradient-to-br from-[#1a4a1c] to-[#2d5a27] overflow-hidden">
   <div class="container mx-auto px-4 md:px-6">
-    <div class="max-w-7xl mx-auto">
-      <!-- Header and Description -->
-      <div class="text-center mb-16">
-        <h1 class="text-4xl md:text-5xl font-headings font-bold text-[#2d5a27] mb-6">How to Play</h1>
-        <p class="text-xl text-gray-700 max-w-3xl mx-auto mb-8 leading-relaxed">Master the art of combat in Amfibido, where strategic card play and timing is everything. Discover powerful techniques to dominate the dojo!</p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="{{ '/rules' | url }}" class="inline-flex items-center bg-[#ff6b1f] text-white px-8 py-4 rounded-lg font-headings font-semibold text-lg hover:bg-[#e55a10] transition-colors duration-200 shadow-md">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-            </svg>
-            Full Rules & Video
-          </a>
-        </div>
-        <p class="text-base text-gray-500 mt-4">Rules PDF, video tutorial & AI-powered FAQ</p>
-      </div>
-
-      <!-- First Section: Fight -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 p-8 mb-12">
-          <div class="flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2">
-              <div class="h-[300px] md:h-[920px]">
-                <img src="{{ '/images/gameplay/fight.png' | url }}" alt="Field Your Fighters" class="w-full h-full object-contain">
+    <div class="max-w-6xl mx-auto">
+      <div class="phases-container relative">
+        <!-- Phase 1: Draft -->
+        <div class="phase-slide phase-active" data-phase="0">
+          <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div class="phase-text order-2 md:order-1">
+              <div class="phase-step-badge inline-block bg-[#ff6b1f] text-white text-sm font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-4">
+                Step 1
               </div>
+              <h2 class="phase-title text-3xl md:text-5xl font-headings font-bold text-white mb-6">
+                Draft Your Arsenal
+              </h2>
+              <ul class="phase-list space-y-4">
+                <li class="phase-list-item flex items-start gap-3 text-white/90 text-lg">
+                  <span class="flex-shrink-0 w-6 h-6 bg-[#ff6b1f] rounded-full flex items-center justify-center text-white text-sm font-bold mt-0.5">1</span>
+                  <span>Every turn, you'll draft extra cards to build your strategy</span>
+                </li>
+                <li class="phase-list-item flex items-start gap-3 text-white/90 text-lg">
+                  <span class="flex-shrink-0 w-6 h-6 bg-[#ff6b1f] rounded-full flex items-center justify-center text-white text-sm font-bold mt-0.5">2</span>
+                  <span>Choose one card from a selection of three</span>
+                </li>
+                <li class="phase-list-item flex items-start gap-3 text-white/90 text-lg">
+                  <span class="flex-shrink-0 w-6 h-6 bg-[#ff6b1f] rounded-full flex items-center justify-center text-white text-sm font-bold mt-0.5">3</span>
+                  <span>Pass the remaining two to your opponent, then pick again</span>
+                </li>
+                <li class="phase-list-item flex items-start gap-3 text-white/90 text-lg">
+                  <span class="flex-shrink-0 w-6 h-6 bg-[#ff6b1f] rounded-full flex items-center justify-center text-white text-sm font-bold mt-0.5">4</span>
+                  <span>As rounds progress, unlock higher level cards <strong>(level 1→5)</strong></span>
+                </li>
+                <li class="phase-list-item flex items-start gap-3 text-white/90 text-lg">
+                  <span class="flex-shrink-0 w-6 h-6 bg-[#ff6b1f] rounded-full flex items-center justify-center text-white text-sm font-bold mt-0.5">5</span>
+                  <span>Find ways to reach the level 5 champion cards</span>
+                </li>
+              </ul>
             </div>
-            <div class="md:w-1/2 text-center md:text-left">
-              <h2 class="text-3xl md:text-4xl font-headings font-bold text-[#2d5a27] mb-8">The Basics</h2>
-
-              <div class="mb-6 bg-[#fafaf8] p-6 rounded-lg border border-gray-200">
-                <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-3">
-                  Field Your Fighters
-                </h3>
-                <p class="text-base text-gray-700 leading-relaxed">Deploy your fighters across three distinct Dojos to prepare for combat.</p>
-              </div>
-
-              <div class="mb-6 bg-[#fafaf8] p-6 rounded-lg border border-gray-200">
-                <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-3">
-                Power Them Up
-                </h3>
-                <p class="text-base text-gray-700 leading-relaxed">Equip your fighters with powerful gear to boost their stats and give them an edge in battle.</p>
-            </div>
-
-              <div class="mb-6 bg-[#fafaf8] p-6 rounded-lg border border-gray-200">
-                <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-3">
-                Unleash Combo Moves
-                </h3>
-                <p class="text-base text-gray-700 leading-relaxed">Strategically execute powerful fighting techniques to outwit and overpower your opponents.</p>
-            </div>
-
-              <div class="mb-6 bg-[#fafaf8] p-6 rounded-lg border border-gray-200">
-                <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-3">
-                Claim Victory
-                </h3>
-                <p class="text-base text-gray-700 leading-relaxed">Win 2 out of 3 Dojo battles in a round to emerge victorious.</p>
-            </div>
-
-              <div class="mb-0 bg-[#fafaf8] p-6 rounded-lg border border-gray-200">
-                <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-3">
-                Become the Champion
-                </h3>
-                <p class="text-base text-gray-700 leading-relaxed">Secure 4 rounds to dominate the game and claim ultimate victory!</p>
+            <div class="phase-image order-1 md:order-2 flex justify-center">
+              <div class="relative w-full max-w-lg">
+                <div class="bg-[#e8f5e3] rounded-xl p-4 shadow-2xl">
+                  <img src="{{ '/images/phases/draft.png' | url }}" alt="Draft Phase" class="w-full h-auto rounded-lg">
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-      <!-- Second Section: Knockout -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 p-8 mb-12">
-          <div class="flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2 order-2 md:order-1 text-center md:text-left">
-              <h2 class="text-3xl md:text-4xl font-headings font-bold text-[#2d5a27] mb-8">Special Techniques</h2>
-
-              <div class="mb-6 bg-[#fafaf8] p-6 rounded-lg border border-gray-200">
-                <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-3">
-                  Devastating Knockouts
-                </h3>
-                <p class="text-base text-gray-700 leading-relaxed">Some fighters pack a <span class="text-[#2d5a27] font-bold">devastating punch</span> that can knock out an opponent in a single hit, leaving them <span class="text-[#2d5a27] font-bold">incapacitated</span> in the next round!</p>
+        <!-- Phase 2: Action -->
+        <div class="phase-slide" data-phase="1">
+          <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div class="phase-text order-2 md:order-1">
+              <div class="phase-step-badge inline-block bg-[#ff6b1f] text-white text-sm font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-4">
+                Step 2
               </div>
-
-              <div class="mb-0 bg-[#fafaf8] p-6 rounded-lg border border-gray-200">
-                <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-3">
-                  Remember and Unleash Combo Moves
-                </h3>
-                <p class="text-base text-gray-700 leading-relaxed">Some fighting moves never truly leave the fight! <span class="text-[#2d5a27] font-bold">Boomerang cards</span> bounce back, ready to be <span class="text-[#2d5a27] font-bold">used again</span> when the timing is right.</p>
-              </div>
-          </div>
-          <div class="md:w-1/2 order-1 md:order-2">
-            <div class="h-[250px] md:h-[600px] mx-auto">
-              <img src="{{ '/images/gameplay/knockout.png' | url }}" alt="Devastating Knockouts" class="w-full h-full object-contain">
+              <h2 class="phase-title text-3xl md:text-5xl font-headings font-bold text-white mb-6">
+                Take Action
+              </h2>
+              <ul class="phase-list space-y-4">
+                <li class="phase-list-item flex items-start gap-3 text-white/90 text-lg">
+                  <span class="flex-shrink-0 w-6 h-6 bg-[#ff6b1f] rounded-full flex items-center justify-center text-white text-sm font-bold mt-0.5">1</span>
+                  <span>Players alternate turns filling their dojo's</span>
+                </li>
+                <li class="phase-list-item flex items-start gap-3 text-white/90 text-lg">
+                  <span class="flex-shrink-0 w-6 h-6 bg-[#ff6b1f] rounded-full flex items-center justify-center text-white text-sm font-bold mt-0.5">2</span>
+                  <span>Deploy fighters to one of three Dojos</span>
+                </li>
+                <li class="phase-list-item flex items-start gap-3 text-white/90 text-lg">
+                  <span class="flex-shrink-0 w-6 h-6 bg-[#ff6b1f] rounded-full flex items-center justify-center text-white text-sm font-bold mt-0.5">3</span>
+                  <span>Equip them with powerful gear</span>
+                </li>
+                <li class="phase-list-item flex items-start gap-3 text-white/90 text-lg">
+                  <span class="flex-shrink-0 w-6 h-6 bg-[#ff6b1f] rounded-full flex items-center justify-center text-white text-sm font-bold mt-0.5">4</span>
+                  <span>Play combo moves to outmaneuver opponents</span>
+                </li>
+                <li class="phase-list-item flex items-start gap-3 text-white/90 text-lg">
+                  <span class="flex-shrink-0 w-6 h-6 bg-[#ff6b1f] rounded-full flex items-center justify-center text-white text-sm font-bold mt-0.5">5</span>
+                  <span>Transform fighters into higher-level warriors</span>
+                </li>
+              </ul>
             </div>
-            </div>
-          </div>
-        </div>
-
-      <!-- Third Section: Transform -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 p-8 mb-12">
-          <div class="flex flex-col md:flex-row items-center gap-12">
-            <div class="md:w-1/2">
-              <div class="h-[300px] md:h-[350px]">
-                <img src="{{ '/images/gameplay/transform.png' | url }}" alt="Epic Transformations" class="w-full h-full object-contain">
-              </div>
-            </div>
-            <div class="md:w-1/2 text-center md:text-left">
-              <h2 class="text-3xl md:text-4xl font-headings font-bold text-[#2d5a27] mb-8">Advanced Strategy</h2>
-
-              <div class="mb-0 bg-[#fafaf8] p-6 rounded-lg border border-gray-200">
-                <h3 class="text-xl font-headings font-semibold text-[#2d5a27] mb-3">
-                  Epic Transformations
-                </h3>
-                <p class="text-base text-gray-700 leading-relaxed">Watch as your fighters undergo <span class="text-[#2d5a27] font-bold">metamorphosis</span>, transforming into higher-level warriors with <span class="text-[#2d5a27] font-bold">enhanced abilities</span>, catching your opponent off-guard at critical moments!</p>
+            <div class="phase-image order-1 md:order-2 flex justify-center">
+              <div class="relative w-full max-w-lg">
+                <div class="bg-[#e8f5e3] rounded-xl p-4 shadow-2xl">
+                  <img src="{{ '/images/phases/action.png' | url }}" alt="Action Phase" class="w-full h-auto rounded-lg">
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-      <!-- Final Section -->
-      <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 p-8">
-        <div class="text-center">
-          <h2 class="text-3xl md:text-4xl font-headings font-bold text-[#2d5a27] mb-8">Dynamic Gameplay</h2>
-          <div class="max-w-3xl mx-auto bg-[#fafaf8] p-6 rounded-lg border border-gray-200">
-            <p class="text-base text-gray-700 mb-4 leading-relaxed">After each round, gain access to <span class="text-[#2d5a27] font-bold">more powerful cards</span>. Discover ways to unleash the <span class="text-[#2d5a27] font-bold">legendary Level 5 Champion cards</span>, turning the tide of battle in your favor.</p>
-            <p class="text-base text-gray-700 leading-relaxed">Amfibido features <span class="text-[#2d5a27] font-bold">8 unique types</span> of amphibian and reptilian fighters, each with distinct abilities. No two games are ever the same, ensuring an <span class="text-[#2d5a27] font-bold">exciting and dynamic experience</span> every time you play!</p>
+        <!-- Phase 3: Fight -->
+        <div class="phase-slide" data-phase="2">
+          <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div class="phase-text order-2 md:order-1">
+              <div class="phase-step-badge inline-block bg-[#ff6b1f] text-white text-sm font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-4">
+                Step 3
+              </div>
+              <h2 class="phase-title text-3xl md:text-5xl font-headings font-bold text-white mb-6">
+                Fight for Glory
+              </h2>
+              <ul class="phase-list space-y-4">
+                <li class="phase-list-item flex items-start gap-3 text-white/90 text-lg">
+                  <span class="flex-shrink-0 w-6 h-6 bg-[#ff6b1f] rounded-full flex items-center justify-center text-white text-sm font-bold mt-0.5">1</span>
+                  <span>Fighters battle head-to-head in each Dojo</span>
+                </li>
+                <li class="phase-list-item flex items-start gap-3 text-white/90 text-lg">
+                  <span class="flex-shrink-0 w-6 h-6 bg-[#ff6b1f] rounded-full flex items-center justify-center text-white text-sm font-bold mt-0.5">2</span>
+                  <span>Compare total power — highest strength wins</span>
+                </li>
+                <li class="phase-list-item flex items-start gap-3 text-white/90 text-lg">
+                  <span class="flex-shrink-0 w-6 h-6 bg-[#ff6b1f] rounded-full flex items-center justify-center text-white text-sm font-bold mt-0.5">3</span>
+                  <span>Knock out your opponent's fighters!</span>
+                </li>
+                <li class="phase-list-item flex items-start gap-3 text-white/90 text-lg">
+                  <span class="flex-shrink-0 w-6 h-6 bg-[#ff6b1f] rounded-full flex items-center justify-center text-white text-sm font-bold mt-0.5">4</span>
+                  <span>Win 2 of 3 Dojos to claim the round</span>
+                </li>
+                <li class="phase-list-item flex items-start gap-3 text-white/90 text-lg">
+                  <span class="flex-shrink-0 w-6 h-6 bg-[#ff6b1f] rounded-full flex items-center justify-center text-white text-sm font-bold mt-0.5">5</span>
+                  <span>First to 4 rounds becomes the Grand Sensei!</span>
+                </li>
+              </ul>
+            </div>
+            <div class="phase-image order-1 md:order-2 flex justify-center">
+              <div class="relative w-full max-w-lg">
+                <div class="bg-[#e8f5e3] rounded-xl p-4 shadow-2xl">
+                  <img src="{{ '/images/phases/fight.png' | url }}" alt="Fight Phase" class="w-full h-auto rounded-lg">
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- Navigation Links -->
-<section class="py-8 md:py-12 bg-[#fafaf8]">
-  <div class="container mx-auto px-4 md:px-6">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex justify-center">
-        <a href="{{ '/fighters' | url }}" class="inline-block bg-[#2d5a27] text-white px-10 py-4 rounded-lg font-headings font-semibold text-lg hover:bg-[#234520] transition-colors duration-200 shadow-md">
-          Meet the Fighters →
-        </a>
+        <!-- Phase Indicators -->
+        <div class="phase-indicators flex justify-center gap-3 mt-10">
+          <button class="phase-indicator phase-indicator-active" data-target="0" aria-label="Draft Phase">
+            <span class="indicator-dot"></span>
+            <span class="indicator-label">Draft</span>
+          </button>
+          <button class="phase-indicator" data-target="1" aria-label="Action Phase">
+            <span class="indicator-dot"></span>
+            <span class="indicator-label">Action</span>
+          </button>
+          <button class="phase-indicator" data-target="2" aria-label="Fight Phase">
+            <span class="indicator-dot"></span>
+            <span class="indicator-label">Fight</span>
+          </button>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="phase-progress-container mt-6 max-w-md mx-auto">
+          <div class="h-1 bg-white/20 rounded-full overflow-hidden">
+            <div class="phase-progress-bar h-full bg-[#ff6b1f] rounded-full" style="width: 0%"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-/* Add subtle pulse animation to key elements */
-@keyframes subtle-glow {
-  0%, 100% { text-shadow: 0 0 5px rgba(163, 255, 63, 0.2); }
-  50% { text-shadow: 0 0 15px rgba(163, 255, 63, 0.5); }
+/* Phase Animation Styles */
+.phase-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease-in-out, visibility 0.6s;
 }
 
-.text-venomous {
-  animation: subtle-glow 3s infinite;
+.phase-slide.phase-active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+}
+
+.phase-slide .phase-image {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.phase-slide.phase-active .phase-image {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.phase-slide .phase-step-badge,
+.phase-slide .phase-title,
+.phase-slide .phase-list-item {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.phase-slide.phase-active .phase-step-badge {
+  animation: slideInText 0.6s ease-out 0.5s forwards;
+}
+
+.phase-slide.phase-active .phase-title {
+  animation: slideInText 0.6s ease-out 0.5s forwards;
+}
+
+.phase-slide.phase-active .phase-list-item:nth-child(1) {
+  animation: slideInText 0.6s ease-out 1.5s forwards;
+}
+
+.phase-slide.phase-active .phase-list-item:nth-child(2) {
+  animation: slideInText 0.6s ease-out 2.5s forwards;
+}
+
+.phase-slide.phase-active .phase-list-item:nth-child(3) {
+  animation: slideInText 0.6s ease-out 3.5s forwards;
+}
+
+.phase-slide.phase-active .phase-list-item:nth-child(4) {
+  animation: slideInText 0.6s ease-out 4.5s forwards;
+}
+
+.phase-slide.phase-active .phase-list-item:nth-child(5) {
+  animation: slideInText 0.6s ease-out 5.5s forwards;
+}
+
+@keyframes slideInText {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Phase Indicators */
+.phase-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.phase-indicator-active .indicator-dot,
+.phase-indicator:hover .indicator-dot {
+  background: #ff6b1f;
+  box-shadow: 0 0 12px rgba(255, 107, 31, 0.6);
+}
+
+.indicator-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.3s ease;
+}
+
+.phase-indicator-active .indicator-label,
+.phase-indicator:hover .indicator-label {
+  color: white;
+}
+
+/* Progress Bar Animation */
+.phase-progress-bar {
+  transition: width 0.1s linear;
+}
+
+@keyframes progressFill {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+.phase-progress-bar.animating {
+  animation: progressFill 10s linear forwards;
 }
 </style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const PHASE_DURATION = 10000;
+  const phases = document.querySelectorAll('.phase-slide');
+  const indicators = document.querySelectorAll('.phase-indicator');
+  const progressBar = document.querySelector('.phase-progress-bar');
+  let currentPhase = 0;
+  let intervalId = null;
+  let isPaused = false;
+
+  if (!phases.length || !progressBar) return;
+
+  function showPhase(index) {
+    phases.forEach((phase, i) => {
+      phase.classList.toggle('phase-active', i === index);
+    });
+    indicators.forEach((indicator, i) => {
+      indicator.classList.toggle('phase-indicator-active', i === index);
+    });
+    progressBar.classList.remove('animating');
+    void progressBar.offsetWidth;
+    progressBar.classList.add('animating');
+    currentPhase = index;
+  }
+
+  function nextPhase() {
+    const next = (currentPhase + 1) % phases.length;
+    showPhase(next);
+  }
+
+  function startAutoPlay() {
+    if (intervalId) clearInterval(intervalId);
+    intervalId = setInterval(function() {
+      if (!isPaused) nextPhase();
+    }, PHASE_DURATION);
+  }
+
+  indicators.forEach(function(indicator) {
+    indicator.addEventListener('click', function() {
+      const target = parseInt(indicator.dataset.target);
+      showPhase(target);
+      startAutoPlay();
+    });
+  });
+
+  const container = document.querySelector('.phases-container');
+  if (container) {
+    container.addEventListener('mouseenter', function() { isPaused = true; });
+    container.addEventListener('mouseleave', function() { isPaused = false; });
+  }
+
+  showPhase(0);
+  startAutoPlay();
+});
+</script>
+
+<!-- Gameplay Features Section -->
+<section class="py-6 md:py-12 bg-gradient-to-br from-gray-50 to-white">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-8">
+
+        <!-- Block 1: Knockout Opponents -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200">
+          <div class="p-8">
+            <!-- Icon + Header -->
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 flex-shrink-0">
+                <img src="{{ '/images/landing/knockout-icon.png' | url }}" alt="Knockout" class="w-full h-full object-contain">
+              </div>
+              <h3 class="text-2xl font-headings font-bold text-[#2d5a27]">Knockout Opponents</h3>
+            </div>
+            <!-- Image + Text - vertical on mobile, horizontal on desktop -->
+            <div class="flex flex-col md:flex-row gap-6 items-start">
+              <!-- Card Image -->
+              <div class="w-full md:w-1/3 flex-shrink-0">
+                <img src="{{ '/images/card-knockout.png' | url }}" alt="Knockout Card" class="w-full h-auto object-contain rounded-lg shadow-lg">
+              </div>
+              <!-- Text -->
+              <div class="w-full md:w-2/3">
+                <p class="text-gray-700 leading-relaxed">Deliver devastating <strong>knockout</strong> blows in a fight. Opposing fighters that are knocked out need some time to cool down before they can enter the dojo again.<br />Use these at the right moment to catch your opponent off guard and neutralize multiple fighters.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Block 2: Transform Fighters -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200">
+          <div class="p-8">
+            <!-- Icon + Header -->
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 flex-shrink-0">
+                <img src="{{ '/images/landing/transform-icon.png' | url }}" alt="Transform" class="w-full h-full object-contain">
+              </div>
+              <h3 class="text-2xl font-headings font-bold text-[#2d5a27]">Transform Fighters</h3>
+            </div>
+            <!-- Image + Text - vertical on mobile, horizontal on desktop -->
+            <div class="flex flex-col md:flex-row gap-6 items-start">
+              <!-- Card Image -->
+              <div class="w-full md:w-1/3 flex-shrink-0">
+                <img src="{{ '/images/card-transform.png' | url }}" alt="Transform Card" class="w-full h-auto object-contain rounded-lg shadow-lg">
+              </div>
+              <!-- Text -->
+              <div class="w-full md:w-2/3">
+                <p class="text-gray-700 leading-relaxed">Your fighters can <strong>transform</strong> to higher level cards through the process of metamorphosis. Gain access to more powerful cards and abilities before your opponent. <br />Transform into level 5 <strong>champion</strong> cards to gain a major edge in battle.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Block 3: Learn Combo Moves -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200">
+          <div class="p-8">
+            <!-- Icon + Header -->
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 flex-shrink-0">
+                <img src="{{ '/images/landing/combo-icon.png' | url }}" alt="Combo" class="w-full h-full object-contain">
+              </div>
+              <h3 class="text-2xl font-headings font-bold text-[#2d5a27]">Learn Combo Moves</h3>
+            </div>
+            <!-- Image + Text - vertical on mobile, horizontal on desktop -->
+            <div class="flex flex-col md:flex-row gap-6 items-start">
+              <!-- Card Image -->
+              <div class="w-full md:w-1/3 flex-shrink-0">
+                <img src="{{ '/images/card-headlock.png' | url }}" alt="Headlock Combo Card" class="w-full h-auto object-contain rounded-lg shadow-lg">
+              </div>
+              <!-- Text -->
+              <div class="w-full md:w-2/3">
+                <p class="text-gray-700 leading-relaxed">Master devastating <strong>combo moves</strong> that amplify your damage output and overwhelm your opponents. Some combo's can be used multiple times by boomeranging them back to your hand.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Block 4: Pick a Sensei -->
+        <div class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow duration-200">
+          <div class="p-8">
+            <!-- Icon + Header -->
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-12 h-12 flex-shrink-0">
+                <img src="{{ '/images/landing/sensei-icon.png' | url }}" alt="Sensei" class="w-full h-full object-contain">
+              </div>
+              <h3 class="text-2xl font-headings font-bold text-[#2d5a27]">Pick a Sensei</h3>
+            </div>
+            <!-- Image + Text - vertical on mobile, horizontal on desktop -->
+            <div class="flex flex-col md:flex-row gap-6 items-start">
+              <!-- Card Image -->
+              <div class="w-full md:w-1/3 flex-shrink-0">
+                <img src="{{ '/images/card-sensei.png' | url }}" alt="Sensei Card" class="w-full h-auto object-contain rounded-lg shadow-lg">
+              </div>
+              <!-- Text -->
+              <div class="w-full md:w-2/3">
+                <p class="text-gray-700 leading-relaxed">Choose from 15 unique <strong>sensei masters</strong>, each with their own teaching style and abilities. Sensei's will guide your fighters and give them extra abilities. <br />From boxing experts to karate guru's, find the one that best suits your strategy.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Rules Section -->
+<section class="py-8 md:py-10 bg-[#fafaf8]">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="max-w-5xl mx-auto">
+      <div class="bg-white rounded-xl shadow-md border border-gray-200 p-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-headings font-bold text-[#2d5a27] mb-4">Ready to Learn the Full Rules?</h2>
+        <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">Get the complete rulebook, watch the video tutorial, and ask Mr. Minami any questions you have about the game.</p>
+        <a href="{{ '/rules' | url }}" class="inline-flex items-center bg-[#ff6b1f] text-white px-8 py-4 rounded-lg font-headings font-semibold text-lg hover:bg-[#e55a10] transition-colors duration-200 shadow-md">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+          Full Rules & Video
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Meet the Fighters -->
+<section class="py-8 md:py-14 bg-[#fafaf8]">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="max-w-5xl mx-auto text-center">
+      <span class="inline-block text-sm font-semibold text-[#ff6b1f] uppercase tracking-wider mb-3">8 Unique Species</span>
+      <h2 class="text-3xl md:text-4xl font-headings font-bold text-[#2d5a27] mb-4">Meet the Fighters</h2>
+      <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">From karate-kicking Frogs to knockout-punching Crocodiles, each species brings their own martial art and unique abilities to the dojo.</p>
+      <a href="{{ '/fighters' | url }}" class="inline-block bg-[#2d5a27] text-white px-10 py-4 rounded-lg font-headings font-semibold text-lg hover:bg-[#234520] transition-colors duration-200 shadow-md">
+        Discover All Fighters →
+      </a>
+    </div>
+  </div>
+</section>
