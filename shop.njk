@@ -61,7 +61,7 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
             <div class="flex items-center justify-between mt-auto">
               <span class="text-2xl font-bold text-[#2d5a27]">€22,99</span>
               <a href="#" class="btn btn-primary px-6 py-2 buy-btn" data-product="game">
-                Buy Now
+                View & Buy
               </a>
             </div>
           </div>
@@ -80,7 +80,7 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
             <div class="flex items-center justify-between mt-auto">
               <span class="text-2xl font-bold text-[#2d5a27]">€33,99</span>
               <a href="#" class="btn btn-primary px-6 py-2 buy-btn" data-product="game-playmats">
-                Buy Now
+                View & Buy
               </a>
             </div>
           </div>
@@ -103,7 +103,7 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
             <div class="flex items-center justify-between mt-auto">
               <span class="text-2xl font-bold text-[#2d5a27]">€39,99</span>
               <a href="#" class="btn btn-accent px-6 py-2 buy-btn" data-product="bundle">
-                Buy Now
+                View & Buy
               </a>
             </div>
           </div>
@@ -148,32 +148,44 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
       </button>
 
       <div class="p-6 md:p-8">
-        <!-- Product Image -->
-        <div class="bg-gray-100 rounded-xl p-6 mb-6">
-          <img id="modal-image" src="" alt="" class="w-full max-w-sm mx-auto object-contain">
-        </div>
-
-        <!-- Product Info -->
-        <h2 id="modal-title" class="text-2xl font-headings font-bold text-[#2d5a27] mb-2"></h2>
-        <p id="modal-price" class="text-3xl font-bold text-[#2d5a27] mb-4"></p>
-        
-        <!-- What's Included -->
-        <div class="mb-6">
-          <h3 class="font-semibold text-gray-900 mb-3">What's included:</h3>
-          <ul id="modal-includes" class="space-y-2 text-gray-700">
-          </ul>
-        </div>
-
-        <!-- Shipping Info -->
-        <div class="bg-gray-50 rounded-xl p-4 mb-6">
-          <div class="flex items-start gap-3">
-            <svg class="w-5 h-5 text-[#2d5a27] mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/>
-            </svg>
-            <div>
-              <p class="font-medium text-gray-900">Shipping within EU</p>
-              <p class="text-sm text-gray-600">Shipping costs calculated at checkout. Estimated delivery: 3-7 business days.</p>
+        <!-- Image Carousel -->
+        <div class="relative bg-gray-100 rounded-xl p-6 mb-6">
+          <!-- Carousel Container -->
+          <div id="carousel-container" class="relative overflow-hidden">
+            <div id="carousel-track" class="flex transition-transform duration-300 ease-out">
             </div>
+          </div>
+          
+          <!-- Navigation Arrows -->
+          <button id="carousel-prev" class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center text-gray-700 hover:text-[#2d5a27] transition-colors z-10">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          <button id="carousel-next" class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center text-gray-700 hover:text-[#2d5a27] transition-colors z-10">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </button>
+          
+          <!-- Dots Indicator -->
+          <div id="carousel-dots" class="flex justify-center gap-2 mt-4">
+          </div>
+        </div>
+
+        <!-- Product Info Row -->
+        <div class="flex gap-4 mb-6">
+          <!-- What's Included (Left) -->
+          <div class="flex-1">
+            <h3 class="font-semibold text-gray-900 mb-3">What's included:</h3>
+            <ul id="modal-includes" class="space-y-2 text-gray-700">
+            </ul>
+          </div>
+          
+          <!-- Name & Price (Right) -->
+          <div class="text-right shrink-0">
+            <h2 id="modal-title" class="text-2xl font-headings font-bold text-[#2d5a27] mb-2"></h2>
+            <p id="modal-price" class="text-3xl font-bold text-[#2d5a27]"></p>
           </div>
         </div>
 
@@ -202,6 +214,11 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
           </svg>
           Secure payment via Stripe
+        </p>
+
+        <!-- Shipping Info -->
+        <p class="text-xs text-gray-500 text-center mt-1">
+          <span class="font-medium text-gray-600">Shipping within EU</span> · Shipping costs calculated at checkout. Estimated delivery: 3-7 business days.
         </p>
       </div>
     </div>
@@ -239,51 +256,63 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
     game: {
       title: 'Amfibido Game',
       price: '€22,99',
-      image: '{{ "/images/shop/amfibido-game.png" | url }}',
+      images: [
+        '{{ "/images/shop/amfibido-game.png" | url }}',
+        '{{ "/images/shop/game-content.png" | url }}'
+      ],
       includes: [
-        '108 Fighter cards (18 unique fighters)',
-        '18 Dojo cards for varied gameplay',
-        '2 Reference cards',
-        'Full rulebook'
+        '157 playing cards',
+        'Full rulebook',
+        'Score board with 3 wooden tokens'
       ]
     },
     'game-playmats': {
       title: 'Amfibido Game + 2 Playmats',
       price: '€33,99',
-      image: '{{ "/images/shop/amfibido-game-playmats.png" | url }}',
+      images: [
+        '{{ "/images/shop/amfibido-game-playmats.png" | url }}',
+        '{{ "/images/shop/game-content.png" | url }}',
+        '{{ "/images/shop/playmats.png" | url }}'
+      ],
       includes: [
-        '108 Fighter cards (18 unique fighters)',
-        '18 Dojo cards for varied gameplay',
-        '2 Reference cards',
+        '157 playing cards',
         'Full rulebook',
-        '2× Premium soft rubber playmats (40×25 cm)',
-        'Perfect playing surface with card placement guides'
+        'Score board with 3 wooden tokens',
+        'High quality Rubber Playmats (40×25 cm) 2×'
       ]
     },
     bundle: {
       title: 'Amfibido Complete Bundle',
       price: '€39,99',
-      image: '{{ "/images/shop/amfibido-game-playmats-dice.png" | url }}',
+      images: [
+        '{{ "/images/shop/amfibido-game-playmats-dice.png" | url }}',
+        '{{ "/images/shop/game-content.png" | url }}',
+        '{{ "/images/shop/playmats.png" | url }}',
+        '{{ "/images/shop/dice.png" | url }}'
+      ],
       includes: [
-        '108 Fighter cards (18 unique fighters)',
-        '18 Dojo cards for varied gameplay',
-        '2 Reference cards',
+        '157 playing cards',
         'Full rulebook',
-        '2× Premium soft rubber playmats (40×25 cm)',
-        'Dice bag with 18 dice (6× D6, 6× D12, 6× D20)',
-        'Everything you need for the ultimate dojo experience'
+        'Score board with 3 wooden tokens',
+        'Playmats (40×25 cm) 2×',
+        'Dice bag with 6× D6, 6× D12, 6× D20 dice'
       ]
     }
   };
 
   let currentStripeLink = null;
   let currentCountry = 'NL';
+  let currentSlide = 0;
+  let totalSlides = 0;
 
   // Modal elements
   const modal = document.getElementById('checkout-modal');
   const modalBackdrop = document.getElementById('modal-backdrop');
   const modalClose = document.getElementById('modal-close');
-  const modalImage = document.getElementById('modal-image');
+  const carouselTrack = document.getElementById('carousel-track');
+  const carouselDots = document.getElementById('carousel-dots');
+  const carouselPrev = document.getElementById('carousel-prev');
+  const carouselNext = document.getElementById('carousel-next');
   const modalTitle = document.getElementById('modal-title');
   const modalPrice = document.getElementById('modal-price');
   const modalIncludes = document.getElementById('modal-includes');
@@ -291,14 +320,75 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
   const termsError = document.getElementById('terms-error');
   const checkoutBtn = document.getElementById('modal-checkout-btn');
 
+  function updateCarousel() {
+    carouselTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+    
+    // Update dots
+    const dots = carouselDots.querySelectorAll('button');
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('bg-[#2d5a27]', i === currentSlide);
+      dot.classList.toggle('bg-gray-300', i !== currentSlide);
+    });
+
+    // Update arrow visibility
+    carouselPrev.classList.toggle('opacity-50', currentSlide === 0);
+    carouselNext.classList.toggle('opacity-50', currentSlide === totalSlides - 1);
+  }
+
+  function goToSlide(index) {
+    currentSlide = Math.max(0, Math.min(index, totalSlides - 1));
+    updateCarousel();
+  }
+
+  function nextSlide() {
+    if (currentSlide < totalSlides - 1) {
+      goToSlide(currentSlide + 1);
+    }
+  }
+
+  function prevSlide() {
+    if (currentSlide > 0) {
+      goToSlide(currentSlide - 1);
+    }
+  }
+
+  carouselPrev.addEventListener('click', prevSlide);
+  carouselNext.addEventListener('click', nextSlide);
+
   function openModal(productKey) {
     const product = PRODUCT_DATA[productKey];
     const links = STRIPE_LINKS[currentCountry] || STRIPE_LINKS['NL'];
     currentStripeLink = links[productKey];
 
-    // Populate modal
-    modalImage.src = product.image;
-    modalImage.alt = product.title;
+    // Build carousel
+    totalSlides = product.images.length;
+    currentSlide = 0;
+    
+    carouselTrack.innerHTML = product.images.map(img => 
+      `<div class="w-full flex-shrink-0">
+        <img src="${img}" alt="${product.title}" class="w-full max-w-sm mx-auto object-contain aspect-square">
+      </div>`
+    ).join('');
+    
+    // Build dots
+    carouselDots.innerHTML = product.images.map((_, i) => 
+      `<button class="w-2.5 h-2.5 rounded-full transition-colors ${i === 0 ? 'bg-[#2d5a27]' : 'bg-gray-300'}" data-slide="${i}"></button>`
+    ).join('');
+    
+    // Add dot click handlers
+    carouselDots.querySelectorAll('button').forEach(dot => {
+      dot.addEventListener('click', () => goToSlide(parseInt(dot.dataset.slide)));
+    });
+
+    // Show/hide arrows based on number of images
+    const showArrows = totalSlides > 1;
+    carouselPrev.classList.toggle('hidden', !showArrows);
+    carouselNext.classList.toggle('hidden', !showArrows);
+    carouselDots.classList.toggle('hidden', !showArrows);
+
+    updateCarousel();
+
+    // Populate modal info
     modalTitle.textContent = product.title;
     modalPrice.textContent = product.price;
     
