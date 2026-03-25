@@ -173,8 +173,14 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
           </div>
         </div>
 
-        <!-- Product Info Row -->
-        <div class="flex gap-4 mb-6">
+        <!-- Product Name & Price (Mobile: stacked on top, Desktop: side of includes) -->
+        <div class="md:hidden mb-4 text-center">
+          <h2 id="modal-title-mobile" class="text-2xl font-headings font-bold text-[#2d5a27] mb-1"></h2>
+          <p id="modal-price-mobile" class="text-3xl font-bold text-[#2d5a27]"></p>
+        </div>
+
+        <!-- Product Info Row (Desktop layout) -->
+        <div class="flex flex-col md:flex-row gap-4 mb-6">
           <!-- What's Included (Left) -->
           <div class="flex-1">
             <h3 class="font-semibold text-gray-900 mb-3">What's included:</h3>
@@ -182,8 +188,8 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
             </ul>
           </div>
           
-          <!-- Name & Price (Right) -->
-          <div class="text-right shrink-0">
+          <!-- Name & Price (Right - Desktop only) -->
+          <div class="hidden md:block text-right shrink-0">
             <h2 id="modal-title" class="text-2xl font-headings font-bold text-[#2d5a27] mb-2"></h2>
             <p id="modal-price" class="text-3xl font-bold text-[#2d5a27]"></p>
           </div>
@@ -388,9 +394,11 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
 
     updateCarousel();
 
-    // Populate modal info
+    // Populate modal info (both mobile and desktop)
     modalTitle.textContent = product.title;
     modalPrice.textContent = product.price;
+    document.getElementById('modal-title-mobile').textContent = product.title;
+    document.getElementById('modal-price-mobile').textContent = product.price;
     
     // Build includes list
     modalIncludes.innerHTML = product.includes.map(item => 
