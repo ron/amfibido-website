@@ -179,7 +179,7 @@
       <div class="relative container mx-auto px-4 py-6">
         <nav class="relative flex items-center justify-center">
           <!-- Roca Games Logo - Left -->
-          <div class="absolute left-0 hidden md:block hover:opacity-90 transition-opacity duration-300">
+          <div class="absolute left-0 hidden xl:block hover:opacity-90 transition-opacity duration-300">
             <img src="{{ '/images/roca-logo.png' | url }}" alt="Roca Games" class="h-18 w-auto" style="height: 4.5rem;">
           </div>
 
@@ -189,7 +189,7 @@
           </a>
 
           <!-- Desktop Navigation - Right -->
-          <div class="hidden md:flex items-center absolute right-0">
+          <div class="hidden xl:flex items-center absolute right-0">
             <div class="flex items-center bg-black/20 backdrop-blur-sm rounded-full px-2 py-1 border border-white/10">
               <a href="{{ '/fighters' | url }}" class="nav-link px-5 py-2 text-base font-semibold rounded-full transition-all duration-200 {% if page.url == '/fighters/' %}text-white bg-white/20{% else %}text-white/90 hover:text-white hover:bg-white/15{% endif %}">
                 Fighters
@@ -215,7 +215,7 @@
           </div>
 
           <!-- Mobile Menu Button -->
-          <button class="md:hidden absolute right-0 p-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors duration-200" id="mobile-menu-button">
+          <button class="xl:hidden absolute right-0 p-2 bg-white/10 hover:bg-white/20 rounded-lg text-white transition-colors duration-200" id="mobile-menu-button">
             <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
@@ -225,7 +225,7 @@
       </div>
 
       <!-- Mobile Menu (positioned to overlay content) -->
-      <div class="md:hidden hidden absolute left-0 right-0 top-full z-50 px-4 pb-4" id="mobile-menu">
+      <div class="xl:hidden hidden absolute left-0 right-0 top-full z-50 px-4 pb-4" id="mobile-menu">
         <div class="py-4 bg-[#1a4a1c]/95 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl">
           <a href="{{ '/fighters' | url }}" class="block px-6 py-3 text-base font-semibold transition-all duration-200 {% if page.url == '/fighters/' %}text-white bg-white/15{% else %}text-white/90 hover:text-white hover:bg-white/10{% endif %}">Fighters</a>
           <a href="{{ '/gameplay' | url }}" class="block px-6 py-3 text-base font-semibold transition-all duration-200 {% if page.url == '/gameplay/' %}text-white bg-white/15{% else %}text-white/90 hover:text-white hover:bg-white/10{% endif %}">Gameplay</a>
@@ -383,7 +383,7 @@
 
     <!-- JavaScript -->
     <script src="{{ '/js/main.js' | url }}?v={{ buildTime }}"></script>
-    
+
     <!-- Chat Script -->
     <script>
     (function() {
