@@ -8,6 +8,7 @@ npx wrangler d1 execute chat-logs --remote --json --command "
     c.id as conversation_id,
     c.created_at as started,
     c.origin,
+    c.client_ip,
     m.role,
     m.content,
     m.created_at as sent_at
@@ -29,7 +30,7 @@ for (const row of rows) {
     currentConvo = row.conversation_id;
     console.log('\n' + '='.repeat(60));
     console.log('Conversation: ' + row.conversation_id.slice(0, 8) + '...');
-    console.log('Started: ' + row.started + ' | Origin: ' + row.origin);
+    console.log('Started: ' + row.started + ' | Origin: ' + row.origin + ' | IP: ' + (row.client_ip || '—'));
     console.log('='.repeat(60));
   }
   const prefix = row.role === 'user' ? '👤 User' : '🐸 Mr. Minami';

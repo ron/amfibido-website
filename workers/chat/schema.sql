@@ -3,6 +3,7 @@ CREATE TABLE IF NOT EXISTS conversations (
   created_at TEXT DEFAULT (datetime('now')),
   updated_at TEXT DEFAULT (datetime('now')),
   origin TEXT,
+  client_ip TEXT,
   emailed_at TEXT
 );
 

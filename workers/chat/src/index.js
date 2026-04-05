@@ -52,6 +52,7 @@ function buildSystemPrompt(rules, cards, reminders) {
 Your role is to answer questions about the game rules and cards clearly and concisely.
 Do not answer questions that are not related to the game.
 Also do not give strategy advice, focus on correct rulings only.
+If a question is outside your scope (not about Amfibido rules/cards, or asks for strategy, or is off-topic), politely decline in one short sentence and tell the user they can contact ron@amfibido.com for that kind of question. Always include the exact text ron@amfibido.com so they can use it.
 Your name is Mr. Minami, a frog karate Sensei.
 
 ## Important Reminders (prioritize these over other context)
@@ -81,14 +82,26 @@ function getCorsHeaders(request) {
 	};
 }
 
-async function logConversation(db, conversationId, origin, userMessage, assistantReply) {
+/** Client IP as seen by Cloudflare (or first X-Forwarded-For hop). */
+function getClientIp(request) {
+	return (
+		request.headers.get('CF-Connecting-IP') ||
+		request.headers.get('True-Client-IP') ||
+		(request.headers.get('X-Forwarded-For') || '').split(',')[0].trim() ||
+		'unknown'
+	);
+}
+
+async function logConversation(db, conversationId, origin, clientIp, userMessage, assistantReply) {
 	try {
 		await db.batch([
 			db.prepare(`
-				INSERT INTO conversations (id, origin)
-				VALUES (?, ?)
-				ON CONFLICT(id) DO UPDATE SET updated_at = datetime('now')
-			`).bind(conversationId, origin),
+				INSERT INTO conversations (id, origin, client_ip)
+				VALUES (?, ?, ?)
+				ON CONFLICT(id) DO UPDATE SET
+					updated_at = datetime('now'),
+					client_ip = excluded.client_ip
+			`).bind(conversationId, origin, clientIp),
 			db.prepare(`
 				INSERT INTO messages (conversation_id, role, content) VALUES (?, 'user', ?)
 			`).bind(conversationId, userMessage),
@@ -107,8 +120,11 @@ async function sendConversationEmail(env, conversation, messages) {
 		return `${role}:\n${m.content}`;
 	}).join('\n\n---\n\n');
 
+	const ipLine = conversation.client_ip ? `Client IP: ${conversation.client_ip}` : 'Client IP: (not recorded)';
+
 	const emailBody = `
 New conversation from ${conversation.origin}
+${ipLine}
 Started: ${conversation.created_at}
 Conversation ID: ${conversation.id}
 
@@ -291,7 +307,8 @@ export default {
 			const reply = data.choices?.[0]?.message?.content || "Sorry, I couldn't generate a response.";
 
 			const origin = request.headers.get('Origin') || 'unknown';
-			ctx.waitUntil(logConversation(env.DB, conversationId, origin, message, reply));
+			const clientIp = getClientIp(request);
+			ctx.waitUntil(logConversation(env.DB, conversationId, origin, clientIp, message, reply));
 
 			return new Response(JSON.stringify({ reply, conversationId }), {
 				headers: { ...corsHeaders, 'Content-Type': 'application/json' },
