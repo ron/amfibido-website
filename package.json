@@ -12,7 +12,8 @@
     "build:eleventy": "ELEVENTY_ENV=development eleventy",
     "build:eleventy:prod": "ELEVENTY_ENV=production eleventy",
     "build": "npm-run-all build:eleventy build:css",
-    "build:prod": "npm-run-all build:eleventy:prod build:css:prod"
+    "build:prod": "npm-run-all build:eleventy:prod build:css:prod",
+    "optimize:images": "node optimize-images.js"
   },
   "keywords": [
     "eleventy",

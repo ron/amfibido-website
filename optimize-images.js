@@ -109,26 +109,7 @@ function processImage(filePath) {
 
   log(`Processing: ${filePath} (${fileSize.toFixed(2)} MB)`, colors.blue);
 
-  // Skip if file is already small enough
-  if (fileSize < TARGET_MAX_SIZE_MB) {
-    log(`  ✓ Already optimized (${fileSize.toFixed(2)} MB)`, colors.green);
-    return;
-  }
-
-  // Create backup directory structure
-  const relativeDir = path.relative(path.join(__dirname, 'images'), path.dirname(filePath));
-  const backupFilePath = path.join(backupDir, relativeDir, fileName);
-
-  // Create backup folder if it doesn't exist
-  const backupFileDir = path.dirname(backupFilePath);
-  if (!fs.existsSync(backupFileDir)) {
-    fs.mkdirSync(backupFileDir, { recursive: true });
-  }
-
-  // Create backup
-  fs.copyFileSync(filePath, backupFilePath);
-
-  // Get image dimensions and type
+  // Get image dimensions and type (needed to decide resize even when file size is small)
   let dimensions;
   let hasTransparency = false;
   try {
@@ -164,8 +145,30 @@ function processImage(filePath) {
     log(`  ℹ Using crest-specific dimensions: ${maxWidth}x${maxHeight}`, colors.blue);
   }
 
-  // Check if resize is needed
   const needsResize = dimensions.width > maxWidth || dimensions.height > maxHeight;
+  const needsOptimize = fileSize >= TARGET_MAX_SIZE_MB;
+
+  // Skip only when dimensions are within limits and file is already small enough
+  if (!needsResize && !needsOptimize) {
+    log(
+      `  ✓ Already optimized (${fileSize.toFixed(2)} MB, ${dimensions.width}x${dimensions.height})`,
+      colors.green
+    );
+    return;
+  }
+
+  // Create backup directory structure
+  const relativeDir = path.relative(path.join(__dirname, 'images'), path.dirname(filePath));
+  const backupFilePath = path.join(backupDir, relativeDir, fileName);
+
+  // Create backup folder if it doesn't exist
+  const backupFileDir = path.dirname(backupFilePath);
+  if (!fs.existsSync(backupFileDir)) {
+    fs.mkdirSync(backupFileDir, { recursive: true });
+  }
+
+  // Create backup
+  fs.copyFileSync(filePath, backupFilePath);
 
   // Optimize the image based on type
   try {
@@ -191,17 +194,32 @@ function processImage(filePath) {
 
     // Then handle compression based on file type
     if (fileExt === '.png') {
-      if (hasPngquant && !hasTransparency) {
-        // Use pngquant for non-transparent PNGs (much better compression)
-        log(`  🔄 Using pngquant for PNG optimization`, colors.blue);
-        execSync(`pngquant --quality=${PNG_QUALITY} --force --output="${filePath}" "${tempResizedFile}"`);
-      } else {
-        // For transparent PNGs or when pngquant isn't available, use ImageMagick with careful settings
+      const magickPng = () => {
         log(`  🔄 Using ImageMagick for PNG optimization`, colors.blue);
         const optimizeCommand = hasTransparency
           ? `convert "${tempResizedFile}" -define png:compression-level=9 -strip "${filePath}"`
           : `convert "${tempResizedFile}" -quality ${QUALITY} -strip "${filePath}"`;
         execSync(optimizeCommand);
+      };
+
+      if (hasPngquant && !hasTransparency) {
+        const pngquantOut = path.join(
+          path.dirname(filePath),
+          `${path.basename(filePath, fileExt)}-pngquant${fileExt}`
+        );
+        try {
+          log(`  🔄 Using pngquant for PNG optimization`, colors.blue);
+          execSync(`pngquant --quality=${PNG_QUALITY} --force --output="${pngquantOut}" "${tempResizedFile}"`);
+          fs.renameSync(pngquantOut, filePath);
+        } catch (pngquantErr) {
+          if (fs.existsSync(pngquantOut)) {
+            fs.unlinkSync(pngquantOut);
+          }
+          log(`  ℹ pngquant failed (${pngquantErr.message.trim()}), falling back to ImageMagick`, colors.yellow);
+          magickPng();
+        }
+      } else {
+        magickPng();
       }
     } else if (['.jpg', '.jpeg'].includes(fileExt)) {
       // JPEG optimization
@@ -223,6 +241,11 @@ function processImage(filePath) {
 
     if (reduction > 0) {
       log(`  ✓ Optimized: ${fileSize.toFixed(2)} MB → ${newFileSize.toFixed(2)} MB (${reduction.toFixed(1)}% reduction)`, colors.green);
+    } else if (needsResize) {
+      log(
+        `  ✓ Resized/compressed: ${fileSize.toFixed(2)} MB → ${newFileSize.toFixed(2)} MB (keeping smaller dimensions despite byte change)`,
+        colors.green
+      );
     } else {
       log(`  ⚠ File size increased: ${fileSize.toFixed(2)} MB → ${newFileSize.toFixed(2)} MB (${Math.abs(reduction).toFixed(1)}% increase)`, colors.yellow);
       log(`  🔄 Restoring original file to prevent size increase`, colors.yellow);

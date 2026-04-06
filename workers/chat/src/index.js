@@ -157,8 +157,8 @@ ${formattedMessages}
 
 async function processUnsentConversations(env) {
 	const { results: conversations } = await env.DB.prepare(`
-		SELECT * FROM conversations 
-		WHERE emailed_at IS NULL 
+		SELECT * FROM conversations
+		WHERE emailed_at IS NULL
 		AND created_at <= datetime('now', '-15 minutes')
 	`).all();
 
@@ -167,9 +167,9 @@ async function processUnsentConversations(env) {
 	for (const conversation of conversations) {
 		try {
 			const { results: messages } = await env.DB.prepare(`
-				SELECT role, content, created_at 
-				FROM messages 
-				WHERE conversation_id = ? 
+				SELECT role, content, created_at
+				FROM messages
+				WHERE conversation_id = ?
 				ORDER BY created_at ASC
 			`).bind(conversation.id).all();
 
@@ -200,18 +200,18 @@ export default {
 		if (url.pathname === '/test-email') {
 			try {
 				const { results: conversations } = await env.DB.prepare(`
-					SELECT * FROM conversations 
-					WHERE emailed_at IS NULL 
+					SELECT * FROM conversations
+					WHERE emailed_at IS NULL
 					AND created_at <= datetime('now', '-15 minutes')
 				`).all();
-				
+
 				const results = [];
 				for (const conversation of conversations) {
 					try {
 						const { results: messages } = await env.DB.prepare(`
-							SELECT role, content, created_at 
-							FROM messages 
-							WHERE conversation_id = ? 
+							SELECT role, content, created_at
+							FROM messages
+							WHERE conversation_id = ?
 							ORDER BY created_at ASC
 						`).bind(conversation.id).all();
 
@@ -221,7 +221,7 @@ export default {
 						}
 
 						await sendConversationEmail(env, conversation, messages);
-						
+
 						await env.DB.prepare(`
 							UPDATE conversations SET emailed_at = datetime('now') WHERE id = ?
 						`).bind(conversation.id).run();
@@ -231,10 +231,10 @@ export default {
 						results.push({ id: conversation.id, status: 'error', error: error.message });
 					}
 				}
-				
-				return new Response(JSON.stringify({ 
-					found: conversations.length, 
-					results 
+
+				return new Response(JSON.stringify({
+					found: conversations.length,
+					results
 				}), {
 					headers: { 'Content-Type': 'application/json' },
 				});

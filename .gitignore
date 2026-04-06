@@ -4,6 +4,9 @@ node_modules/
 # Eleventy build output
 _site/
 
+# optimize-images.js timestamped backups
+images-backup-*/
+
 # Optional system files
 .DS_Store
 npm-debug.log*
