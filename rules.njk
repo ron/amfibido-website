@@ -47,22 +47,38 @@ description: "Download the official Amfibido game manual and learn how to play."
         </div>
       </div>
 
-      <!-- Rules Video Section -->
+      <!-- Rules Video Section: default English tutorial; NL/BE get Nox Spellenzolder review & rules (client-side) -->
       <div class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
         <div class="p-6 border-b border-gray-100">
           <h2 class="text-xl font-headings font-bold text-[#2d5a27] text-center">Video Tutorial</h2>
+          <p id="rules-video-note" class="text-sm text-gray-500 text-center mt-2 hidden">Review &amp; spelregels bij Nox Spellenzolder (Nederlands)</p>
         </div>
-        <div class="aspect-video bg-gray-50 flex items-center justify-center">
-          <div class="text-center text-gray-400 p-8">
-            <svg class="w-14 h-14 mx-auto mb-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
-            <p class="text-base font-medium">Video coming soon</p>
-          </div>
+        <div class="aspect-video bg-gray-50">
+          <iframe id="rules-tutorial-video" class="w-full h-full" src="https://www.youtube-nocookie.com/embed/sCV98bm-EgM" title="Amfibido video tutorial" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
       </div>
 
     </div>
   </div>
 </section>
+
+<script>
+(function () {
+  var iframe = document.getElementById('rules-tutorial-video');
+  var note = document.getElementById('rules-video-note');
+  if (!iframe) return;
+  var EN = 'https://www.youtube-nocookie.com/embed/sCV98bm-EgM';
+  var NL_BE = 'https://www.youtube-nocookie.com/embed/7Eqj0hTTLEU';
+  fetch('https://ipapi.co/json/')
+    .then(function (res) { return res.json(); })
+    .then(function (data) {
+      var cc = data.country_code;
+      if (cc === 'NL' || cc === 'BE') {
+        iframe.src = NL_BE;
+        iframe.title = 'Amfibido review en spelregels — Nox Spellenzolder';
+        if (note) note.classList.remove('hidden');
+      }
+    })
+    .catch(function () {});
+})();
+</script>
