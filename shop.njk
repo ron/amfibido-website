@@ -233,7 +233,14 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
 
 <script>
 (function() {
-  const SUPPORTED_COUNTRIES = ['NL', 'DE', 'GB', 'BE'];
+  const SUPPORTED_COUNTRIES = ['NL', 'DE', 'GB', 'BE', 'PL', 'CZ', 'AT', 'ES', 'IT', 'SE', 'NO', 'FI'];
+
+  // Belgium shipping zone (shared Stripe Payment Links for BE + selected countries)
+  const BELGIUM_STRIPE_LINKS = {
+    game: 'https://buy.stripe.com/3cIbJ2fyP400bWk9Ik7bW02',
+    'game-playmats': 'https://buy.stripe.com/6oU28s2M3400gcA9Ik7bW06',
+    bundle: 'https://buy.stripe.com/8x214o1HZ7cc4tS7Ac7bW0a'
+  };
 
   const STRIPE_LINKS = {
     NL: {
@@ -251,11 +258,15 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
       'game-playmats': 'https://buy.stripe.com/aFa3cwdqHbss4tS1bO7bW05',
       bundle: 'https://buy.stripe.com/dRmbJ21HZ7ccd0o9Ik7bW09'
     },
-    BE: {
-      game: 'https://buy.stripe.com/3cIbJ2fyP400bWk9Ik7bW02',
-      'game-playmats': 'https://buy.stripe.com/6oU28s2M3400gcA9Ik7bW06',
-      bundle: 'https://buy.stripe.com/8x214o1HZ7cc4tS7Ac7bW0a'
-    }
+    BE: BELGIUM_STRIPE_LINKS,
+    PL: BELGIUM_STRIPE_LINKS,
+    CZ: BELGIUM_STRIPE_LINKS,
+    AT: BELGIUM_STRIPE_LINKS,
+    ES: BELGIUM_STRIPE_LINKS,
+    IT: BELGIUM_STRIPE_LINKS,
+    SE: BELGIUM_STRIPE_LINKS,
+    NO: BELGIUM_STRIPE_LINKS,
+    FI: BELGIUM_STRIPE_LINKS
   };
 
   const PRODUCT_DATA = {
