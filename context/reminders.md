@@ -14,3 +14,12 @@ If the game reaches round 9 (after multiple drawn rounds), players continue draw
 
 ## Switcheroo
 Switcheroo allows you to move or switch with a fighter or equipment to ANY of your other dojos - including empty dojos. You do NOT need something in the target dojo to "switch" with. The name "switcheroo" is just the action name.
+
+## Transform
+Fighters and equipment that **transform** become a **random** card of the **next level** of that type, using the **Transform** procedure in the full rules: retire the old card, reveal from the next level's deck until you find a card of the required type, place it in the dojo, and put the other revealed cards on the bottom in random order. (Level V transforms into another level V card of that type.)
+
+## Spawn fighter
+**Spawn** is a fighter type. The **Spawn** card (e.g. level I) says it **transforms when it wins the fight** — that uses the **Transform** keyword, so the fighter becomes a **random** fighter of the **next** level, not a chosen or fixed card.
+
+## Combo moves when a fighter is replaced or retires
+**Combo moves** are attached to a **specific fighter**. If that **fighter is replaced, retires, or otherwise leaves the board in a way that discards/retires that fighter**, combo moves that were on that fighter are **discarded to the discard pile** — they do **not** stay in play and do **not** transfer to a new fighter you place in the dojo. (Same idea as the FAQ: combo on a fighter, then you replace that fighter — the combos on the retired fighter go away.)
