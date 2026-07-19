@@ -1,0 +1,122 @@
+[
+  {
+    "id": "combo-switcheroo",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Do combo moves transfer over to another fighter with a switcheroo or do they stay in the dojo?"
+      },
+      {
+        "role": "assistant",
+        "content": "Combo moves are attached to a specific fighter. They do not transfer to another fighter."
+      },
+      {
+        "role": "user",
+        "content": "Not even when it switcheroos in a round?"
+      }
+    ],
+    "expect": {
+      "includesAny": ["move with", "stay with", "go with", "attached"],
+      "excludes": ["discarded if the fighter leaves", "discarded when a fighter is switched", "do not transfer when a fighter is switched with Switcheroo. They are discarded"]
+    }
+  },
+  {
+    "id": "bo-staff-hypnotoad",
+    "messages": [
+      {
+        "role": "user",
+        "content": "If the bow staff comes across the hypnotist, does it still neutralize the hypnotoads equipment or not because of the toads ability to neutralize equipment itself"
+      }
+    ],
+    "expect": {
+      "includesAny": ["does not", "doesn't", "Hypnotoad neutralize", "neutralizes Bo Staff", "Bo Staff's ability"],
+      "excludes": ["Bo Staff's ability to neutralize the abilities of opposing equipment in its dojo still applies", "still applies, even if the Hypnotoad"]
+    }
+  },
+  {
+    "id": "marbled-kung-fu-gi",
+    "messages": [
+      {
+        "role": "user",
+        "content": "I have a Marbled Salamander. If I have a Kung Fu Gi in an adjacent dojo and I’ve activated its effect by discarding a card so it gets +3 for that fighter, does that +3 also go to the Marbled Salamander?"
+      }
+    ],
+    "expect": {
+      "includesAny": ["No", "does not", "doesn't", "not"],
+      "excludes": ["also gains the +3", "Marbled Salamander will gain the +3"]
+    }
+  },
+  {
+    "id": "siren-kung-fu-gi",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Siren Salamander says salamanders gain base power bonuses from equipment in adjacent dojos. If Kung Fu Gi in an adjacent dojo is activated for +3, do my salamanders get that +3?"
+      }
+    ],
+    "expect": {
+      "includesAny": ["No", "does not", "doesn't", "not"],
+      "excludes": ["salamanders also get the +3", "yes, they gain the +3"]
+    }
+  },
+  {
+    "id": "newt-wrist-wraps-ability",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Newt doubles the base power bonus from equipment. Wrist Wraps has +2 printed and +2 more from its ability if a fighter entered the dojo. Does Newt double both +2s?"
+      }
+    ],
+    "expect": {
+      "includesAny": ["printed", "base", "ability", "not"],
+      "excludes": ["doubles both", "doubles the full +4", "doubles both +2"]
+    }
+  },
+  {
+    "id": "dice-tracking",
+    "messages": [
+      {
+        "role": "user",
+        "content": "How would you use dice to spice up the game?"
+      }
+    ],
+    "expect": {
+      "includesAny": ["track", "total power", "totals"],
+      "excludes": ["do not have that information", "I do not have that"]
+    }
+  },
+  {
+    "id": "win-and-knocked-out",
+    "messages": [
+      {
+        "role": "user",
+        "content": "A fighter has Sparring Boots. How can it win the fight and be knocked out?"
+      }
+    ],
+    "expect": {
+      "includesAny": ["Sucker Punch", "Tipsy Turtle"],
+      "excludes": ["defeated by an opposing fighter with the knockout ability", "knockout ability takes precedence"]
+    }
+  },
+  {
+    "id": "wrist-wraps-base-power",
+    "messages": [
+      {
+        "role": "user",
+        "content": "How can the basepower of equipments change ?"
+      },
+      {
+        "role": "assistant",
+        "content": "Some equipment has variable printed base power, such as Nunchucks whose +* is base power equal to the fighter's card level."
+      },
+      {
+        "role": "user",
+        "content": "The equipment wrist wraps base power is ?"
+      }
+    ],
+    "expect": {
+      "includesAny": ["+2", "plus 2"],
+      "excludes": ["base power of the Wrist Wraps equipment is +4", "Wrist Wraps gains +2 power if one of your fighters entered the dojo this round. Additionally"]
+    }
+  }
+]
