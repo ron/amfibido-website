@@ -1,0 +1,27 @@
+/**
+ * Stripe webhook forwarder for Kapiteinspel affiliate conversions.
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "stripe-webhooks",
+	"account_id": "0df1bd69d8ea4eed1ee9d46e85fd169e",
+	"main": "src/index.js",
+	"compatibility_date": "2026-03-01",
+	"observability": {
+		"enabled": true
+	},
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"kv_namespaces": [
+		{
+			"binding": "IDEMPOTENCY",
+			// Create with: wrangler kv namespace create WEBHOOK_IDEMPOTENCY
+			// Then replace this id with the returned namespace id.
+			"id": "77a6b958e8484ca3b040d0ec94bfeaf0",
+			"preview_id": "218dc52ace374ce4994ec2a16b367147"
+		}
+	],
+	"vars": {}
+}

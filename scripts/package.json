@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "create-payment-links": "node create-stripe-payment-links.js"
+    "create-payment-links": "node create-stripe-payment-links.js",
+    "lookup-payment-link-id": "node lookup-payment-link-id.js"
   },
   "dependencies": {
     "stripe": "^17.5.0"
