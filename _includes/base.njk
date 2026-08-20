@@ -166,9 +166,9 @@
     </style>
     {# Add other head elements like favicons here #}
   </head>
-  <body class="bg-[#fafaf8] text-gray-900 font-sans antialiased">
+  <body class="bg-[#fafaf8] text-gray-900 font-sans antialiased{% if hideHeaderMobile %} hide-header-mobile{% endif %}">
     <!-- Header -->
-    <header class="relative z-50 shadow-lg">
+    <header class="relative z-50 shadow-lg{% if hideHeaderMobile %} max-md:hidden{% endif %}">
       <!-- Background with centered header.png that repeats on sides - showing bottom half -->
       <div class="absolute inset-0 bg-[#1a4a1c]">
         <div class="absolute inset-0" style="background: url('{{ '/images/header.png' | url }}') center bottom / auto 240% repeat-x;"></div>

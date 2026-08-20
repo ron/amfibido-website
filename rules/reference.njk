@@ -1,0 +1,219 @@
+---
+layout: base.njk
+hideHeaderMobile: true
+pagination:
+  data: cardReference.languages
+  size: 1
+  alias: lang
+permalink: /rules/{{ lang }}/reference/
+eleventyComputed:
+  title: "{{ (cardReferenceUi[lang] or cardReferenceUi.en).documentTitle }}"
+  description: "{{ (cardReferenceUi[lang] or cardReferenceUi.en).title }}"
+---
+{% set ui = cardReferenceUi[lang] or cardReferenceUi.en %}
+{% set pack = cardReference.byLang[lang] %}
+{% set cards = pack.cards %}
+
+<section id="card-reference" class="bg-[#fafaf8] min-h-screen md:min-h-[calc(100vh-4rem)]">
+  <div class="sticky top-0 z-40 border-b border-gray-200 bg-[#fafaf8]/95 backdrop-blur-sm">
+    <div class="container mx-auto px-2 sm:px-4 py-2 sm:py-3">
+      <div class="flex flex-col gap-2">
+        <div class="flex items-center justify-between gap-3">
+          <h1 class="text-2xl sm:text-3xl font-headings font-bold text-[#2d5a27] leading-tight">{{ ui.title }}</h1>
+          <p id="card-reference-count" class="text-sm text-gray-500 whitespace-nowrap" data-template="{{ ui.resultCount }}">{{ cards.length }}</p>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <div class="card-ref-filters" role="group" aria-label="{{ ui.levelLabel }} / {{ ui.typeLabel }}">
+            {% for level in [1, 2, 3, 4, 5] %}
+            {% if level == 1 %}{% set roman = "I" %}
+            {% elif level == 2 %}{% set roman = "II" %}
+            {% elif level == 3 %}{% set roman = "III" %}
+            {% elif level == 4 %}{% set roman = "IV" %}
+            {% else %}{% set roman = "V" %}
+            {% endif %}
+            <button
+              type="button"
+              class="card-ref-chip card-ref-chip--icon p-0.5 md:p-1 rounded-md border border-transparent bg-transparent transition"
+              data-filter-group="level"
+              data-filter-value="{{ level }}"
+              aria-pressed="false"
+              aria-label="{{ ui.levelLabel }} {{ ui.levels[level] }}"
+            >
+              <img
+                src="{{ ('/images/reference_icons/' + roman + '.png') | url }}"
+                alt=""
+                width="46"
+                height="64"
+                class="h-7 md:h-9 w-auto pointer-events-none"
+                decoding="async"
+              >
+            </button>
+            {% endfor %}
+
+            <span class="card-ref-filters-divider" aria-hidden="true"></span>
+
+            {% for typeKey in ["fighter", "action", "equipment", "sensei"] %}
+            <button
+              type="button"
+              class="card-ref-chip card-ref-chip--icon p-0.5 md:p-1 rounded-md border border-transparent bg-transparent transition"
+              data-filter-group="type"
+              data-filter-value="{{ typeKey }}"
+              aria-pressed="false"
+              aria-label="{{ ui.types[typeKey] }}"
+            >
+              <img
+                src="{{ ('/images/reference_icons/' + typeKey + '.png') | url }}"
+                alt=""
+                width="48"
+                height="48"
+                class="h-7 w-7 md:h-9 md:w-9 object-contain pointer-events-none"
+                decoding="async"
+              >
+            </button>
+            {% endfor %}
+          </div>
+
+          <div id="card-ref-sub-fighter" class="hidden items-center gap-2 overflow-x-auto pb-1 -mx-1 px-1" role="group" aria-label="{{ ui.creatureLabel }}">
+            {% for creatureKey in ["frog", "toad", "turtle", "lizard", "crocodile", "salamander", "snake", "spawn"] %}
+            <button
+              type="button"
+              class="card-ref-chip shrink-0 px-3 py-2 rounded-lg border border-gray-300 bg-white text-sm font-headings font-semibold text-[#2d5a27] transition-colors"
+              data-filter-group="creature"
+              data-filter-value="{{ creatureKey }}"
+              aria-pressed="false"
+            >{{ ui.creatures[creatureKey] }}</button>
+            {% endfor %}
+          </div>
+
+          <div id="card-ref-sub-action" class="hidden items-center gap-2 overflow-x-auto pb-1 -mx-1 px-1" role="group" aria-label="{{ ui.actionKindLabel }}">
+            {% for kindKey in ["combo", "normal"] %}
+            <button
+              type="button"
+              class="card-ref-chip shrink-0 px-3 py-2 rounded-lg border border-gray-300 bg-white text-sm font-headings font-semibold text-[#2d5a27] transition-colors"
+              data-filter-group="actionKind"
+              data-filter-value="{{ kindKey }}"
+              aria-pressed="false"
+            >{{ ui.actionKinds[kindKey] }}</button>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-2 sm:px-4 py-3 sm:py-4">
+    <ul class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-2 sm:gap-3 list-none p-0 m-0">
+      {% for card in cards %}
+      <li
+        data-card
+        data-level="{{ card.level if card.level else '' }}"
+        data-type="{{ card.type }}"
+        data-sub="{{ card.sub if card.sub else '' }}"
+        data-full="{{ card.file | url }}"
+        data-alt="{{ card.alt }}"
+      >
+        <button
+          type="button"
+          class="card-ref-item group w-full p-0 border-0 bg-transparent cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d5a27] focus-visible:ring-offset-2 rounded-md"
+          aria-label="{{ card.name }}"
+        >
+          <img
+            src="{{ card.thumb | url }}"
+            alt=""
+            width="150"
+            height="210"
+            loading="lazy"
+            decoding="async"
+            class="w-full h-auto rounded-md shadow-sm transition group-hover:shadow-md group-active:scale-[0.98] pointer-events-none"
+          >
+        </button>
+      </li>
+      {% endfor %}
+    </ul>
+
+    <p id="card-reference-empty" class="hidden text-center text-gray-600 py-16 px-4">{{ ui.empty }}</p>
+  </div>
+
+  <div
+    id="card-reference-lightbox"
+    class="fixed inset-0 z-[100] hidden flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="card-reference-lightbox-caption"
+  >
+    <button
+      type="button"
+      id="card-reference-lightbox-close"
+      class="absolute top-3 right-3 sm:top-4 sm:right-4 rounded-full bg-white/10 p-2.5 text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white"
+      aria-label="{{ ui.close }}"
+    >
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <button
+      type="button"
+      id="card-reference-lightbox-prev"
+      class="absolute left-1 sm:left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white"
+      aria-label="{{ ui.previous }}"
+    >
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+    </button>
+    <button
+      type="button"
+      id="card-reference-lightbox-next"
+      class="absolute right-1 sm:right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white"
+      aria-label="{{ ui.next }}"
+    >
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    </button>
+    <figure class="max-h-[92vh] max-w-[min(100vw,28rem)] w-full">
+      <img id="card-reference-lightbox-img" src="" alt="" class="mx-auto max-h-[82vh] w-auto max-w-full object-contain rounded-lg shadow-2xl">
+      <figcaption id="card-reference-lightbox-caption" class="mt-3 text-center text-sm sm:text-base text-white/90 font-headings font-semibold"></figcaption>
+    </figure>
+  </div>
+</section>
+
+<style>
+  .card-ref-filters {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.125rem;
+  }
+  .card-ref-filters-divider {
+    flex-shrink: 0;
+    width: 1px;
+    height: 1.5rem;
+    margin: 0 0.125rem;
+    background-color: #d1d5db;
+  }
+  @media (min-width: 768px) {
+    .card-ref-filters {
+      width: auto;
+      justify-content: flex-start;
+      gap: 0.5rem;
+    }
+    .card-ref-filters-divider {
+      height: 2rem;
+      margin: 0 0.75rem;
+    }
+  }
+  .card-ref-chip.is-active,
+  .card-ref-chip[aria-pressed="true"] {
+    background-color: #2d5a27;
+    border-color: #2d5a27;
+    color: #fff;
+  }
+  .card-ref-chip--icon {
+    opacity: 0.55;
+  }
+  .card-ref-chip--icon.is-active,
+  .card-ref-chip--icon[aria-pressed="true"] {
+    opacity: 1;
+    background-color: rgba(45, 90, 39, 0.12);
+    border-color: #2d5a27;
+  }
+</style>
+
+<script src="{{ '/js/card-reference.js' | url }}?v={{ buildTime }}"></script>

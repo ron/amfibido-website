@@ -13,8 +13,8 @@ description: "Download the official Amfibido game manual and learn how to play."
         <p class="text-lg text-gray-700 max-w-2xl mx-auto">Learn how to play Amfibido with our comprehensive game manual, video tutorial, or ask our AI-powered rules assistant.</p>
       </div>
 
-      <!-- Two Cards Grid -->
-      <div class="grid md:grid-cols-2 gap-6 mb-10">
+      <!-- Resource cards -->
+      <div class="grid md:grid-cols-3 gap-6 mb-10">
         <!-- PDF Card -->
         <div class="bg-white rounded-xl shadow-md border border-gray-200 p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-200">
           <div class="w-16 h-16 bg-[#ff6b1f]/10 rounded-full flex items-center justify-center mb-4">
@@ -44,6 +44,21 @@ description: "Download the official Amfibido game manual and learn how to play."
             </svg>
             Start Chat
           </button>
+        </div>
+
+        <!-- Card reference -->
+        <div class="bg-white rounded-xl shadow-md border border-gray-200 p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-200">
+          <div class="w-16 h-16 bg-[#2d5a27]/10 rounded-full flex items-center justify-center mb-4">
+            <svg class="w-8 h-8 text-[#2d5a27]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
+            </svg>
+          </div>
+          <h2 class="text-xl font-headings font-bold text-[#2d5a27] mb-2">Kaartreferentie (NL)</h2>
+          <p class="text-gray-600 mb-6 flex-grow">Browse every Dutch card by level and type — built for quick lookup on mobile.</p>
+          <a href="{{ '/rules/nl/reference/' | url }}"
+             class="inline-flex items-center gap-2 bg-[#2d5a27] text-white px-6 py-3 rounded-lg font-headings font-semibold hover:bg-[#234520] transition-colors duration-200 shadow-md">
+            Open reference
+          </a>
         </div>
       </div>
 
