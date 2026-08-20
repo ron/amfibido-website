@@ -1,0 +1,23 @@
+<div class="lang-switcher inline-flex items-center gap-1 rounded-full border border-gray-200 bg-white p-1 shadow-sm" role="group" aria-label="{{ (i18n[lang] or i18n.en).lang.switchLabel }}">
+  <button
+    type="button"
+    class="lang-switcher__btn inline-flex items-center justify-center w-9 h-9 rounded-full text-lg leading-none transition hover:bg-gray-100"
+    data-set-lang="en"
+    aria-label="{{ (i18n[lang] or i18n.en).lang.en }}"
+    aria-pressed="{% if lang == 'en' %}true{% else %}false{% endif %}"
+  >🇬🇧</button>
+  <button
+    type="button"
+    class="lang-switcher__btn inline-flex items-center justify-center w-9 h-9 rounded-full text-lg leading-none transition hover:bg-gray-100"
+    data-set-lang="nl"
+    aria-label="{{ (i18n[lang] or i18n.en).lang.nl }}"
+    aria-pressed="{% if lang == 'nl' %}true{% else %}false{% endif %}"
+  >🇳🇱</button>
+</div>
+<style>
+  .lang-switcher__btn.is-active,
+  .lang-switcher__btn[aria-pressed="true"] {
+    background-color: rgba(45, 90, 39, 0.12);
+    box-shadow: inset 0 0 0 1px #2d5a27;
+  }
+</style>

@@ -107,23 +107,32 @@ function loadLanguage(code, imagesRoot) {
 function buildCardReference() {
   const imagesRoot = path.join(__dirname, "..", "images");
   const byLang = {};
-  const languages = [];
+  const cardLanguages = [];
 
-  if (!fs.existsSync(imagesRoot)) {
-    return { languages, byLang };
+  if (fs.existsSync(imagesRoot)) {
+    for (const entry of fs.readdirSync(imagesRoot)) {
+      const dirPath = path.join(imagesRoot, entry);
+      if (!isLanguageCardFolder(entry, dirPath)) continue;
+
+      const lang = loadLanguage(entry, imagesRoot);
+      cardLanguages.push(lang.slug);
+      byLang[lang.slug] = lang;
+    }
+    cardLanguages.sort();
   }
 
-  for (const entry of fs.readdirSync(imagesRoot)) {
-    const dirPath = path.join(imagesRoot, entry);
-    if (!isLanguageCardFolder(entry, dirPath)) continue;
+  // UI scopes always include EN + NL; card art falls back to NL until other folders exist.
+  const uiLanguages = ["en", "nl"];
+  const fallbackSlug = cardLanguages.includes("nl")
+    ? "nl"
+    : cardLanguages[0] || null;
 
-    const lang = loadLanguage(entry, imagesRoot);
-    languages.push(lang.slug);
-    byLang[lang.slug] = lang;
-  }
-
-  languages.sort();
-  return { languages, byLang };
+  return {
+    languages: uiLanguages,
+    cardLanguages,
+    fallbackSlug,
+    byLang,
+  };
 }
 
 export default buildCardReference();

@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "lang": "en",
+    "locale": "en"
+  },
+  "rules": {
+    "documentTitle": "Rules | Amfibido",
+    "description": "Download the official Amfibido game manual and learn how to play.",
+    "title": "Game Rules",
+    "subtitle": "Official manual, card reference, and rules help — in English.",
+    "manualTitle": "Game Manual",
+    "manualBody": "Download the complete rulebook with all card types, game phases, and advanced strategies.",
+    "manualCta": "Download PDF",
+    "manualPdf": "/documents/Amfibido Game Manual.pdf",
+    "minamiTitle": "Ask Mr. Minami",
+    "minamiBody": "Have a rules question? Our AI assistant knows the game inside out and can answer instantly.",
+    "minamiCta": "Start Chat",
+    "referenceTitle": "All cards",
+    "referenceBody": "Browse every card by level and type — built for quick lookup on mobile.",
+    "referenceCta": "Browse cards",
+    "videoTitle": "Video Tutorial",
+    "videoNoteNl": "Review & rules at Nox Spellenzolder (Dutch)",
+    "videoTitleEn": "Amfibido video tutorial",
+    "videoTitleNl": "Amfibido review and rules — Nox Spellenzolder"
+  },
+  "chat": {
+    "openLabel": "Open chat",
+    "closeLabel": "Close chat",
+    "title": "Ask about the rules",
+    "subtitle": "Powered by AI",
+    "welcome": "I'm Mr Minami, I know everything about the Amfibido rules. Bear with me, I might still make some mistakes.",
+    "placeholder": "Ask a question...",
+    "errorGeneric": "Sorry, something went wrong. Please try again.",
+    "errorConnect": "Sorry, I couldn't connect. Please try again later."
+  },
+  "cardReference": {
+    "documentTitle": "All cards | Amfibido",
+    "title": "All cards",
+    "levelLabel": "Level",
+    "typeLabel": "Type",
+    "empty": "No cards match these filters.",
+    "close": "Close",
+    "previous": "Previous card",
+    "next": "Next card",
+    "resultCount": "{count} cards",
+    "pdfLabel": "Manual",
+    "pdfUrl": "/documents/Amfibido Game Manual.pdf",
+    "types": {
+      "fighter": "Fighter",
+      "action": "Action",
+      "equipment": "Equipment",
+      "sensei": "Sensei"
+    }
+  },
+  "lang": {
+    "en": "English",
+    "nl": "Dutch",
+    "switchLabel": "Language"
+  }
+}

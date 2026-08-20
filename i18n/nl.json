@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "lang": "nl",
+    "locale": "nl"
+  },
+  "rules": {
+    "documentTitle": "Spelregels | Amfibido",
+    "description": "Nederlandse Amfibido-handleiding en kaartreferentie voor Nederlandse en Belgische spelers.",
+    "title": "Spelregels",
+    "subtitle": "Nederlandse handleiding en kaartreferentie.",
+    "manualTitle": "Handleiding",
+    "manualBody": "Download het complete regelboek met alle kaarttypes, spelrondes en geavanceerde strategieën.",
+    "manualCta": "PDF downloaden",
+    "manualPdf": "/documents/Amfibido Manual Nederlands.pdf",
+    "minamiTitle": "Vraag het Mr. Minami",
+    "minamiBody": "Een regelsvraag? Onze AI-assistent kent het spel door en door en antwoordt meteen.",
+    "minamiCta": "Start chat",
+    "referenceTitle": "Alle kaarten",
+    "referenceBody": "Bekijk alle kaarten op niveau en type — gemaakt voor snel opzoeken op mobiel.",
+    "referenceCta": "Bekijk kaarten",
+    "videoTitle": "Videotutorial",
+    "videoNoteNl": "Review & spelregels bij Nox Spellenzolder (Nederlands)",
+    "videoTitleEn": "Amfibido videotutorial",
+    "videoTitleNl": "Amfibido review en spelregels — Nox Spellenzolder"
+  },
+  "chat": {
+    "openLabel": "Chat openen",
+    "closeLabel": "Chat sluiten",
+    "title": "Vragen over de regels",
+    "subtitle": "Aangedreven door AI",
+    "welcome": "Ik ben Mr Minami, ik ken alle Amfibido-regels. Hou er rekening mee dat ik soms nog fouten maak.",
+    "placeholder": "Stel een vraag...",
+    "errorGeneric": "Sorry, er ging iets mis. Probeer het opnieuw.",
+    "errorConnect": "Sorry, ik kon geen verbinding maken. Probeer het later opnieuw."
+  },
+  "cardReference": {
+    "documentTitle": "Alle kaarten | Amfibido",
+    "title": "Alle kaarten",
+    "levelLabel": "Niveau",
+    "typeLabel": "Type",
+    "empty": "Geen kaarten komen overeen met deze filters.",
+    "close": "Sluiten",
+    "previous": "Vorige kaart",
+    "next": "Volgende kaart",
+    "resultCount": "{count} kaarten",
+    "pdfLabel": "Handleiding",
+    "pdfUrl": "/documents/Amfibido Manual Nederlands.pdf",
+    "types": {
+      "fighter": "Vechter",
+      "action": "Actie",
+      "equipment": "Uitrusting",
+      "sensei": "Sensei"
+    }
+  },
+  "lang": {
+    "en": "Engels",
+    "nl": "Nederlands",
+    "switchLabel": "Taal"
+  }
+}

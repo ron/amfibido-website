@@ -14,6 +14,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("js");
   eleventyConfig.addPassthroughCopy("documents");
   eleventyConfig.addPassthroughCopy("context");
+  eleventyConfig.addPassthroughCopy("i18n");
   // Do NOT copy CSS files - they are processed by PostCSS
   eleventyConfig.addPassthroughCopy("_headers");
   eleventyConfig.addPassthroughCopy(".nojekyll");

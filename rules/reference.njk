@@ -7,96 +7,88 @@ pagination:
   alias: lang
 permalink: /rules/{{ lang }}/reference/
 eleventyComputed:
-  title: "{{ (cardReferenceUi[lang] or cardReferenceUi.en).documentTitle }}"
-  description: "{{ (cardReferenceUi[lang] or cardReferenceUi.en).title }}"
+  title: "{{ (i18n[lang] or i18n.en).cardReference.documentTitle }}"
+  description: "{{ (i18n[lang] or i18n.en).cardReference.title }}"
 ---
-{% set ui = cardReferenceUi[lang] or cardReferenceUi.en %}
-{% set pack = cardReference.byLang[lang] %}
+{% set ui = (i18n[lang] or i18n.en).cardReference %}
+{% set pack = cardReference.byLang[lang] or cardReference.byLang[cardReference.fallbackSlug] %}
 {% set cards = pack.cards %}
 
 <section id="card-reference" class="bg-[#fafaf8] min-h-screen md:min-h-[calc(100vh-4rem)]">
   <div class="sticky top-0 z-40 border-b border-gray-200 bg-[#fafaf8]/95 backdrop-blur-sm">
     <div class="container mx-auto px-2 sm:px-4 py-2 sm:py-3">
       <div class="flex flex-col gap-2">
-        <div class="flex items-center justify-between gap-3">
-          <h1 class="text-2xl sm:text-3xl font-headings font-bold text-[#2d5a27] leading-tight">{{ ui.title }}</h1>
-          <p id="card-reference-count" class="text-sm text-gray-500 whitespace-nowrap" data-template="{{ ui.resultCount }}">{{ cards.length }}</p>
+        <div class="flex items-center justify-between gap-2 sm:gap-3">
+          <h1 class="text-2xl sm:text-3xl font-headings font-bold text-[#2d5a27] leading-tight truncate min-w-0">{{ ui.title }}</h1>
+          <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+            <p id="card-reference-count" class="text-sm text-gray-500 whitespace-nowrap hidden md:block" data-template="{{ ui.resultCount }}">{{ cards.length }}</p>
+            <a
+              href="{{ ui.pdfUrl | url }}"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="cardReference.pdfLabel"
+              data-i18n-href="cardReference.pdfUrl"
+              class="inline-flex items-center gap-1.5 rounded-full border border-gray-200 bg-white px-2.5 py-1.5 text-xs sm:text-sm font-headings font-semibold text-[#2d5a27] hover:border-[#2d5a27]/40 hover:bg-[#2d5a27]/5 transition-colors"
+              title="{{ ui.pdfLabel }}"
+              aria-label="{{ ui.pdfLabel }}"
+            >
+              <svg class="w-4 h-4 text-[#ff6b1f] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+              <span data-i18n-text="cardReference.pdfLabel">{{ ui.pdfLabel }}</span>
+            </a>
+            {% include "lang-switcher.njk" %}
+          </div>
         </div>
 
-        <div class="flex flex-col gap-2">
-          <div class="card-ref-filters" role="group" aria-label="{{ ui.levelLabel }} / {{ ui.typeLabel }}">
-            {% for level in [1, 2, 3, 4, 5] %}
-            {% if level == 1 %}{% set roman = "I" %}
-            {% elif level == 2 %}{% set roman = "II" %}
-            {% elif level == 3 %}{% set roman = "III" %}
-            {% elif level == 4 %}{% set roman = "IV" %}
-            {% else %}{% set roman = "V" %}
-            {% endif %}
-            <button
-              type="button"
-              class="card-ref-chip card-ref-chip--icon p-0.5 md:p-1 rounded-md border border-transparent bg-transparent transition"
-              data-filter-group="level"
-              data-filter-value="{{ level }}"
-              aria-pressed="false"
-              aria-label="{{ ui.levelLabel }} {{ ui.levels[level] }}"
+        <div class="card-ref-filters" role="group" aria-label="{{ ui.levelLabel }} / {{ ui.typeLabel }}">
+          {% for level in [1, 2, 3, 4, 5] %}
+          {% if level == 1 %}{% set roman = "I" %}
+          {% elif level == 2 %}{% set roman = "II" %}
+          {% elif level == 3 %}{% set roman = "III" %}
+          {% elif level == 4 %}{% set roman = "IV" %}
+          {% else %}{% set roman = "V" %}
+          {% endif %}
+          <button
+            type="button"
+            class="card-ref-chip card-ref-chip--icon p-0.5 md:p-1 rounded-md border border-transparent bg-transparent transition"
+            data-filter-group="level"
+            data-filter-value="{{ level }}"
+            aria-pressed="false"
+            aria-label="{{ ui.levelLabel }} {{ level }}"
+          >
+            <img
+              src="{{ ('/images/reference_icons/' + roman + '.png') | url }}"
+              alt=""
+              width="46"
+              height="64"
+              class="h-7 md:h-9 w-auto pointer-events-none"
+              decoding="async"
             >
-              <img
-                src="{{ ('/images/reference_icons/' + roman + '.png') | url }}"
-                alt=""
-                width="46"
-                height="64"
-                class="h-7 md:h-9 w-auto pointer-events-none"
-                decoding="async"
-              >
-            </button>
-            {% endfor %}
+          </button>
+          {% endfor %}
 
-            <span class="card-ref-filters-divider" aria-hidden="true"></span>
+          <span class="card-ref-filters-divider" aria-hidden="true"></span>
 
-            {% for typeKey in ["fighter", "action", "equipment", "sensei"] %}
-            <button
-              type="button"
-              class="card-ref-chip card-ref-chip--icon p-0.5 md:p-1 rounded-md border border-transparent bg-transparent transition"
-              data-filter-group="type"
-              data-filter-value="{{ typeKey }}"
-              aria-pressed="false"
-              aria-label="{{ ui.types[typeKey] }}"
+          {% for typeKey in ["fighter", "action", "equipment", "sensei"] %}
+          <button
+            type="button"
+            class="card-ref-chip card-ref-chip--icon p-0.5 md:p-1 rounded-md border border-transparent bg-transparent transition"
+            data-filter-group="type"
+            data-filter-value="{{ typeKey }}"
+            aria-pressed="false"
+            aria-label="{{ ui.types[typeKey] }}"
+          >
+            <img
+              src="{{ ('/images/reference_icons/' + typeKey + '.png') | url }}"
+              alt=""
+              width="48"
+              height="48"
+              class="h-7 w-7 md:h-9 md:w-9 object-contain pointer-events-none"
+              decoding="async"
             >
-              <img
-                src="{{ ('/images/reference_icons/' + typeKey + '.png') | url }}"
-                alt=""
-                width="48"
-                height="48"
-                class="h-7 w-7 md:h-9 md:w-9 object-contain pointer-events-none"
-                decoding="async"
-              >
-            </button>
-            {% endfor %}
-          </div>
-
-          <div id="card-ref-sub-fighter" class="hidden items-center gap-2 overflow-x-auto pb-1 -mx-1 px-1" role="group" aria-label="{{ ui.creatureLabel }}">
-            {% for creatureKey in ["frog", "toad", "turtle", "lizard", "crocodile", "salamander", "snake", "spawn"] %}
-            <button
-              type="button"
-              class="card-ref-chip shrink-0 px-3 py-2 rounded-lg border border-gray-300 bg-white text-sm font-headings font-semibold text-[#2d5a27] transition-colors"
-              data-filter-group="creature"
-              data-filter-value="{{ creatureKey }}"
-              aria-pressed="false"
-            >{{ ui.creatures[creatureKey] }}</button>
-            {% endfor %}
-          </div>
-
-          <div id="card-ref-sub-action" class="hidden items-center gap-2 overflow-x-auto pb-1 -mx-1 px-1" role="group" aria-label="{{ ui.actionKindLabel }}">
-            {% for kindKey in ["combo", "normal"] %}
-            <button
-              type="button"
-              class="card-ref-chip shrink-0 px-3 py-2 rounded-lg border border-gray-300 bg-white text-sm font-headings font-semibold text-[#2d5a27] transition-colors"
-              data-filter-group="actionKind"
-              data-filter-value="{{ kindKey }}"
-              aria-pressed="false"
-            >{{ ui.actionKinds[kindKey] }}</button>
-            {% endfor %}
-          </div>
+          </button>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -109,7 +101,6 @@ eleventyComputed:
         data-card
         data-level="{{ card.level if card.level else '' }}"
         data-type="{{ card.type }}"
-        data-sub="{{ card.sub if card.sub else '' }}"
         data-full="{{ card.file | url }}"
         data-alt="{{ card.alt }}"
       >

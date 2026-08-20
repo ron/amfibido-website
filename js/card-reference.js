@@ -7,8 +7,6 @@
   var emptyEl = document.getElementById("card-reference-empty");
   var countEl = document.getElementById("card-reference-count");
   var countTemplate = countEl ? countEl.getAttribute("data-template") || "{count} cards" : "";
-  var subFighterRow = document.getElementById("card-ref-sub-fighter");
-  var subActionRow = document.getElementById("card-ref-sub-action");
 
   var lightbox = document.getElementById("card-reference-lightbox");
   var imgEl = document.getElementById("card-reference-lightbox-img");
@@ -17,7 +15,7 @@
   var btnPrev = document.getElementById("card-reference-lightbox-prev");
   var btnNext = document.getElementById("card-reference-lightbox-next");
 
-  var selected = { level: {}, type: {}, creature: {}, actionKind: {} };
+  var selected = { level: {}, type: {} };
   var visibleButtons = [];
   var lightboxIndex = 0;
   var touchStartX = null;
@@ -28,39 +26,11 @@
     });
   }
 
-  function clearGroup(group) {
-    selected[group] = {};
-    root.querySelectorAll('[data-filter-group="' + group + '"]').forEach(function (chip) {
-      chip.setAttribute("aria-pressed", "false");
-      chip.classList.remove("is-active");
-    });
-  }
-
-  function syncSubfilterRows() {
-    var types = selectedKeys("type");
-    var showFighter = types.indexOf("fighter") !== -1;
-    var showAction = types.indexOf("action") !== -1;
-
-    if (subFighterRow) {
-      subFighterRow.classList.toggle("hidden", !showFighter);
-      subFighterRow.classList.toggle("flex", showFighter);
-      if (!showFighter) clearGroup("creature");
-    }
-    if (subActionRow) {
-      subActionRow.classList.toggle("hidden", !showAction);
-      subActionRow.classList.toggle("flex", showAction);
-      if (!showAction) clearGroup("actionKind");
-    }
-  }
-
   function cardMatches(card) {
     var levels = selectedKeys("level");
     var types = selectedKeys("type");
-    var creatures = selectedKeys("creature");
-    var actionKinds = selectedKeys("actionKind");
     var cardType = card.getAttribute("data-type");
     var cardLevel = card.getAttribute("data-level");
-    var cardSub = card.getAttribute("data-sub") || "";
 
     var typeOk = types.length === 0 || types.indexOf(cardType) !== -1;
     var levelOk =
@@ -68,14 +38,7 @@
       (cardLevel && levels.indexOf(cardLevel) !== -1) ||
       (cardType === "sensei" && types.indexOf("sensei") !== -1);
 
-    var subOk = true;
-    if (cardType === "fighter" && creatures.length > 0) {
-      subOk = creatures.indexOf(cardSub) !== -1;
-    } else if (cardType === "action" && actionKinds.length > 0) {
-      subOk = actionKinds.indexOf(cardSub) !== -1;
-    }
-
-    return typeOk && levelOk && subOk;
+    return typeOk && levelOk;
   }
 
   function updateCount(visibleCount) {
@@ -104,8 +67,6 @@
       selected[group][value] = !selected[group][value];
       chip.setAttribute("aria-pressed", selected[group][value] ? "true" : "false");
       chip.classList.toggle("is-active", Boolean(selected[group][value]));
-
-      if (group === "type") syncSubfilterRows();
       applyFilters();
     });
   });
@@ -191,6 +152,5 @@
     );
   }
 
-  syncSubfilterRows();
   applyFilters();
 })();

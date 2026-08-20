@@ -2,98 +2,36 @@
 layout: base.njk
 title: "Rules | Amfibido"
 description: "Download the official Amfibido game manual and learn how to play."
+permalink: /rules/
 ---
-
-<section class="py-8 md:py-14 bg-[#fafaf8]">
-  <div class="container mx-auto px-4 md:px-6">
-    <div class="max-w-5xl mx-auto">
-      <!-- Header -->
-      <div class="text-center mb-10">
-        <h1 class="text-4xl md:text-5xl font-headings font-bold text-[#2d5a27] mb-4">Game Rules</h1>
-        <p class="text-lg text-gray-700 max-w-2xl mx-auto">Learn how to play Amfibido with our comprehensive game manual, video tutorial, or ask our AI-powered rules assistant.</p>
-      </div>
-
-      <!-- Resource cards -->
-      <div class="grid md:grid-cols-3 gap-6 mb-10">
-        <!-- PDF Card -->
-        <div class="bg-white rounded-xl shadow-md border border-gray-200 p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-200">
-          <div class="w-16 h-16 bg-[#ff6b1f]/10 rounded-full flex items-center justify-center mb-4">
-            <svg class="w-8 h-8 text-[#ff6b1f]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-            </svg>
-          </div>
-          <h2 class="text-xl font-headings font-bold text-[#2d5a27] mb-2">Game Manual</h2>
-          <p class="text-gray-600 mb-6 flex-grow">Download the complete rulebook with all card types, game phases, and advanced strategies.</p>
-          <a href="{{ '/documents/Amfibido Game Manual.pdf' | url }}" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-2 bg-[#ff6b1f] text-white px-6 py-3 rounded-lg font-headings font-semibold hover:bg-[#e55a10] transition-colors duration-200 shadow-md">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-            </svg>
-            Download PDF
-          </a>
-        </div>
-
-        <!-- Mr. Minami Card -->
-        <div class="bg-white rounded-xl shadow-md border border-gray-200 p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-200">
-          <img src="{{ '/images/mr-minami.png' | url }}" alt="Mr. Minami" class="w-20 h-20 object-contain mb-2">
-          <h2 class="text-xl font-headings font-bold text-[#2d5a27] mb-2">Ask Mr. Minami</h2>
-          <p class="text-gray-600 mb-6 flex-grow">Have a rules question? Our AI assistant knows the game inside out and can answer instantly.</p>
-          <button type="button" id="ask-minami-btn" class="inline-flex items-center gap-2 bg-[#2d5a27] text-white px-6 py-3 rounded-lg font-headings font-semibold hover:bg-[#234520] transition-colors duration-200 shadow-md cursor-pointer">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-            </svg>
-            Start Chat
-          </button>
-        </div>
-
-        <!-- Card reference -->
-        <div class="bg-white rounded-xl shadow-md border border-gray-200 p-6 flex flex-col items-center text-center hover:shadow-lg transition-shadow duration-200">
-          <div class="w-16 h-16 bg-[#2d5a27]/10 rounded-full flex items-center justify-center mb-4">
-            <svg class="w-8 h-8 text-[#2d5a27]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/>
-            </svg>
-          </div>
-          <h2 class="text-xl font-headings font-bold text-[#2d5a27] mb-2">Kaartreferentie (NL)</h2>
-          <p class="text-gray-600 mb-6 flex-grow">Browse every Dutch card by level and type — built for quick lookup on mobile.</p>
-          <a href="{{ '/rules/nl/reference/' | url }}"
-             class="inline-flex items-center gap-2 bg-[#2d5a27] text-white px-6 py-3 rounded-lg font-headings font-semibold hover:bg-[#234520] transition-colors duration-200 shadow-md">
-            Open reference
-          </a>
-        </div>
-      </div>
-
-      <!-- Rules Video Section: default English tutorial; NL/BE get Nox Spellenzolder review & rules (client-side) -->
-      <div class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden">
-        <div class="p-6 border-b border-gray-100">
-          <h2 class="text-xl font-headings font-bold text-[#2d5a27] text-center">Video Tutorial</h2>
-          <p id="rules-video-note" class="text-sm text-gray-500 text-center mt-2 hidden">Review &amp; spelregels bij Nox Spellenzolder (Nederlands)</p>
-        </div>
-        <div class="aspect-video bg-gray-50">
-          <iframe id="rules-tutorial-video" class="w-full h-full" src="https://www.youtube-nocookie.com/embed/sCV98bm-EgM" title="Amfibido video tutorial" loading="lazy" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-      </div>
-
-    </div>
-  </div>
+{# Entry point: redirect to /rules/en/ or /rules/nl/ from geo + localStorage #}
+<section class="py-16 bg-[#fafaf8] min-h-[40vh] flex items-center justify-center">
+  <p class="text-gray-500 text-sm">Loading rules…</p>
 </section>
-
 <script>
 (function () {
-  var iframe = document.getElementById('rules-tutorial-video');
-  var note = document.getElementById('rules-video-note');
-  if (!iframe) return;
-  var EN = 'https://www.youtube-nocookie.com/embed/sCV98bm-EgM';
-  var NL_BE = 'https://www.youtube-nocookie.com/embed/7Eqj0hTTLEU';
-  fetch('https://ipapi.co/json/')
+  var STORAGE_KEY = "amfibido_lang";
+  function go(lang) {
+    window.location.replace(lang === "nl" ? "/rules/nl/" : "/rules/en/");
+  }
+  try {
+    var stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === "nl" || stored === "en") {
+      go(stored);
+      return;
+    }
+  } catch (e) {}
+  fetch("https://ipapi.co/json/")
     .then(function (res) { return res.json(); })
     .then(function (data) {
-      var cc = data.country_code;
-      if (cc === 'NL' || cc === 'BE') {
-        iframe.src = NL_BE;
-        iframe.title = 'Amfibido review en spelregels — Nox Spellenzolder';
-        if (note) note.classList.remove('hidden');
-      }
+      var cc = data && data.country_code;
+      var lang = (cc === "NL" || cc === "BE") ? "nl" : "en";
+      try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
+      go(lang);
     })
-    .catch(function () {});
+    .catch(function () {
+      try { localStorage.setItem(STORAGE_KEY, "en"); } catch (e) {}
+      go("en");
+    });
 })();
 </script>
