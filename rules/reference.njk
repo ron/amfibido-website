@@ -103,10 +103,11 @@ eleventyComputed:
         data-type="{{ card.type }}"
         data-full="{{ card.file | url }}"
         data-alt="{{ card.alt }}"
+        {% if card.comments and card.comments.length %}data-comments='{{ card.comments | json }}'{% endif %}
       >
         <button
           type="button"
-          class="card-ref-item group w-full p-0 border-0 bg-transparent cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d5a27] focus-visible:ring-offset-2 rounded-md"
+          class="card-ref-item group relative w-full p-0 border-0 bg-transparent cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2d5a27] focus-visible:ring-offset-2 rounded-md"
           aria-label="{{ card.name }}"
         >
           <img
@@ -118,6 +119,23 @@ eleventyComputed:
             decoding="async"
             class="w-full h-auto rounded-md shadow-sm transition group-hover:shadow-md group-active:scale-[0.98] pointer-events-none"
           >
+          {% if card.comments and card.comments.length %}
+          <span
+            class="card-ref-comment-badge"
+            tabindex="0"
+            aria-label="{{ ui.commentsAria }}"
+            data-i18n-aria="cardReference.commentsAria"
+          >
+            <svg class="card-ref-comment-badge__icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span class="card-ref-comment-tooltip" role="tooltip">
+              {% for note in card.comments %}
+              <span class="card-ref-comment-tooltip__item">{{ note }}</span>
+              {% endfor %}
+            </span>
+          </span>
+          {% endif %}
         </button>
       </li>
       {% endfor %}
@@ -157,9 +175,13 @@ eleventyComputed:
     >
       <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
     </button>
-    <figure class="max-h-[92vh] max-w-[min(100vw,28rem)] w-full">
-      <img id="card-reference-lightbox-img" src="" alt="" class="mx-auto max-h-[82vh] w-auto max-w-full object-contain rounded-lg shadow-2xl">
-      <figcaption id="card-reference-lightbox-caption" class="mt-3 text-center text-sm sm:text-base text-white/90 font-headings font-semibold"></figcaption>
+    <figure class="card-ref-lightbox-figure max-h-[92vh] max-w-[min(100vw,28rem)] w-full flex flex-col">
+      <img id="card-reference-lightbox-img" src="" alt="" class="card-ref-lightbox-img mx-auto max-h-[82vh] w-auto max-w-full object-contain rounded-lg shadow-2xl">
+      <figcaption id="card-reference-lightbox-caption" class="mt-3 text-center text-sm sm:text-base text-white/90 font-headings font-semibold shrink-0"></figcaption>
+      <div id="card-reference-lightbox-comments" class="card-ref-lightbox-comments hidden mt-3 shrink-0" aria-live="polite">
+        <p id="card-reference-lightbox-comments-title" class="card-ref-lightbox-comments__title">{{ ui.commentsTitle }}</p>
+        <ul id="card-reference-lightbox-comments-list" class="card-ref-lightbox-comments__list"></ul>
+      </div>
     </figure>
   </div>
 </section>
@@ -204,6 +226,104 @@ eleventyComputed:
     opacity: 1;
     background-color: rgba(45, 90, 39, 0.12);
     border-color: #2d5a27;
+  }
+
+  .card-ref-comment-badge {
+    position: absolute;
+    right: 0.2rem;
+    bottom: 0.2rem;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 0.3rem;
+    background: rgba(255, 255, 255, 0.95);
+    color: #ff6b1f;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+    pointer-events: auto;
+  }
+
+  .card-ref-comment-badge__icon {
+    width: 0.85rem;
+    height: 0.85rem;
+  }
+
+  .card-ref-comment-tooltip {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 0.35rem);
+    z-index: 30;
+    display: none;
+    width: max-content;
+    max-width: min(16rem, 70vw);
+    padding: 0.5rem 0.65rem;
+    border-radius: 0.5rem;
+    background: #1f2937;
+    color: #f9fafb;
+    font-size: 0.7rem;
+    line-height: 1.35;
+    text-align: left;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    pointer-events: none;
+  }
+
+  .card-ref-comment-tooltip__item {
+    display: block;
+  }
+
+  .card-ref-comment-tooltip__item + .card-ref-comment-tooltip__item {
+    margin-top: 0.35rem;
+    padding-top: 0.35rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .card-ref-comment-tooltip__item::before {
+    content: "• ";
+    color: #ff6b1f;
+  }
+
+  .card-ref-comment-badge:hover .card-ref-comment-tooltip,
+  .card-ref-comment-badge:focus .card-ref-comment-tooltip,
+  .card-ref-comment-badge:focus-within .card-ref-comment-tooltip {
+    display: block;
+  }
+
+  .card-ref-lightbox-img.has-comments {
+    max-height: 62vh;
+  }
+
+  .card-ref-lightbox-comments {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    max-height: 30vh;
+    overflow-y: auto;
+  }
+
+  .card-ref-lightbox-comments__title {
+    margin: 0 0 0.5rem;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .card-ref-lightbox-comments__list {
+    margin: 0;
+    padding-left: 1rem;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
+
+  .card-ref-lightbox-comments__list li + li {
+    margin-top: 0.45rem;
   }
 </style>
 

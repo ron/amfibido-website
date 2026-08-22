@@ -11,8 +11,8 @@
     "start": "npm-run-all build:css --parallel start:eleventy watch:css",
     "build:eleventy": "ELEVENTY_ENV=development eleventy",
     "build:eleventy:prod": "ELEVENTY_ENV=production eleventy",
-    "build": "npm-run-all build:eleventy build:css",
-    "build:prod": "npm-run-all build:eleventy:prod build:css:prod",
+    "build": "npm-run-all generate:card-thumbs build:eleventy build:css",
+    "build:prod": "npm-run-all generate:card-thumbs build:eleventy:prod build:css:prod",
     "optimize:images": "node optimize-images.js",
     "generate:card-thumbs": "node scripts/generate-card-thumbs.js"
   },

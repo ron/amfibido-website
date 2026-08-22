@@ -64,12 +64,12 @@
     "messages": [
       {
         "role": "user",
-        "content": "Newt doubles the base power bonus from equipment. Wrist Wraps has +2 printed and +2 more from its ability if a fighter entered the dojo. Does Newt double both +2s?"
+        "content": "Newt doubles the base power bonus from equipment. Wrist Wraps gives +2 from its ability if a fighter entered the dojo. Does Newt double that +2?"
       }
     ],
     "expect": {
-      "includesAny": ["printed", "base", "ability", "not"],
-      "excludes": ["doubles both", "doubles the full +4", "doubles both +2"]
+      "includesAny": ["no", "not", "ability", "doesn't", "does not"],
+      "excludes": ["doubles the +2", "doubles both", "doubles the full +4", "doubles both +2"]
     }
   },
   {
@@ -115,8 +115,8 @@
       }
     ],
     "expect": {
-      "includesAny": ["+2", "plus 2"],
-      "excludes": ["base power of the Wrist Wraps equipment is +4", "Wrist Wraps gains +2 power if one of your fighters entered the dojo this round. Additionally"]
+      "includesAny": ["0", "none", "no base power", "no printed", "does not have"],
+      "excludes": ["base power of the Wrist Wraps equipment is +4", "Wrist Wraps gains +2 power if one of your fighters entered the dojo this round. Additionally", "+2 base power"]
     }
   }
 ]

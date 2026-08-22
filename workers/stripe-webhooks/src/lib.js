@@ -104,44 +104,17 @@ export async function buildKapiteinspelHeaders(payload, timestamp, secret) {
 export function parseStripeSignatureHeader(header) {
 	/** @type {string | undefined} */
 	let timestamp;
-	/** @type {string | undefined} */
-	let signature;
+	/** @type {string[]} */
+	const signatures = [];
 
 	for (const part of header.split(',')) {
-		const [key, value] = part.split('=');
+		const [key, ...valueParts] = part.split('=');
+		const value = valueParts.join('=');
 		if (key === 't') timestamp = value;
-		if (key === 'v1') signature = value;
+		if (key === 'v1' && value) signatures.push(value);
 	}
 
-	return { timestamp, signature };
-}
-
-/**
- * @param {string} secret
- */
-function decodeWebhookSecret(secret) {
-	const encoded = secret.replace(/^whsec_/, '');
-	const binary = atob(encoded);
-	return Uint8Array.from(binary, (char) => char.charCodeAt(0));
-}
-
-/**
- * @param {string} message
- * @param {Uint8Array} keyBytes
- */
-async function hmacSha256HexWithKey(message, keyBytes) {
-	const enc = new TextEncoder();
-	const key = await crypto.subtle.importKey(
-		'raw',
-		keyBytes,
-		{ name: 'HMAC', hash: 'SHA-256' },
-		false,
-		['sign']
-	);
-	const signature = await crypto.subtle.sign('HMAC', key, enc.encode(message));
-	return [...new Uint8Array(signature)]
-		.map((byte) => byte.toString(16).padStart(2, '0'))
-		.join('');
+	return { timestamp, signatures };
 }
 
 /**
@@ -171,8 +144,8 @@ export async function verifyStripeWebhook(
 ) {
 	if (!signatureHeader) return null;
 
-	const { timestamp, signature } = parseStripeSignatureHeader(signatureHeader);
-	if (!timestamp || !signature) return null;
+	const { timestamp, signatures } = parseStripeSignatureHeader(signatureHeader);
+	if (!timestamp || signatures.length === 0) return null;
 
 	const ts = Number.parseInt(timestamp, 10);
 	if (!Number.isFinite(ts)) return null;
@@ -183,12 +156,15 @@ export async function verifyStripeWebhook(
 	const signedPayload = `${timestamp}.${body}`;
 
 	for (const secret of secrets) {
-		if (!secret) continue;
+		const trimmedSecret = secret?.trim();
+		if (!trimmedSecret) continue;
+
 		try {
-			const keyBytes = decodeWebhookSecret(secret);
-			const expected = await hmacSha256HexWithKey(signedPayload, keyBytes);
-			if (timingSafeEqualHex(signature, expected)) {
-				return JSON.parse(body);
+			const expected = await hmacSha256Hex(signedPayload, trimmedSecret);
+			for (const signature of signatures) {
+				if (timingSafeEqualHex(signature, expected)) {
+					return JSON.parse(body);
+				}
 			}
 		} catch {
 			// try next secret

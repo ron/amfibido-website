@@ -28,7 +28,7 @@
     "closeLabel": "Chat sluiten",
     "title": "Vragen over de regels",
     "subtitle": "Aangedreven door AI",
-    "welcome": "Ik ben Mr Minami, ik ken alle Amfibido-regels. Hou er rekening mee dat ik soms nog fouten maak.",
+    "welcome": "Ik ben Mr Minami, ik ken alle Amfibido-regels.",
     "placeholder": "Stel een vraag...",
     "errorGeneric": "Sorry, er ging iets mis. Probeer het opnieuw.",
     "errorConnect": "Sorry, ik kon geen verbinding maken. Probeer het later opnieuw."
@@ -43,6 +43,8 @@
     "previous": "Vorige kaart",
     "next": "Volgende kaart",
     "resultCount": "{count} kaarten",
+    "commentsTitle": "Toelichting",
+    "commentsAria": "Heeft regeltoelichting",
     "pdfLabel": "Handleiding",
     "pdfUrl": "/documents/Amfibido Manual Nederlands.pdf",
     "types": {

@@ -42,6 +42,8 @@ Total Power = Base power fighter + Base power equipment + Power from abilities +
 
 **Cards that copy or double “base power bonuses” from equipment** (Marbled Salamander, Siren Salamander, Newt, Axolotl, and similar wording): they only use equipment **base power** (step 2 / 5). They do **not** copy ability-granted power (step 3). Example: adjacent Kung Fu Gi’s activated +3 is ability power → not copied; adjacent Nunchucks `+*` is base power → copied/doubled as that card says.
 
+**Example — Wrist Wraps:** This equipment has **no printed base power**. Its conditional "+2 power" (when a fighter entered the dojo this round) is **ability power** — it is not base power. Newt and Axolotl do not double it; Marbled Salamander and Siren Salamander do not copy it. Silent Lee does not apply to Wrist Wraps.
+
 ## Neutralize
 **Principle:** Neutralize ignores **abilities** (including ability-granted power). It does **not** remove printed base power or fighter type.
 

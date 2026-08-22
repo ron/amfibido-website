@@ -37,6 +37,8 @@ module.exports = function(eleventyConfig) {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat(format);
   });
 
+  eleventyConfig.addFilter("json", (value) => JSON.stringify(value));
+
   // Add build timestamp
   let now = new Date();
   eleventyConfig.addGlobalData("build", {

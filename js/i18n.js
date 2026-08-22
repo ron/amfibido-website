@@ -167,6 +167,13 @@
     if (prevBtn) prevBtn.setAttribute("aria-label", ui.previous);
     var nextBtn = document.getElementById("card-reference-lightbox-next");
     if (nextBtn) nextBtn.setAttribute("aria-label", ui.next);
+
+    document.querySelectorAll("[data-i18n-aria='cardReference.commentsAria']").forEach(function (el) {
+      if (ui.commentsAria) el.setAttribute("aria-label", ui.commentsAria);
+    });
+
+    var commentsTitle = document.getElementById("card-reference-lightbox-comments-title");
+    if (commentsTitle && ui.commentsTitle) commentsTitle.textContent = ui.commentsTitle;
   }
 
   function bindFlags() {

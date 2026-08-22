@@ -28,7 +28,7 @@
     "closeLabel": "Close chat",
     "title": "Ask about the rules",
     "subtitle": "Powered by AI",
-    "welcome": "I'm Mr Minami, I know everything about the Amfibido rules. Bear with me, I might still make some mistakes.",
+    "welcome": "I'm Mr Minami, I know everything about the Amfibido rules.",
     "placeholder": "Ask a question...",
     "errorGeneric": "Sorry, something went wrong. Please try again.",
     "errorConnect": "Sorry, I couldn't connect. Please try again later."
@@ -43,6 +43,8 @@
     "previous": "Previous card",
     "next": "Next card",
     "resultCount": "{count} cards",
+    "commentsTitle": "Rules notes",
+    "commentsAria": "Has rules clarifications",
     "pdfLabel": "Manual",
     "pdfUrl": "/documents/Amfibido Game Manual.pdf",
     "types": {

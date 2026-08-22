@@ -75,9 +75,12 @@ describe('lib', () => {
 		expect(await hmacSha256Hex('1700000000.{"paid":true}', 'test-secret')).toBe(sig);
 	});
 
-	it('parseStripeSignatureHeader extracts timestamp and signature', () => {
-		const parsed = parseStripeSignatureHeader('t=1700000000,v1=abc123');
-		expect(parsed).toEqual({ timestamp: '1700000000', signature: 'abc123' });
+	it('parseStripeSignatureHeader extracts timestamp and signatures', () => {
+		const parsed = parseStripeSignatureHeader('t=1700000000,v1=abc123,v1=def456');
+		expect(parsed).toEqual({
+			timestamp: '1700000000',
+			signatures: ['abc123', 'def456'],
+		});
 	});
 
 	it('verifyStripeWebhook accepts valid signatures', async () => {
@@ -278,9 +281,8 @@ function signStripeEvent(event, secret) {
 	const body = JSON.stringify(event);
 	const timestamp = Math.floor(Date.now() / 1000);
 	const signedPayload = `${timestamp}.${body}`;
-	const key = Buffer.from(secret.replace(/^whsec_/, ''), 'base64');
 	const signature = require('node:crypto')
-		.createHmac('sha256', key)
+		.createHmac('sha256', secret)
 		.update(signedPayload, 'utf8')
 		.digest('hex');
 
