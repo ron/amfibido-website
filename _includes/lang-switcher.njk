@@ -13,6 +13,13 @@
     aria-label="{{ (i18n[lang] or i18n.en).lang.nl }}"
     aria-pressed="{% if lang == 'nl' %}true{% else %}false{% endif %}"
   >🇳🇱</button>
+  <button
+    type="button"
+    class="lang-switcher__btn inline-flex items-center justify-center w-9 h-9 rounded-full text-lg leading-none transition hover:bg-gray-100"
+    data-set-lang="de"
+    aria-label="{{ (i18n[lang] or i18n.en).lang.de }}"
+    aria-pressed="{% if lang == 'de' %}true{% else %}false{% endif %}"
+  >🇩🇪</button>
 </div>
 <style>
   .lang-switcher__btn.is-active,

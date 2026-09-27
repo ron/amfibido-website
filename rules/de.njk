@@ -1,0 +1,19 @@
+---
+layout: base.njk
+lang: de
+permalink: /rules/de/
+eleventyComputed:
+  title: "{{ i18n.de.rules.documentTitle }}"
+  description: "{{ i18n.de.rules.description }}"
+---
+{% set lang = "de" %}
+{% set t = i18n.de.rules %}
+{% set referenceUrl = "/rules/de/reference/" %}
+
+<section class="py-4 md:py-14 bg-[#fafaf8]" data-rules-page>
+  <div class="container mx-auto px-3 md:px-6">
+    <div class="max-w-5xl mx-auto">
+      {% include "rules-content.njk" %}
+    </div>
+  </div>
+</section>

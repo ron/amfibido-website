@@ -66,8 +66,15 @@ function normalizeCardName(name) {
   return s.toLowerCase().replace(/[^a-z0-9]+/g, "");
 }
 
+function commentLines(block, label) {
+  const match = block.match(new RegExp("^" + label + ":\\s*\\n((?:  - .+\\n?)+)", "m"));
+  if (!match) return null;
+  const lines = [...match[1].matchAll(/^  - (.+)$/gm)].map((m) => m[1].trim());
+  return lines.length ? lines : null;
+}
+
 function parseCardsMdComments(cardsMdPath) {
-  const commentsByName = { en: new Map(), nl: new Map() };
+  const commentsByName = { en: new Map(), nl: new Map(), de: new Map() };
   if (!fs.existsSync(cardsMdPath)) return commentsByName;
 
   const content = fs.readFileSync(cardsMdPath, "utf8");
@@ -79,24 +86,12 @@ function parseCardsMdComments(cardsMdPath) {
 
     const name = nameMatch[1].trim();
     const key = normalizeCardName(name);
-    const commentsMatch = block.match(/^COMMENTS:\s*\n((?:  - .+\n?)+)/m);
-    if (!commentsMatch) continue;
-
-    const enComments = [...commentsMatch[1].matchAll(/^  - (.+)$/gm)].map((m) =>
-      m[1].trim()
-    );
-    if (!enComments.length) continue;
+    const enComments = commentLines(block, "COMMENTS");
+    if (!enComments) continue;
 
     commentsByName.en.set(key, enComments);
-
-    const commentsNlMatch = block.match(/^COMMENTS_NL:\s*\n((?:  - .+\n?)+)/m);
-    const nlComments = commentsNlMatch
-      ? [...commentsNlMatch[1].matchAll(/^  - (.+)$/gm)].map((m) => m[1].trim())
-      : enComments;
-
-    if (nlComments.length) {
-      commentsByName.nl.set(key, nlComments);
-    }
+    commentsByName.nl.set(key, commentLines(block, "COMMENTS_NL") || enComments);
+    commentsByName.de.set(key, commentLines(block, "COMMENTS_DE") || enComments);
   }
 
   return commentsByName;
@@ -113,11 +108,13 @@ function pairingGroupKey(filename) {
   return `${levelRaw}_${typeRaw}_${subtypeRaw}`;
 }
 
-function buildNlCommentsByFilename(imagesRoot, enRaw, commentsByName) {
-  const nlCommentsByFilename = new Map();
-  const nlDir = path.join(imagesRoot, "NL");
+function buildLocalizedCommentsByFilename(imagesRoot, enRaw, commentsByName, folderCode) {
+  const commentsByFilename = new Map();
+  const langDir = path.join(imagesRoot, folderCode);
+  const langKey = folderCode.toLowerCase();
+  const langComments = commentsByName[langKey];
 
-  if (!fs.existsSync(nlDir)) return nlCommentsByFilename;
+  if (!fs.existsSync(langDir)) return commentsByFilename;
 
   const enGroups = new Map();
   for (const parsed of enRaw) {
@@ -126,27 +123,27 @@ function buildNlCommentsByFilename(imagesRoot, enRaw, commentsByName) {
     enGroups.get(group).push(parsed);
   }
 
-  const nlFiles = fs
-    .readdirSync(nlDir)
+  const langFiles = fs
+    .readdirSync(langDir)
     .filter((entry) => entry.toLowerCase().endsWith(".png") && CARD_RE.test(entry));
 
-  const nlGroups = new Map();
-  for (const filename of nlFiles) {
+  const langGroups = new Map();
+  for (const filename of langFiles) {
     const group = pairingGroupKey(filename);
-    if (!nlGroups.has(group)) nlGroups.set(group, []);
-    nlGroups.get(group).push(filename);
+    if (!langGroups.has(group)) langGroups.set(group, []);
+    langGroups.get(group).push(filename);
   }
 
   for (const [group, enCards] of enGroups) {
-    const nlFilenames = nlGroups.get(group);
-    if (!nlFilenames || nlFilenames.length !== enCards.length) continue;
+    const langFilenames = langGroups.get(group);
+    if (!langFilenames || langFilenames.length !== enCards.length) continue;
 
     const enSorted = enCards
       .map((parsed) => ({
         parsed,
         size: fs.statSync(path.join(imagesRoot, "EN", parsed.filename)).size,
         comments:
-          commentsByName.nl.get(normalizeCardName(parsed.name)) ||
+          (langComments && langComments.get(normalizeCardName(parsed.name))) ||
           commentsByName.en.get(normalizeCardName(parsed.name)) ||
           null,
       }))
@@ -155,22 +152,22 @@ function buildNlCommentsByFilename(imagesRoot, enRaw, commentsByName) {
           a.size - b.size || a.parsed.filename.localeCompare(b.parsed.filename)
       );
 
-    const nlSorted = nlFilenames
+    const langSorted = langFilenames
       .map((filename) => ({
         filename,
-        size: fs.statSync(path.join(nlDir, filename)).size,
+        size: fs.statSync(path.join(langDir, filename)).size,
       }))
       .sort((a, b) => a.size - b.size || a.filename.localeCompare(b.filename));
 
     for (let i = 0; i < enSorted.length; i += 1) {
       const comments = enSorted[i].comments;
       if (comments) {
-        nlCommentsByFilename.set(nlSorted[i].filename, comments);
+        commentsByFilename.set(langSorted[i].filename, comments);
       }
     }
   }
 
-  return nlCommentsByFilename;
+  return commentsByFilename;
 }
 
 function sortCards(cards) {
@@ -235,7 +232,6 @@ function buildCardReference() {
     cardLanguages.sort();
 
     let enRaw = [];
-    let nlCommentsByFilename = new Map();
 
     if (cardLanguages.includes("en")) {
       enRaw = loadLanguageRaw("EN", imagesRoot);
@@ -253,31 +249,28 @@ function buildCardReference() {
       };
     }
 
-    if (cardLanguages.includes("en") && cardLanguages.includes("nl")) {
-      nlCommentsByFilename = buildNlCommentsByFilename(
-        imagesRoot,
-        enRaw,
-        commentsByName
-      );
-    }
+    for (const slug of ["nl", "de"]) {
+      if (!cardLanguages.includes(slug)) continue;
 
-    if (cardLanguages.includes("nl")) {
-      const nlRaw = loadLanguageRaw("NL", imagesRoot);
-
-      const nlCards = nlRaw.map((parsed) => {
-        const comments = nlCommentsByFilename.get(parsed.filename) || null;
-        return toPublicCard(parsed, "NL", comments);
+      const code = slug.toUpperCase();
+      const commentsByFilename = cardLanguages.includes("en")
+        ? buildLocalizedCommentsByFilename(imagesRoot, enRaw, commentsByName, code)
+        : new Map();
+      const raw = loadLanguageRaw(code, imagesRoot);
+      const cards = raw.map((parsed) => {
+        const comments = commentsByFilename.get(parsed.filename) || null;
+        return toPublicCard(parsed, code, comments);
       });
 
-      byLang.nl = {
-        code: "NL",
-        slug: "nl",
-        cards: sortCards(nlCards),
+      byLang[slug] = {
+        code,
+        slug,
+        cards: sortCards(cards),
       };
     }
   }
 
-  const uiLanguages = ["en", "nl"];
+  const uiLanguages = ["en", "nl", "de"];
   const fallbackSlug = cardLanguages.includes("en")
     ? "en"
     : cardLanguages.includes("nl")

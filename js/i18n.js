@@ -1,6 +1,7 @@
 (function () {
   var STORAGE_KEY = "amfibido_lang";
-  var translations = { en: null, nl: null };
+  var SUPPORTED = ["en", "nl", "de"];
+  var translations = { en: null, nl: null, de: null };
   var loadPromise = null;
 
   function getStoredLang() {
@@ -23,8 +24,8 @@
       return html.getAttribute("data-rules-lang");
     }
     var path = window.location.pathname || "";
-    if (path.indexOf("/rules/nl") === 0) return "nl";
-    if (path.indexOf("/rules/en") === 0) return "en";
+    var match = path.match(/^\/rules\/(en|nl|de)(?:\/|$)/);
+    if (match) return match[1];
     if (/\/rules\/?$/.test(path)) return null;
     return null;
   }
@@ -38,9 +39,11 @@
     loadPromise = Promise.all([
       fetch("/i18n/en.json").then(function (r) { return r.json(); }),
       fetch("/i18n/nl.json").then(function (r) { return r.json(); }),
-    ]).then(function (pair) {
-      translations.en = pair[0];
-      translations.nl = pair[1];
+      fetch("/i18n/de.json").then(function (r) { return r.json(); }),
+    ]).then(function (loaded) {
+      translations.en = loaded[0];
+      translations.nl = loaded[1];
+      translations.de = loaded[2];
       return translations;
     }).catch(function () {
       return translations;
@@ -93,37 +96,34 @@
   }
 
   function rulesUrlForLang(lang) {
-    return lang === "nl" ? "/rules/nl/" : "/rules/en/";
+    if (SUPPORTED.indexOf(lang) === -1) lang = "en";
+    return "/rules/" + lang + "/";
   }
 
   function referenceUrlForLang(lang) {
-    return lang === "nl" ? "/rules/nl/reference/" : "/rules/en/reference/";
+    if (SUPPORTED.indexOf(lang) === -1) lang = "en";
+    return "/rules/" + lang + "/reference/";
   }
 
   function maybeRedirectRules() {
     var path = window.location.pathname || "";
+    var match = path.match(/^\/rules\/(en|nl|de)\/?$/);
     var isRulesRoot = path === "/rules" || path === "/rules/";
-    var isRulesEn = path === "/rules/en" || path === "/rules/en/";
-    var isRulesNl = path === "/rules/nl" || path === "/rules/nl/";
-    if (!isRulesRoot && !isRulesEn && !isRulesNl) return Promise.resolve(false);
+    if (!isRulesRoot && !match) return Promise.resolve(false);
 
     // Root /rules/ has its own redirect script; skip here.
     if (isRulesRoot) return Promise.resolve(false);
 
+    var pageLang = match[1];
     var stored = getStoredLang();
 
-    if (stored === "nl" && isRulesEn) {
-      window.location.replace("/rules/nl/");
-      return Promise.resolve(true);
-    }
-    if (stored === "en" && isRulesNl) {
-      window.location.replace("/rules/en/");
+    if (stored && SUPPORTED.indexOf(stored) !== -1 && stored !== pageLang) {
+      window.location.replace(rulesUrlForLang(stored));
       return Promise.resolve(true);
     }
     if (stored) return Promise.resolve(false);
 
-    if (isRulesNl) setStoredLang("nl");
-    if (isRulesEn) setStoredLang("en");
+    setStoredLang(pageLang);
     return Promise.resolve(false);
   }
 

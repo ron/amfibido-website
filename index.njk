@@ -4,7 +4,7 @@ title: "Amfibido: A Dojo Duel Card Game | 2-Player Strategy Battle"
 description: "Amfibido is an exhilarating 2-player card game where amphibians and reptiles collide in epic battles. Strategize, transform, and knock out your opponent's champions to become the ultimate dojo master."
 ---
 
-{# Floating Dutch rules link — shown for NL/BE visitors #}
+{# Floating local-language rules links — NL/BE and DE/AT visitors #}
 <div id="nl-rules-home-link" class="hidden fixed inset-x-0 bottom-6 z-40 pointer-events-none">
   <div class="container mx-auto px-4 md:px-6">
     <div class="max-w-5xl mx-auto flex">
@@ -15,7 +15,27 @@ description: "Amfibido is an exhilarating 2-player card game where amphibians an
         <span class="flex h-9 w-9 items-center justify-center rounded-full bg-[#2d5a27]/8 text-xl leading-none" aria-hidden="true">🇳🇱</span>
         <span class="text-left leading-tight">
           <span class="block font-headings font-bold text-sm text-[#2d5a27]">Nederlandse spelregels</span>
-          <span class="block text-xs text-gray-500">Handleiding &amp; kaarten</span>
+          <span class="hidden sm:block text-xs text-gray-500">Handleiding &amp; kaarten</span>
+        </span>
+        <svg class="w-4 h-4 text-gray-400 group-hover:text-[#2d5a27] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<div id="de-rules-home-link" class="hidden fixed inset-x-0 bottom-6 z-40 pointer-events-none">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="max-w-5xl mx-auto flex">
+      <a
+        href="{{ '/rules/de/' | url }}"
+        class="pointer-events-auto group inline-flex items-center gap-2.5 rounded-full bg-white/95 backdrop-blur-sm pl-2 pr-4 py-2 shadow-lg ring-1 ring-[#2d5a27]/15 hover:ring-[#2d5a27]/40 hover:shadow-xl transition-all duration-200"
+      >
+        <span class="flex h-9 w-9 items-center justify-center rounded-full bg-[#2d5a27]/8 text-xl leading-none" aria-hidden="true">🇩🇪</span>
+        <span class="text-left leading-tight">
+          <span class="block font-headings font-bold text-sm text-[#2d5a27]">Deutsche Spielregeln</span>
+          <span class="hidden sm:block text-xs text-gray-500">Anleitung &amp; Karten</span>
         </span>
         <svg class="w-4 h-4 text-gray-400 group-hover:text-[#2d5a27] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -358,16 +378,22 @@ description: "Amfibido is an exhilarating 2-player card game where amphibians an
 
 <script>
 (function () {
-  var link = document.getElementById("nl-rules-home-link");
-  if (!link) return;
+  var nlLink = document.getElementById("nl-rules-home-link");
+  var deLink = document.getElementById("de-rules-home-link");
+  if (!nlLink && !deLink) return;
 
-  function show() {
-    link.classList.remove("hidden");
+  function show(el) {
+    if (el) el.classList.remove("hidden");
   }
 
   try {
-    if (localStorage.getItem("amfibido_lang") === "nl") {
-      show();
+    var stored = localStorage.getItem("amfibido_lang");
+    if (stored === "nl") {
+      show(nlLink);
+      return;
+    }
+    if (stored === "de") {
+      show(deLink);
       return;
     }
   } catch (e) {}
@@ -376,7 +402,8 @@ description: "Amfibido is an exhilarating 2-player card game where amphibians an
     .then(function (res) { return res.json(); })
     .then(function (data) {
       var cc = data && data.country_code;
-      if (cc === "NL" || cc === "BE") show();
+      if (cc === "NL" || cc === "BE") show(nlLink);
+      else if (cc === "DE" || cc === "AT") show(deLink);
     })
     .catch(function () {});
 })();

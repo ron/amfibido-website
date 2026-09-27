@@ -12,4 +12,5 @@ function load(lang) {
 export default {
   en: load("en"),
   nl: load("nl"),
+  de: load("de"),
 };

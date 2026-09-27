@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "lang": "de",
+    "locale": "de"
+  },
+  "rules": {
+    "documentTitle": "Spielregeln | Amfibido",
+    "description": "Deutsche Amfibido-Anleitung und Kartenreferenz für deutschsprachige Spieler.",
+    "title": "Spielregeln",
+    "subtitle": "Deutsche Anleitung und Kartenreferenz.",
+    "manualTitle": "Anleitung",
+    "manualBody": "Lade die vollständigen Spielregeln herunter.",
+    "manualCta": "PDF herunterladen",
+    "manualPdf": "/documents/Amfibido Game Manual Deutsch.pdf",
+    "minamiTitle": "Frag Mr. Minami",
+    "minamiBody": "Eine Regelfrage? Unser KI-Assistent kennt das Spiel in- und auswendig und antwortet sofort.",
+    "minamiCta": "Chat starten",
+    "referenceTitle": "Alle Karten",
+    "referenceBody": "Alle Karten nach Stufe und Typ — zum schnellen Nachschlagen auf dem Handy.",
+    "referenceCta": "Karten ansehen",
+    "videoTitle": "Videotutorial",
+    "videoNoteNl": "Review & Spielregeln bei Nox Spellenzolder (Niederländisch)",
+    "videoTitleEn": "Amfibido-Videotutorial",
+    "videoTitleNl": "Amfibido Review und Spielregeln — Nox Spellenzolder"
+  },
+  "chat": {
+    "openLabel": "Chat öffnen",
+    "closeLabel": "Chat schließen",
+    "title": "Fragen zu den Regeln",
+    "subtitle": "Unterstützt von KI",
+    "welcome": "Ich bin Mr Minami, ich kenne alle Amfibido-Regeln.",
+    "placeholder": "Stell eine Frage...",
+    "errorGeneric": "Sorry, etwas ist schiefgelaufen. Bitte versuche es erneut.",
+    "errorConnect": "Sorry, ich konnte keine Verbindung herstellen. Bitte versuche es später erneut."
+  },
+  "cardReference": {
+    "documentTitle": "Alle Karten | Amfibido",
+    "title": "Alle Karten",
+    "levelLabel": "Stufe",
+    "typeLabel": "Typ",
+    "empty": "Keine Karten entsprechen diesen Filtern.",
+    "close": "Schließen",
+    "previous": "Vorherige Karte",
+    "next": "Nächste Karte",
+    "resultCount": "{count} Karten",
+    "commentsTitle": "Hinweise",
+    "commentsAria": "Hat Regelerläuterungen",
+    "pdfLabel": "Anleitung",
+    "pdfUrl": "/documents/Amfibido Game Manual Deutsch.pdf",
+    "types": {
+      "fighter": "Kämpfer",
+      "action": "Aktion",
+      "equipment": "Ausrüstung",
+      "sensei": "Sensei"
+    }
+  },
+  "lang": {
+    "en": "Englisch",
+    "nl": "Niederländisch",
+    "de": "Deutsch",
+    "switchLabel": "Sprache"
+  }
+}

@@ -4,7 +4,7 @@ title: "Rules | Amfibido"
 description: "Download the official Amfibido game manual and learn how to play."
 permalink: /rules/
 ---
-{# Entry point: redirect to /rules/en/ or /rules/nl/ from geo + localStorage #}
+{# Entry point: redirect to /rules/en/, /rules/nl/, or /rules/de/ from geo + localStorage #}
 <section class="py-16 bg-[#fafaf8] min-h-[40vh] flex items-center justify-center">
   <p class="text-gray-500 text-sm">Loading rules…</p>
 </section>
@@ -12,11 +12,14 @@ permalink: /rules/
 (function () {
   var STORAGE_KEY = "amfibido_lang";
   function go(lang) {
-    window.location.replace(lang === "nl" ? "/rules/nl/" : "/rules/en/");
+    var target = "/rules/en/";
+    if (lang === "nl") target = "/rules/nl/";
+    else if (lang === "de") target = "/rules/de/";
+    window.location.replace(target);
   }
   try {
     var stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === "nl" || stored === "en") {
+    if (stored === "nl" || stored === "en" || stored === "de") {
       go(stored);
       return;
     }
@@ -25,7 +28,9 @@ permalink: /rules/
     .then(function (res) { return res.json(); })
     .then(function (data) {
       var cc = data && data.country_code;
-      var lang = (cc === "NL" || cc === "BE") ? "nl" : "en";
+      var lang = "en";
+      if (cc === "NL" || cc === "BE") lang = "nl";
+      else if (cc === "DE" || cc === "AT") lang = "de";
       try { localStorage.setItem(STORAGE_KEY, lang); } catch (e) {}
       go(lang);
     })

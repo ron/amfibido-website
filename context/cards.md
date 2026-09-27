@@ -30,6 +30,9 @@ COMMENTS:
 COMMENTS_NL:
   - Deze uitrusting heeft geen gedrukte basiskracht. De +2 uit de ability is ability-kracht, geen basiskracht.
   - Watersalamander en Axolotl verdubbelen deze bonus niet. Gemarmerde Salamander en Sirene Salamander kopiëren hem niet.
+COMMENTS_DE:
+  - Diese Ausrüstung hat keine gedruckte Grundstärke. Die +2 aus ihrer Fähigkeit ist Fähigkeitsstärke, keine Grundstärke.
+  - Molch und Axolotl verdoppeln diesen Bonus nicht. Marmorsalamander und Sirenen-Salamander kopieren ihn nicht.
 ----
 CARD: Newt
 LEVEL: I
@@ -42,6 +45,9 @@ COMMENTS:
 COMMENTS_NL:
   - Deze vechter verdubbelt de basiskracht die hij van uitrusting krijgt — de basiskracht die op de uitrustingkaart gedrukt staat.
   - Kracht uit abilities van uitrusting wordt niet verdubbeld. Alleen gedrukte basiskracht van uitrusting telt.
+COMMENTS_DE:
+  - Dieser Kämpfer verdoppelt die Grundstärke, die er von Ausrüstung erhält — die Grundstärke, die auf der Ausrüstungskarte gedruckt steht.
+  - Stärke aus Fähigkeiten von Ausrüstung wird nicht verdoppelt. Nur gedruckte Grundstärke von Ausrüstung zählt.
 ----
 CARD: Nipple Twist
 LEVEL: I
@@ -74,6 +80,8 @@ COMMENTS:
   - If Snapping Turtle would retire itself when you win the round, you choose the order: return the fighter to your hand instead of retiring it.
 COMMENTS_NL:
   - Als Bijtschildpad zichzelf zou verwijderen wanneer je de ronde wint, kies je de volgorde: je mag de vechter terug naar je hand sturen in plaats van hem te verwijderen.
+COMMENTS_DE:
+  - Wenn die Schnappschildkröte sich selbst aus dem Spiel entfernen würde, sobald du die Runde gewinnst, bestimmst du die Reihenfolge: du darfst den Kämpfer auf deine Hand zurücknehmen, statt ihn aus dem Spiel zu entfernen.
 ----
 CARD: Tree Frog
 LEVEL: I
@@ -89,6 +97,8 @@ COMMENTS:
   - Cards revealed but not chosen are placed on the bottom of the deck in a random order.
 COMMENTS_NL:
   - Kaarten die je laat zien maar niet kiest, komen onderop het deck in willekeurige volgorde.
+COMMENTS_DE:
+  - Karten, die du aufdeckst, aber nicht wählst, kommen in zufälliger Reihenfolge unter das Deck.
 ----
 CARD: White Belt
 LEVEL: I
@@ -173,6 +183,9 @@ COMMENTS:
 COMMENTS_NL:
   - De +* telt als basiskracht en is gelijk aan het kaartniveau van de vechter.
   - Als de ability van deze uitrusting geneutraliseerd wordt, wordt +* 0.
+COMMENTS_DE:
+  - Die +* zählt als Grundstärke und entspricht dem Level der Kämpferkarte.
+  - Wenn die Fähigkeit dieser Ausrüstung neutralisiert wird, wird +* zu 0.
 ----
 CARD: Pygmy Chameleon
 LEVEL: II
@@ -183,6 +196,8 @@ COMMENTS:
   - If Chameleon Skin is also affecting this fighter's base power, you choose which effect to apply first.
 COMMENTS_NL:
   - Als Kameleonenhuid ook de basiskracht van deze vechter beïnvloedt, kies je welk effect je eerst toepast.
+COMMENTS_DE:
+  - Wenn Chamäleonhaut ebenfalls die Grundstärke dieses Kämpfers beeinflusst, bestimmst du, welcher Effekt zuerst gilt.
 ----
 CARD: Right Hook
 LEVEL: II
@@ -223,6 +238,9 @@ COMMENTS:
 COMMENTS_NL:
   - Deze vechter krijgt de basiskracht van uitrusting in de dojo's direct ernaast (links of rechts).
   - Extra kracht uit abilities van uitrusting gaat niet mee — een geactiveerde Kung Fu Gi met +3 geeft deze vechter bijvoorbeeld geen +3.
+COMMENTS_DE:
+  - Dieser Kämpfer erhält die Grundstärke von Ausrüstung in den direkt angrenzenden Dojos (links oder rechts).
+  - Zusätzliche Stärke aus Fähigkeiten von Ausrüstung wird nicht übertragen — eine aktivierte Kung Fu Gi mit +3 gibt diesem Kämpfer zum Beispiel kein +3.
 ----
 CARD: Open Palm Strike
 LEVEL: II
@@ -233,6 +251,8 @@ COMMENTS:
   - You must discard the fighter from your hand when you play this combo, not later when it might return via boomerang.
 COMMENTS_NL:
   - Je moet de vechter uit je hand weggooien wanneer je deze combo speelt, niet later wanneer hij via boomerang terug kan komen.
+COMMENTS_DE:
+  - Du musst den Kämpfer aus deiner Hand ablegen, wenn du diese Kombo-Move spielst, nicht später, wenn er durch Boomerang zurückkommen könnte.
 ----
 CARD: Barbed Wire
 LEVEL: II
@@ -249,6 +269,8 @@ COMMENTS:
   - Metamorphosis and Rebirth are combo moves on this fighter and gain boomerang as soon as you play them.
 COMMENTS_NL:
   - Metamorfose en Wedergeboorte zijn combobewegingen op deze vechter en krijgen boomerang zodra je ze speelt.
+COMMENTS_DE:
+  - Metamorphose und Wiedergeburt sind Kombo-Moves auf diesem Kämpfer und erhalten Boomerang, sobald du sie spielst.
 ----
 CARD: Dart Frog
 LEVEL: II
@@ -259,6 +281,8 @@ COMMENTS:
   - Metamorphosis and Rebirth count toward combo moves you played this round.
 COMMENTS_NL:
   - Metamorfose en Wedergeboorte tellen mee als combobewegingen die je deze ronde hebt gespeeld.
+COMMENTS_DE:
+  - Metamorphose und Wiedergeburt zählen als Kombo-Moves, die du in dieser Runde gespielt hast.
 ----
 CARD: Snapping Turtle
 LEVEL: II
@@ -269,6 +293,8 @@ COMMENTS:
   - When you win the round, Sparring Boots can return this fighter to your hand instead of it retiring itself.
 COMMENTS_NL:
   - Als je de ronde wint, kan Sparringlaarzen deze vechter terug naar je hand sturen in plaats van dat hij zichzelf verwijdert.
+COMMENTS_DE:
+  - Wenn du die Runde gewinnst, können die Sparring-Stiefel diesen Kämpfer auf deine Hand zurücknehmen, statt dass er sich selbst aus dem Spiel entfernt.
 ----
 CARD: Bloated Toad
 LEVEL: II
@@ -326,6 +352,8 @@ COMMENTS:
   - Knockout and boomerang apply when you play this combo, even if the fighter later transforms into a different type.
 COMMENTS_NL:
   - Knockout en boomerang gelden wanneer je deze combo speelt, ook als de vechter daarna transformeert naar een ander type.
+COMMENTS_DE:
+  - Knockout und Boomerang gelten, wenn du diese Kombo-Move spielst, auch wenn der Kämpfer danach in einen anderen Typ transformiert.
 ----
 CARD: Smoke Bomb
 LEVEL: III
@@ -360,6 +388,9 @@ COMMENTS:
 COMMENTS_NL:
   - Deze vechter verdubbelt de basiskracht die hij van uitrusting krijgt — de basiskracht die op de uitrustingkaart gedrukt staat.
   - Kracht uit abilities van uitrusting wordt niet verdubbeld. Alleen gedrukte basiskracht van uitrusting telt.
+COMMENTS_DE:
+  - Dieser Kämpfer verdoppelt die Grundstärke, die er von Ausrüstung erhält — die Grundstärke, die auf der Ausrüstungskarte gedruckt steht.
+  - Stärke aus Fähigkeiten von Ausrüstung wird nicht verdoppelt. Nur gedruckte Grundstärke von Ausrüstung zählt.
 ----
 CARD: Tag Team
 LEVEL: III
@@ -376,6 +407,8 @@ COMMENTS:
   - Boomerang is granted when you play the combo, even if the fighter later transforms into a non-frog/non-toad.
 COMMENTS_NL:
   - Boomerang wordt toegekend wanneer je de combo speelt, ook als de vechter daarna transformeert naar iets anders dan kikker/pad.
+COMMENTS_DE:
+  - Boomerang wird verliehen, wenn du die Kombo-Move spielst, auch wenn der Kämpfer danach in etwas anderes als einen Frosch oder eine Kröte transformiert.
 ----
 CARD: Fire Salamander
 LEVEL: III
@@ -399,6 +432,9 @@ COMMENTS:
 COMMENTS_NL:
   - Deze uitrusting maakt het mogelijk om twee uitrustingkaarten in één dojo te hebben.
   - Als Dubbele Sai de dojo verlaat, blijft de andere uitrusting liggen. Beide stukken kun je apart switcheroo'en.
+COMMENTS_DE:
+  - Diese Ausrüstung erlaubt zwei Ausrüstungskarten in einem Dojo.
+  - Wenn die Zwillings-Sai das Dojo verlassen, bleibt die andere Ausrüstung liegen. Beide Stücke kannst du einzeln per Switcheroo bewegen.
 ----
 CARD: Tipsy Turtle
 LEVEL: III
@@ -411,6 +447,9 @@ COMMENTS:
 COMMENTS_NL:
   - Na het gevecht — winst, verlies of gelijkspel — is deze vechter knockout.
   - Omdat hij ook bij winst knockout is, komt hij niet terug naar je hand via uitrusting die vereist dat de vechter niet knockout is (zoals Sparringlaarzen).
+COMMENTS_DE:
+  - Nach dem Kampf — Sieg, Niederlage oder Unentschieden — ist dieser Kämpfer ausgeknockt.
+  - Weil er auch bei einem Sieg ausgeknockt ist, kommt er nicht durch Ausrüstung auf deine Hand zurück, die verlangt, dass der Kämpfer nicht ausgeknockt ist (zum Beispiel Sparring-Stiefel).
 ----
 CARD: Sucker Punch
 LEVEL: III
@@ -452,6 +491,9 @@ COMMENTS:
 COMMENTS_NL:
   - Telt elke vechter die je deze ronde uit je hand hebt weggegooid, ook weggegooide kaarten nadat je deze kaart speelde.
   - Houd weggegooide vechters bij zolang deze kaart in je hand ligt.
+COMMENTS_DE:
+  - Zählt jeden Kämpfer, den du in dieser Runde aus deiner Hand abgelegt hast, auch Ablegen nachdem du diese Karte gespielt hast.
+  - Behalte abgelegte Kämpfer im Blick, solange diese Karte auf deiner Hand liegt.
 ----
 CARD: Oak Toad
 LEVEL: III
@@ -510,6 +552,9 @@ COMMENTS:
 COMMENTS_NL:
   - Bo Staf neutraliseert de abilities van de tegenstanderuitrusting in deze dojo.
   - Als de ability van Bo Staf zelf geneutraliseerd wordt, kan hij niets neutraliseren. Als beide vechters neutraliseereffects hebben, heffen ze elkaar op.
+COMMENTS_DE:
+  - Der Bo-Stab neutralisiert die Fähigkeiten der gegnerischen Ausrüstung in diesem Dojo.
+  - Wenn die Fähigkeit des Bo-Stabs selbst neutralisiert wird, kann er nichts neutralisieren. Wenn beide Kämpfer Neutralisieren-Effekte haben, heben sie sich gegenseitig auf.
 ----
 CARD: Rain Frog
 LEVEL: IV
@@ -538,6 +583,9 @@ COMMENTS:
 COMMENTS_NL:
   - Deze vechter maakt het mogelijk om een tweede uitrusting in de dojo te hebben.
   - Het extra uitrustingsslot blijft, ook als Reuzensalamander vervangen of getransformeerd wordt. Beide uitrustingstukken kun je apart switcheroo'en.
+COMMENTS_DE:
+  - Dieser Kämpfer erlaubt eine zweite Ausrüstung in seinem Dojo.
+  - Der zusätzliche Ausrüstungsplatz bleibt, auch wenn der Riesensalamander ersetzt oder transformiert wird. Beide Ausrüstungen kannst du einzeln per Switcheroo bewegen.
 ----
 CARD: Crane Kick
 LEVEL: IV
@@ -565,6 +613,8 @@ COMMENTS:
   - Cards revealed but not chosen are placed on the bottom of their decks in a random order.
 COMMENTS_NL:
   - Kaarten die je laat zien maar niet kiest, komen onderop hun decks in willekeurige volgorde.
+COMMENTS_DE:
+  - Karten, die du aufdeckst, aber nicht wählst, kommen in zufälliger Reihenfolge unter ihre Decks.
 ----
 CARD: Weapon Rack
 LEVEL: IV
@@ -581,6 +631,8 @@ COMMENTS:
   - Power gained from discarding a fighter counts as ability power, not base power.
 COMMENTS_NL:
   - Kracht die je krijgt door een vechter weg te gooien is ability-kracht, geen basiskracht.
+COMMENTS_DE:
+  - Stärke, die du erhältst, indem du einen Kämpfer ablegst, ist Fähigkeitsstärke, keine Grundstärke.
 ----
 CARD: Fists of Fury
 LEVEL: IV
@@ -591,6 +643,8 @@ COMMENTS:
   - This combo is also played on every fighter of the same type you control, triggering each fighter's own effects.
 COMMENTS_NL:
   - Deze combo wordt ook op elke vechter van hetzelfde type gespeeld die je bestuurt, en triggert de effecten van elke vechter apart.
+COMMENTS_DE:
+  - Diese Kombo-Move wird auch auf jeden Kämpfer desselben Typs gespielt, den du kontrollierst, und löst die Effekte jedes Kämpfers einzeln aus.
 ----
 CARD: Chameleon Skin
 LEVEL: IV
@@ -618,6 +672,8 @@ COMMENTS:
   - If you lose the round with this fighter, your opponent moves their score marker 2 spaces instead of 1.
 COMMENTS_NL:
   - Als je de ronde verliest met deze vechter, schuift je tegenstander de scoremarker 2 vakjes in plaats van 1.
+COMMENTS_DE:
+  - Wenn du die Runde mit diesem Kämpfer verlierst, rückt der Wertungsmarker deines Gegners 2 Felder vor statt 1.
 ----
 CARD: River Crocodile
 LEVEL: IV
@@ -663,6 +719,8 @@ COMMENTS:
   - After activating this effect, you cannot place or Switcheroo a fighter into this dojo for the rest of the round.
 COMMENTS_NL:
   - Na het activeren van dit effect kun je de rest van de ronde geen vechter in deze dojo plaatsen of switcheroo'en.
+COMMENTS_DE:
+  - Nachdem du diesen Effekt aktiviert hast, darfst du für den Rest der Runde keinen Kämpfer in dieses Dojo legen oder per Switcheroo hineinbewegen.
 ----
 CARD: Black Belt
 LEVEL: V
@@ -681,6 +739,9 @@ COMMENTS:
 COMMENTS_NL:
   - Kracht van combobewegingen geldt in elke dojo waarin deze vechter vecht.
   - Kracht van uitrusting geldt alleen in de dojo waar de uitrusting ligt.
+COMMENTS_DE:
+  - Stärke von Kombo-Moves gilt in jedem Dojo, in dem dieser Kämpfer kämpft.
+  - Stärke von Ausrüstung gilt nur in dem Dojo, in dem die Ausrüstung liegt.
 ----
 CARD: Golden Gloves
 LEVEL: V
@@ -733,6 +794,9 @@ COMMENTS:
 COMMENTS_NL:
   - Je salamanders krijgen de basiskracht van uitrusting in aangrenzende dojo's.
   - Bonuskracht uit abilities van uitrusting (wegleggen, voorwaardelijke effecten, enz.) blijft bij die uitrusting en wordt niet gedeeld.
+COMMENTS_DE:
+  - Deine Salamander erhalten die Grundstärke von Ausrüstung in angrenzenden Dojos.
+  - Bonusstärke aus Fähigkeiten von Ausrüstung (Ablegekosten, bedingte Effekte usw.) bleibt bei dieser Ausrüstung und wird nicht geteilt.
 ----
 CARD: Toada
 LEVEL: Sensei
@@ -762,6 +826,8 @@ COMMENTS:
   - "Round losses" means the number of rounds your opponent has won.
 COMMENTS_NL:
   - "Rondeverliezen" betekent het aantal rondes dat je tegenstander heeft gewonnen.
+COMMENTS_DE:
+  - „Rundenverluste“ meint die Anzahl der Runden, die dein Gegner gewonnen hat.
 ----
 CARD: Crocodile Dandoo
 LEVEL: Sensei
@@ -776,6 +842,8 @@ COMMENTS:
   - "Last 2 draft picks" are the 2 cards returned to you during stage 2 of the draft.
 COMMENTS_NL:
   - "Laatste 2 draftkeuzes" zijn de 2 kaarten die je terugkrijgt in fase 2 van de draft.
+COMMENTS_DE:
+  - „Letzte 2 Draft-Picks“ sind die 2 Karten, die du in Phase 2 des Drafts zurückbekommst.
 ----
 CARD: Coach Hulk
 LEVEL: Sensei
@@ -790,6 +858,8 @@ COMMENTS:
   - "First 3 draft picks" are the 3 cards you draw during stage 1 of the draft.
 COMMENTS_NL:
   - "Eerste 3 draftkeuzes" zijn de 3 kaarten die je trekt in fase 1 van de draft.
+COMMENTS_DE:
+  - „Erste 3 Draft-Picks“ sind die 3 Karten, die du in Phase 1 des Drafts ziehst.
 ----
 CARD: Master Shatter
 LEVEL: Sensei
@@ -811,6 +881,9 @@ COMMENTS:
 COMMENTS_NL:
   - Je uitrusting krijgt +1 basiskracht, maar alleen uitrusting die al een gedrukte basiskracht heeft (+N op de uitrachtingsregel).
   - Uitrusting zonder gedrukte basiskracht krijgt niets van deze Sensei.
+COMMENTS_DE:
+  - Deine Ausrüstung erhält +1 Grundstärke, aber nur Ausrüstung, die bereits eine gedruckte Grundstärke hat (+N auf der Ausrüstungszeile).
+  - Ausrüstung ohne gedruckte Grundstärke erhält nichts von diesem Sensei.
 ----
 CARD: Master Toshi
 LEVEL: Sensei
