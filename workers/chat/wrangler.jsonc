@@ -42,7 +42,7 @@
 	 * https://developers.cloudflare.com/workers/configuration/secrets/
 	 */
 	"vars": {
-		"OPENROUTER_MODEL": "openai/gpt-4o-mini"
+		"OPENROUTER_MODEL": "openai/gpt-4.1-mini"
 	},
 	/**
 	 * Static Assets

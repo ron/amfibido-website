@@ -8,6 +8,15 @@ CARD: Kung Fu Gi
 LEVEL: I
 CARD_TYPE: Equipment
 ABILITY: Discard a card from your hand: This equipment gains +3.
+COMMENTS:
+  - This is an action ability. Discard a card from your hand, not this equipment, to give it +3.
+  - You may activate it more than once each round. The +3 is cleared at the end of the round, so a later round needs a new activation.
+COMMENTS_NL:
+  - Dit is een actie-ability. Gooi een kaart uit je hand weg, niet deze uitrusting, om +3 te geven.
+  - Je mag dit meer dan één keer per ronde activeren. De +3 vervalt aan het einde van de ronde, dus een latere ronde heeft een nieuwe activering nodig.
+COMMENTS_DE:
+  - Dies ist eine Aktionsfähigkeit. Lege eine Karte aus deiner Hand ab, nicht diese Ausrüstung, um +3 zu geben.
+  - Du darfst sie mehrmals pro Runde aktivieren. Die +3 wird am Ende der Runde gelöscht, also braucht eine spätere Runde eine neue Aktivierung.
 ----
 CARD: Caiman
 LEVEL: I
@@ -301,6 +310,15 @@ LEVEL: II
 BASE_POWER: 4
 CARD_TYPE: Fighter - Toad
 ABILITY: Discard one or more fighters from hand: This gains +3 for each fighter discarded this way. Use this only once each round.
+COMMENTS:
+  - This is an action ability you may use only once each round.
+  - The +3 for each discarded fighter is cleared at the end of the round, including if this fighter is knocked out. It does not carry into the cooldown zone or the next time you play this fighter.
+COMMENTS_NL:
+  - Dit is een actie-ability die je maar één keer per ronde mag gebruiken.
+  - De +3 per weggegooide vechter vervalt aan het einde van de ronde, ook als deze vechter knock-out gaat. Hij neemt de bonus niet mee naar de cooldown zone en ook niet de volgende keer dat je hem speelt.
+COMMENTS_DE:
+  - Dies ist eine Aktionsfähigkeit, die du nur einmal pro Runde nutzen darfst.
+  - Die +3 pro abgelegtem Kämpfer wird am Ende der Runde gelöscht, auch wenn dieser Kämpfer ausgeknockt wird. Er behält den Bonus nicht in der Cooldown-Zone und auch nicht, wenn du ihn das nächste Mal spielst.
 ----
 CARD: Bogart Toad
 LEVEL: II
@@ -397,6 +415,15 @@ LEVEL: III
 POWER: +2
 CARD_TYPE: Action - Combo Move
 ABILITY: Boomerang. You may switcheroo this fighter.
+COMMENTS:
+  - Boomerang puts this combo in the cooldown zone at the end of the round instead of the discard pile.
+  - You may switcheroo the fighter this combo is on. The +2 stays on that fighter and moves with it.
+COMMENTS_NL:
+  - Boomerang: deze combo gaat aan het einde van de ronde naar de cooldown zone in plaats van de aflegstapel.
+  - Je mag de vechter waarop deze combo ligt switcheroo'en. De +2 blijft op die vechter en gaat met hem mee.
+COMMENTS_DE:
+  - Boomerang: diese Kombo-Move kommt am Ende der Runde in die Cooldown-Zone statt auf den Ablagestapel.
+  - Du darfst den Kämpfer, auf dem diese Kombo-Move liegt, per Switcheroo bewegen. Die +2 bleibt auf diesem Kämpfer und zieht mit ihm um.
 ----
 CARD: Croackers Gi
 LEVEL: III

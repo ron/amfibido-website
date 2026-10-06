@@ -56,3 +56,19 @@ Total Power = Base power fighter + Base power equipment + Power from abilities +
 **Other card text** can knock a fighter out regardless of win/loss/draw (e.g. “knocked out after the fight”, “even if it draws or wins”). Read the card; do not equate those with the Knockout keyword.
 
 **Sparring Boots** (and similar “when this wins, … unless knocked out”): the winner returns to hand only if they were **not** knocked out. Normal keyword Knockout on the opponent does not knock out your winner. Effects like Sucker Punch or Tipsy Turtle can knock out a winner/drawer and thus block that return-to-hand.
+
+## Action abilities
+**Principle:** An action ability is on a fighter, equipment, or sensei already in play. In the card text the underlined cost is everything **before the colon** (`Discard a card from your hand: This equipment gains +3`). Activating it is one action in the action phase: pay that cost, then resolve the effect. You may activate it again later in the same round, and again in later rounds, unless the card says “only once each round” or the cost removes the card.
+
+Pay the **cost**. Do not discard or retire the card that has the ability, unless the cost itself says to retire that card or the fighter.
+
+Power gained this way is ability power. It resets to 0 at the end of the round. Equipment that stays in the dojo does not keep it. Knockout is resolved at the end of the round too, so the bonus is already gone when the fighter goes to the cooldown zone, and it is gone the next time that fighter is played.
+
+**Cards:** Repeatable — Kung Fu Gi, Gecko, Spawning Sword, Fire Salamander, Twin Katanas, Toada, Crocodile Dandoo, Sir Scurry, Master Toshi. Once each round — Bloated Toad, Oak Toad, Spawning Suit, Harlequin Toad. Cost removes the card — Smoke Bomb, Champion’s Belt.
+
+Playing an action or combo from hand is not an action ability. Examples: Meditate, Concentrate, and Open Palm Strike’s discard-to-give-boomerang, which is paid when you play that combo. Static text and “when/if” text are not action abilities either.
+
+## Boomerang
+**Principle:** A combo move with Boomerang goes to the cooldown zone at the end of the round instead of the discard pile. It can be used again after the next round.
+
+Boomerang does not copy the combo onto every fighter of the same type. Copying a combo onto other fighters of the same type is Fists of Fury or Goliath Frog.

@@ -118,5 +118,44 @@
       "includesAny": ["0", "none", "no base power", "no printed", "does not have"],
       "excludes": ["base power of the Wrist Wraps equipment is +4", "Wrist Wraps gains +2 power if one of your fighters entered the dojo this round. Additionally", "+2 base power"]
     }
+  },
+  {
+    "id": "tag-team-boomerang",
+    "messages": [
+      {
+        "role": "user",
+        "content": "How does Tag Team work? If I switcheroo that fighter, does the +2 go with him?"
+      }
+    ],
+    "expect": {
+      "includesAny": ["cooldown"],
+      "excludes": ["all fighters of the same type", "every fighter of the same type", "same fighter type"]
+    }
+  },
+  {
+    "id": "kung-fu-gi-action",
+    "messages": [
+      {
+        "role": "user",
+        "content": "For Kung Fu Gi, do I discard a card again every round, or only once when I play the card?"
+      }
+    ],
+    "expect": {
+      "includesAny": ["from your hand", "from hand", "each round", "end of the round"],
+      "excludes": ["discard Kung Fu Gi", "discard the Kung Fu Gi", "discarding Kung Fu Gi", "as long as the equipment", "as long as it stays in the dojo"]
+    }
+  },
+  {
+    "id": "bloated-toad-knockout",
+    "messages": [
+      {
+        "role": "user",
+        "content": "My Bloated Toad already has +3 and then gets knocked out. Does that extra power go back to 0?"
+      }
+    ],
+    "expect": {
+      "includesAny": ["end of the round", "end of round", "cleared", "reset"],
+      "excludes": ["keeps the +3", "retains the +3", "does not reset", "does not go back to 0"]
+    }
   }
 ]

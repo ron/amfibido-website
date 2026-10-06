@@ -31,7 +31,7 @@ function getTestEnv() {
 	return {
 		DB: undefined,
 		OPENROUTER_API_KEY: 'test-key',
-		OPENROUTER_MODEL: 'openai/gpt-4o-mini',
+		OPENROUTER_MODEL: 'openai/gpt-4.1-mini',
 		RESEND_API_KEY: undefined,
 	};
 }

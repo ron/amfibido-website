@@ -10,7 +10,7 @@ const CARDS_URL = 'https://amfibido.com/context/cards.md';
 const REMINDERS_URL = 'https://amfibido.com/context/reminders.md';
 const PRODUCT_URL = 'https://amfibido.com/context/product.md';
 
-const DEFAULT_OPENROUTER_MODEL = 'openai/gpt-4o-mini';
+const DEFAULT_OPENROUTER_MODEL = 'openai/gpt-4.1-mini';
 
 /** If context/product.md is not yet deployed, still answer common product questions. */
 const DEFAULT_PRODUCT_CONTEXT = `## Direct answers (use plain wording only)

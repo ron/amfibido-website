@@ -22,7 +22,7 @@ Run `wrangler types` after changing bindings in wrangler.jsonc.
 ## Chat worker (OpenRouter)
 
 - **Secrets:** `OPENROUTER_API_KEY` (OpenRouter), `RESEND_API_KEY` (emails) — set with `npx wrangler secret put …`.
-- **Vars:** `OPENROUTER_MODEL` defaults to `openai/gpt-4o-mini` in `wrangler.jsonc`; override in the Cloudflare dashboard or `.dev.vars` for local.
+- **Vars:** `OPENROUTER_MODEL` defaults to `openai/gpt-4.1-mini` in `wrangler.jsonc`; override in the Cloudflare dashboard or `.dev.vars` for local.
 
 ## Node.js Compatibility
 

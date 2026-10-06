@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const CONTEXT_DIR = join(ROOT, '../../context');
-const DEFAULT_MODEL = 'openai/gpt-4o-mini';
+const DEFAULT_MODEL = 'openai/gpt-4.1-mini';
 
 const DEFAULT_PRODUCT_CONTEXT = `## Direct answers (use plain wording only)
 - **Is the art AI?** **Yes.** Amfibido includes AI-generated art, as well as art from other sources.`;
