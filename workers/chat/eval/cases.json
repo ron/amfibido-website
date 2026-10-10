@@ -197,12 +197,12 @@
     "messages": [
       {
         "role": "user",
-        "content": "For Champion's Belt, can the effect be triggered multiple times, or only when the card is played?"
+        "content": "Bij champions belt, kan het effect meerdere keren getriggered worden of enkel wanneer de kaart opgelegd wordt?"
       }
     ],
     "expect": {
-      "includesAny": ["action phase", "instead of playing", "later round"],
-      "excludes": ["only be activated when", "activated only when you play", "as soon as you play", "when the card is used"]
+      "includesAny": ["actiefase", "action phase", "in plaats van", "instead of playing"],
+      "excludes": ["zodra je de kaart oplegt", "zodra je hem oplegt", "as soon as you play", "only triggers when you play"]
     }
   },
   {

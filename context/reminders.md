@@ -62,13 +62,18 @@ Total Power = Base power fighter + Base power equipment + Power from abilities +
 
 The ability sits on a fighter, equipment, or sensei already in play. Playing that card does **not** activate it. In the action phase, activating it is one action **instead of** playing a card from hand: pay the cost (everything before the colon), then resolve the effect. You may activate it again later in the same round, and again in later rounds, unless that card says “only once each round” or the cost removes the card so it can no longer be activated. If the card also has other text, only the cost-before-colon part is the action ability.
 
-**If the question treats this like a one-shot that happens when the card is played, or asks whether an action on equipment works only once, explain that timing.** Most action abilities can be activated more than once per round. “Only once” is the exception printed on the card, not the default.
+**If the question asks whether it happens when the card is played** (played, laid, “opgelegd”, “wanneer de kaart opgelegd wordt”, “only when the card is played”) **or whether an action on equipment works only once, the asker does not yet know how action abilities work. Explain that before the card-specific limit.** Say all three points, in the user’s language:
+1. Playing or laying the card does not activate it.
+2. You activate it later, in the action phase, as your action **instead of** playing a card from hand: pay the cost, then the effect happens.
+3. You may do that more than once per round. “Only once” is the exception printed on the card, not the default.
+
+Do not answer with only the once-per-round restriction.
 
 Pay the **cost**. Do not discard or retire the card that has the ability, unless the cost itself says to retire that card or the fighter.
 
 Power gained this way is ability power. It resets to 0 at the end of the round. Equipment that stays in the dojo does not keep it. Knockout is resolved at the end of the round too, so the bonus is already gone when the fighter goes to the cooldown zone, and it is gone the next time that fighter is played.
 
-**Champion’s Belt:** the cost retires the fighter, not the belt. After that you may not put a fighter in that dojo for the rest of the round, so you cannot pay the cost again that round. A later round can activate it again if a fighter is there.
+**Champion’s Belt:** Playing the belt does not activate it. You activate it later in the action phase, instead of playing a card from hand: retire the fighter in that dojo, then draw a level V card. The belt stays. After that you may not put a fighter in that dojo for the rest of the round, so you cannot pay the cost again that round. A later round can activate it again if a fighter is there. If someone asks whether it only triggers when the card is played, give this timing. Do not answer with only the once-per-round limit.
 
 Playing an action or combo from hand is not an action ability. Examples: Meditate, Concentrate, and Open Palm Strike’s discard-to-give-boomerang, which is paid when you play that combo. Static text and “when/if” text are not action abilities either.
 

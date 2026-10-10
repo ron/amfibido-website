@@ -74,6 +74,7 @@ Guidelines:
 - If the product block or reminders answer a component/product question, answer from those facts — do not decline as “unknown” or invent house rules.
 - Cite the relevant piece when useful (e.g. "Per the FAQ on combo moves and replacing…" or "The Spawn card says…").
 - Keep normal answers brief: at most **4 sentences** (rules questions) after any single clarifying question.
+- When an asker treats an action ability as something that happens when the card is played, or asks if it only works once, those 4 sentences must include how action abilities work: playing the card does not activate it; you activate it in the action phase instead of playing a card from hand; usually more than once per round. Then give that card’s own limit.
 - **Do not** give strategy (what to do to win); only what the rules allow or require. Stating what a product component is for (from the product/reminders facts) is not strategy.`;
 }
 
