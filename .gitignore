@@ -7,6 +7,9 @@ _site/
 # optimize-images.js timestamped backups
 images-backup-*/
 
+# Environment variables
+.env
+
 # Optional system files
 .DS_Store
 npm-debug.log*

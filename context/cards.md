@@ -1,3 +1,5 @@
+Cards with a cost before a colon in ABILITY are marked ACTION_ABILITY: TRUE. How to activate them is in the reminders; it is not repeated on each card. A colon that is not a cost is not an action ability.
+
 ----
 CARD: Switcheroo
 LEVEL: I
@@ -8,15 +10,7 @@ CARD: Kung Fu Gi
 LEVEL: I
 CARD_TYPE: Equipment
 ABILITY: Discard a card from your hand: This equipment gains +3.
-COMMENTS:
-  - This is an action ability. Discard a card from your hand, not this equipment, to give it +3.
-  - You may activate it more than once each round. The +3 is cleared at the end of the round, so a later round needs a new activation.
-COMMENTS_NL:
-  - Dit is een actie-ability. Gooi een kaart uit je hand weg, niet deze uitrusting, om +3 te geven.
-  - Je mag dit meer dan één keer per ronde activeren. De +3 vervalt aan het einde van de ronde, dus een latere ronde heeft een nieuwe activering nodig.
-COMMENTS_DE:
-  - Dies ist eine Aktionsfähigkeit. Lege eine Karte aus deiner Hand ab, nicht diese Ausrüstung, um +3 zu geben.
-  - Du darfst sie mehrmals pro Runde aktivieren. Die +3 wird am Ende der Runde gelöscht, also braucht eine spätere Runde eine neue Aktivierung.
+ACTION_ABILITY: TRUE
 ----
 CARD: Caiman
 LEVEL: I
@@ -97,6 +91,15 @@ LEVEL: I
 BASE_POWER: 2
 CARD_TYPE: Fighter - Frog
 ABILITY: This gains an additional +3 from a combo move.
+COMMENTS:
+  - This +3 applies once for every combo move played on this fighter. Two combo moves give +6 from this ability, plus those combos' own power.
+  - A combo move with no power value, such as Metamorphosis, does not grant this extra power.
+COMMENTS_NL:
+  - Deze +3 geldt één keer voor elke combobeweging die op deze vechter wordt gespeeld. Twee combobewegingen geven +6 van deze ability, plus de eigen kracht van die combo's.
+  - Een combobeweging zonder krachtwaarde, zoals Metamorfose, geeft deze extra kracht niet.
+COMMENTS_DE:
+  - Diese +3 gilt einmal für jeden Kombo-Move, der auf diesen Kämpfer gespielt wird. Zwei Kombo-Moves geben +6 aus dieser Fähigkeit, plus die eigene Stärke dieser Kombos.
+  - Ein Kombo-Move ohne Stärkewert, wie Metamorphose, gibt diese zusätzliche Stärke nicht.
 ----
 CARD: Focus
 LEVEL: I
@@ -113,6 +116,18 @@ CARD: White Belt
 LEVEL: I
 CARD_TYPE: Equipment
 ABILITY: The fighter gains an additional +3 from combo moves.
+COMMENTS:
+  - This +3 applies once for every combo move played on that fighter. Two combo moves give +6 from the belt, plus those combos' own power.
+  - Yellow Belt uses the same rule. If both are on the fighter, each one applies for every combo move.
+  - A combo move with no power value, such as Metamorphosis, does not grant this extra +3.
+COMMENTS_NL:
+  - Deze +3 geldt één keer voor elke combobeweging op die vechter. Twee combobewegingen geven +6 van de band, plus de eigen kracht van die combo's.
+  - Yellow Belt werkt hetzelfde. Liggen beide op de vechter, dan geldt elk voor elke combobeweging.
+  - Een combobeweging zonder krachtwaarde, zoals Metamorfose, geeft deze extra +3 niet.
+COMMENTS_DE:
+  - Diese +3 gilt einmal für jeden Kombo-Move auf diesem Kämpfer. Zwei Kombo-Moves geben +6 vom Gürtel, plus die eigene Stärke dieser Kombos.
+  - Der Yellow Belt folgt derselben Regel. Liegen beide auf dem Kämpfer, gilt jeder für jeden Kombo-Move.
+  - Ein Kombo-Move ohne Stärkewert, wie Metamorphose, gibt diese zusätzlichen +3 nicht.
 ----
 CARD: Spawn
 LEVEL: I
@@ -131,6 +146,7 @@ LEVEL: I
 BASE_POWER: 3
 CARD_TYPE: Fighter - Lizard
 ABILITY: Discard a card from your hand: Switcheroo this fighter.
+ACTION_ABILITY: TRUE
 ----
 CARD: Coral Snake
 LEVEL: I
@@ -153,6 +169,7 @@ LEVEL: II
 POWER: +1
 CARD_TYPE: Equipment
 ABILITY: Discard a card from your hand: Transform this into an equipment one level higher than the discarded card.
+ACTION_ABILITY: TRUE
 ----
 CARD: Alligator
 LEVEL: II
@@ -310,15 +327,7 @@ LEVEL: II
 BASE_POWER: 4
 CARD_TYPE: Fighter - Toad
 ABILITY: Discard one or more fighters from hand: This gains +3 for each fighter discarded this way. Use this only once each round.
-COMMENTS:
-  - This is an action ability you may use only once each round.
-  - The +3 for each discarded fighter is cleared at the end of the round, including if this fighter is knocked out. It does not carry into the cooldown zone or the next time you play this fighter.
-COMMENTS_NL:
-  - Dit is een actie-ability die je maar één keer per ronde mag gebruiken.
-  - De +3 per weggegooide vechter vervalt aan het einde van de ronde, ook als deze vechter knock-out gaat. Hij neemt de bonus niet mee naar de cooldown zone en ook niet de volgende keer dat je hem speelt.
-COMMENTS_DE:
-  - Dies ist eine Aktionsfähigkeit, die du nur einmal pro Runde nutzen darfst.
-  - Die +3 pro abgelegtem Kämpfer wird am Ende der Runde gelöscht, auch wenn dieser Kämpfer ausgeknockt wird. Er behält den Bonus nicht in der Cooldown-Zone und auch nicht, wenn du ihn das nächste Mal spielst.
+ACTION_ABILITY: TRUE
 ----
 CARD: Bogart Toad
 LEVEL: II
@@ -378,6 +387,7 @@ LEVEL: III
 POWER: +3
 CARD_TYPE: Equipment
 ABILITY: Retire this from play: The fighter gains +5.
+ACTION_ABILITY: TRUE
 ----
 CARD: Great Crocodile
 LEVEL: III
@@ -394,6 +404,18 @@ LEVEL: III
 POWER: +2
 CARD_TYPE: Equipment
 ABILITY: The fighter gains an additional +3 from a combo move.
+COMMENTS:
+  - This +3 applies once for every combo move played on that fighter, not only the first. Two combo moves give +6 from the belt, plus those combos' own power.
+  - White Belt uses the same rule. If both are on the fighter, each one applies for every combo move.
+  - A combo move with no power value does not grant this extra +3.
+COMMENTS_NL:
+  - Deze +3 geldt één keer voor elke combobeweging op die vechter, niet alleen de eerste. Twee combobewegingen geven +6 van de band, plus de eigen kracht van die combo's.
+  - White Belt werkt hetzelfde. Liggen beide op de vechter, dan geldt elk voor elke combobeweging.
+  - Een combobeweging zonder krachtwaarde geeft deze extra +3 niet.
+COMMENTS_DE:
+  - Diese +3 gilt einmal für jeden Kombo-Move auf diesem Kämpfer, nicht nur für den ersten. Zwei Kombo-Moves geben +6 vom Gürtel, plus die eigene Stärke dieser Kombos.
+  - Der White Belt folgt derselben Regel. Liegen beide auf dem Kämpfer, gilt jeder für jeden Kombo-Move.
+  - Ein Kombo-Move ohne Stärkewert gibt diese zusätzlichen +3 nicht.
 ----
 CARD: Axolotl
 LEVEL: III
@@ -442,6 +464,7 @@ LEVEL: III
 BASE_POWER: 5
 CARD_TYPE: Fighter - Salamander
 ABILITY: Discard a card from your hand: Transform your equipment in this dojo. You may only transform level I or II equipment this way.
+ACTION_ABILITY: TRUE
 ----
 CARD: Concentrate
 LEVEL: III
@@ -488,6 +511,7 @@ CARD: Spawning Suit
 LEVEL: III
 CARD_TYPE: Equipment
 ABILITY: Discard a fighter from your hand: Transform the fighter in this dojo. Use this only once each round.
+ACTION_ABILITY: TRUE
 ----
 CARD: Painted Turtle
 LEVEL: III
@@ -506,6 +530,15 @@ LEVEL: III
 BASE_POWER: 6
 CARD_TYPE: Fighter - Frog
 ABILITY: This gains an additional +4 from a combo move.
+COMMENTS:
+  - This +4 applies once for every combo move played on this fighter. Two combo moves give +8 from this ability, plus those combos' own power.
+  - A combo move with no power value does not grant this extra power.
+COMMENTS_NL:
+  - Deze +4 geldt één keer voor elke combobeweging die op deze vechter wordt gespeeld. Twee combobewegingen geven +8 van deze ability, plus de eigen kracht van die combo's.
+  - Een combobeweging zonder krachtwaarde geeft deze extra kracht niet.
+COMMENTS_DE:
+  - Diese +4 gilt einmal für jeden Kombo-Move, der auf diesen Kämpfer gespielt wird. Zwei Kombo-Moves geben +8 aus dieser Fähigkeit, plus die eigene Stärke dieser Kombos.
+  - Ein Kombo-Move ohne Stärkewert gibt diese zusätzliche Stärke nicht.
 ----
 CARD: Cane Toad
 LEVEL: III
@@ -527,6 +560,7 @@ LEVEL: III
 BASE_POWER: 6
 CARD_TYPE: Fighter - Toad
 ABILITY: Discard one or more fighters from hand: This gains +4 for each fighter discarded this way. Use this only once each round.
+ACTION_ABILITY: TRUE
 ----
 CARD: Black Mamba
 LEVEL: III
@@ -562,6 +596,15 @@ LEVEL: IV
 BASE_POWER: 6
 CARD_TYPE: Fighter - Frog
 ABILITY: Gains an additional +6 from a combo move. Combo moves that are played on this gain boomerang.
+COMMENTS:
+  - This +6 applies once for every combo move played on this fighter. Two combo moves give +12 from this ability, plus those combos' own power.
+  - A combo move with no power value does not grant this extra power. Boomerang on combo moves played on this still applies.
+COMMENTS_NL:
+  - Deze +6 geldt één keer voor elke combobeweging die op deze vechter wordt gespeeld. Twee combobewegingen geven +12 van deze ability, plus de eigen kracht van die combo's.
+  - Een combobeweging zonder krachtwaarde geeft deze extra kracht niet. Boomerang op combobewegingen die op deze vechter worden gespeeld, geldt wel.
+COMMENTS_DE:
+  - Diese +6 gilt einmal für jeden Kombo-Move, der auf diesen Kämpfer gespielt wird. Zwei Kombo-Moves geben +12 aus dieser Fähigkeit, plus die eigene Stärke dieser Kombos.
+  - Ein Kombo-Move ohne Stärkewert gibt diese zusätzliche Stärke nicht. Boomerang auf Kombo-Moves, die auf diesen Kämpfer gespielt werden, gilt trotzdem.
 ----
 CARD: Timeout
 LEVEL: IV
@@ -654,12 +697,7 @@ LEVEL: IV
 BASE_POWER: 7
 CARD_TYPE: Fighter - Toad
 ABILITY: Discard a fighter from your hand: This gains power equal to that fighter's base power. Use only once each round.
-COMMENTS:
-  - Power gained from discarding a fighter counts as ability power, not base power.
-COMMENTS_NL:
-  - Kracht die je krijgt door een vechter weg te gooien is ability-kracht, geen basiskracht.
-COMMENTS_DE:
-  - Stärke, die du erhältst, indem du einen Kämpfer ablegst, ist Fähigkeitsstärke, keine Grundstärke.
+ACTION_ABILITY: TRUE
 ----
 CARD: Fists of Fury
 LEVEL: IV
@@ -742,12 +780,7 @@ LEVEL: IV
 POWER: +2
 CARD_TYPE: Equipment
 ABILITY: Retire the fighter in this dojo from play: Draw a level V card. You are not allowed to put a fighter in this dojo this round.
-COMMENTS:
-  - After activating this effect, you cannot place or Switcheroo a fighter into this dojo for the rest of the round.
-COMMENTS_NL:
-  - Na het activeren van dit effect kun je de rest van de ronde geen vechter in deze dojo plaatsen of switcheroo'en.
-COMMENTS_DE:
-  - Nachdem du diesen Effekt aktiviert hast, darfst du für den Rest der Runde keinen Kämpfer in dieses Dojo legen oder per Switcheroo hineinbewegen.
+ACTION_ABILITY: TRUE
 ----
 CARD: Black Belt
 LEVEL: V
@@ -797,6 +830,7 @@ LEVEL: V
 POWER: +6
 CARD_TYPE: Equipment
 ABILITY: Discard a card from your hand: You may switcheroo all your equipment.
+ACTION_ABILITY: TRUE
 ----
 CARD: Hypnotoad
 LEVEL: V
@@ -829,6 +863,7 @@ CARD: Toada
 LEVEL: Sensei
 CARD_TYPE: Sensei
 ABILITY: Draw a level I card after the draft in round 1. Discard a fighter from hand: A fighter in a dojo gains +2.
+ACTION_ABILITY: TRUE
 ----
 CARD: Coach Nickey
 LEVEL: Sensei
@@ -860,6 +895,7 @@ CARD: Crocodile Dandoo
 LEVEL: Sensei
 CARD_TYPE: Sensei
 ABILITY: Discard a card from hand: A fighter in a dojo gains +2. When you discard a crocodile this way the fighter also gains knockout.
+ACTION_ABILITY: TRUE
 ----
 CARD: Professor Ribbitdore
 LEVEL: Sensei
@@ -897,6 +933,7 @@ CARD: Sir Scurry
 LEVEL: Sensei
 CARD_TYPE: Sensei
 ABILITY: Your lizards gain +1. Discard a card from hand: Switcheroo a fighter.
+ACTION_ABILITY: TRUE
 ----
 CARD: Silent Lee
 LEVEL: Sensei
@@ -916,6 +953,7 @@ CARD: Master Toshi
 LEVEL: Sensei
 CARD_TYPE: Sensei
 ABILITY: Discard 2 cards from hand: Draw a card from an active deck.
+ACTION_ABILITY: TRUE
 ----
 CARD: Mentor Morphos
 LEVEL: Sensei

@@ -157,5 +157,73 @@
       "includesAny": ["end of the round", "end of round", "cleared", "reset"],
       "excludes": ["keeps the +3", "retains the +3", "does not reset", "does not go back to 0"]
     }
+  },
+  {
+    "id": "white-belt-per-combo",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Do White Belt and Yellow Belt stack their +3 when several combo moves are played on the fighter?"
+      },
+      {
+        "role": "assistant",
+        "content": "Each of those bonuses applies once for every combo move played on that fighter."
+      },
+      {
+        "role": "user",
+        "content": "If I play 2 combo moves on a fighter with White Belt, does it get +6?"
+      }
+    ],
+    "expect": {
+      "includesAny": ["+6"],
+      "excludes": ["not +6", "only +3", "does not get +6", "doesn't get +6", "regardless of how many", "regardless of the number"]
+    }
+  },
+  {
+    "id": "yellow-belt-per-combo",
+    "messages": [
+      {
+        "role": "user",
+        "content": "And Yellow Belt — if I play 2 combo moves on that fighter, is the extra power +6 as well?"
+      }
+    ],
+    "expect": {
+      "includesAny": ["+6", "each combo", "every combo", "per combo"],
+      "excludes": ["only +3", "only the first", "not +6", "regardless of how many", "regardless of the number"]
+    }
+  },
+  {
+    "id": "champions-belt-action-timing",
+    "messages": [
+      {
+        "role": "user",
+        "content": "For Champion's Belt, can the effect be triggered multiple times, or only when the card is played?"
+      }
+    ],
+    "expect": {
+      "includesAny": ["action phase", "instead of playing", "later round"],
+      "excludes": ["only be activated when", "activated only when you play", "as soon as you play", "when the card is used"]
+    }
+  },
+  {
+    "id": "equipment-action-not-once",
+    "messages": [
+      {
+        "role": "user",
+        "content": "For Champion's Belt, can the effect be triggered multiple times, or only when the card is played?"
+      },
+      {
+        "role": "assistant",
+        "content": "Champion's Belt is an action ability. You activate it in the action phase instead of playing a card, not when you play the belt."
+      },
+      {
+        "role": "user",
+        "content": "So an action on equipment only works once?"
+      }
+    ],
+    "expect": {
+      "includesAny": ["action phase", "more than once", "multiple times", "instead of playing"],
+      "excludes": ["only works once", "applies only once", "no longer available", "works only once", "applies for once"]
+    }
   }
 ]

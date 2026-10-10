@@ -58,13 +58,17 @@ Total Power = Base power fighter + Base power equipment + Power from abilities +
 **Sparring Boots** (and similar “when this wins, … unless knocked out”): the winner returns to hand only if they were **not** knocked out. Normal keyword Knockout on the opponent does not knock out your winner. Effects like Sucker Punch or Tipsy Turtle can knock out a winner/drawer and thus block that return-to-hand.
 
 ## Action abilities
-**Principle:** An action ability is on a fighter, equipment, or sensei already in play. In the card text the underlined cost is everything **before the colon** (`Discard a card from your hand: This equipment gains +3`). Activating it is one action in the action phase: pay that cost, then resolve the effect. You may activate it again later in the same round, and again in later rounds, unless the card says “only once each round” or the cost removes the card.
+**Principle:** A card has an action ability when its rules text states a **cost**, then a **colon**, then an effect (`Discard a card from your hand: This equipment gains +3`). Those cards are marked `ACTION_ABILITY: TRUE`. A colon that is not a cost is not an action ability (Focus’s “Pick a type: Fighter or Equipment”).
+
+The ability sits on a fighter, equipment, or sensei already in play. Playing that card does **not** activate it. In the action phase, activating it is one action **instead of** playing a card from hand: pay the cost (everything before the colon), then resolve the effect. You may activate it again later in the same round, and again in later rounds, unless that card says “only once each round” or the cost removes the card so it can no longer be activated. If the card also has other text, only the cost-before-colon part is the action ability.
+
+**If the question treats this like a one-shot that happens when the card is played, or asks whether an action on equipment works only once, explain that timing.** Most action abilities can be activated more than once per round. “Only once” is the exception printed on the card, not the default.
 
 Pay the **cost**. Do not discard or retire the card that has the ability, unless the cost itself says to retire that card or the fighter.
 
 Power gained this way is ability power. It resets to 0 at the end of the round. Equipment that stays in the dojo does not keep it. Knockout is resolved at the end of the round too, so the bonus is already gone when the fighter goes to the cooldown zone, and it is gone the next time that fighter is played.
 
-**Cards:** Repeatable — Kung Fu Gi, Gecko, Spawning Sword, Fire Salamander, Twin Katanas, Toada, Crocodile Dandoo, Sir Scurry, Master Toshi. Once each round — Bloated Toad, Oak Toad, Spawning Suit, Harlequin Toad. Cost removes the card — Smoke Bomb, Champion’s Belt.
+**Champion’s Belt:** the cost retires the fighter, not the belt. After that you may not put a fighter in that dojo for the rest of the round, so you cannot pay the cost again that round. A later round can activate it again if a fighter is there.
 
 Playing an action or combo from hand is not an action ability. Examples: Meditate, Concentrate, and Open Palm Strike’s discard-to-give-boomerang, which is paid when you play that combo. Static text and “when/if” text are not action abilities either.
 
@@ -72,3 +76,10 @@ Playing an action or combo from hand is not an action ability. Examples: Meditat
 **Principle:** A combo move with Boomerang goes to the cooldown zone at the end of the round instead of the discard pile. It can be used again after the next round.
 
 Boomerang does not copy the combo onto every fighter of the same type. Copying a combo onto other fighters of the same type is Fists of Fury or Goliath Frog.
+
+## Additional power from combo moves
+**Principle:** An ability that gives additional power from a combo move applies that bonus **once for every combo move** played on that fighter. It is not limited to the first combo, and it is not once per round.
+
+Two combo moves on a fighter with White Belt give **+6** from the belt, on top of the power printed on those combo cards. Yellow Belt works the same way. The same rule covers Tree Frog (+3 each), Glass Frog (+4 each), and Red-Spotted Frog (+6 each). If more than one of these abilities is on the fighter, each one applies for every combo move.
+
+A combo move with **no power value** (Metamorphosis, Rebirth) does not grant this additional power.
