@@ -70,3 +70,33 @@ form input[type="email"]::placeholder {
   color: #1b3a32;
   opacity: 0.6;
 }
+
+/* Sell sheet: printable without the site chrome */
+@media print {
+  body.sellsheet-page header,
+  body.sellsheet-page footer,
+  body.sellsheet-page #sellsheet-lightbox {
+    display: none !important;
+  }
+
+  body.sellsheet-page {
+    background: #fff !important;
+  }
+
+  body.sellsheet-page .shadow,
+  body.sellsheet-page .shadow-sm,
+  body.sellsheet-page .shadow-md {
+    box-shadow: none !important;
+  }
+
+  body.sellsheet-page .sellsheet-block,
+  body.sellsheet-page article {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  body.sellsheet-page .sellsheet-contact {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

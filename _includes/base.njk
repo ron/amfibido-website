@@ -166,7 +166,7 @@
     </style>
     {# Add other head elements like favicons here #}
   </head>
-  <body class="bg-[#fafaf8] text-gray-900 font-sans antialiased{% if hideHeaderMobile %} hide-header-mobile{% endif %}">
+  <body class="bg-[#fafaf8] text-gray-900 font-sans antialiased{% if hideHeaderMobile %} hide-header-mobile{% endif %}{% if page.fileSlug == 'sellsheet' %} sellsheet-page{% endif %}">
     <!-- Header -->
     <header class="relative z-50 shadow-lg{% if hideHeaderMobile %} max-md:hidden{% endif %}">
       <!-- Background with centered header.png that repeats on sides - showing bottom half -->
