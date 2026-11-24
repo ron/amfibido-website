@@ -29,7 +29,7 @@
       }
     ],
     "expect": {
-      "includesAny": ["does not", "doesn't", "Hypnotoad neutralize", "neutralizes Bo Staff", "Bo Staff's ability"],
+      "includesAny": ["does not", "doesn't", "cannot neutralize", "Hypnotoad neutralize", "neutralizes Bo Staff", "Bo Staff's ability"],
       "excludes": ["Bo Staff's ability to neutralize the abilities of opposing equipment in its dojo still applies", "still applies, even if the Hypnotoad"]
     }
   },
@@ -201,8 +201,8 @@
       }
     ],
     "expect": {
-      "includesAny": ["actiefase", "action phase", "in plaats van", "instead of playing"],
-      "excludes": ["zodra je de kaart oplegt", "zodra je hem oplegt", "as soon as you play", "only triggers when you play"]
+      "includesAny": ["actiefase", "actie fase", "action phase", "in plaats van", "instead of playing"],
+      "excludes": ["zodra je de kaart oplegt", "zodra je hem oplegt", "as soon as you play", "only triggers when you play", "als er weer een vechter"]
     }
   },
   {
@@ -224,6 +224,53 @@
     "expect": {
       "includesAny": ["action phase", "more than once", "multiple times", "instead of playing"],
       "excludes": ["only works once", "applies only once", "no longer available", "works only once", "applies for once"]
+    }
+  },
+  {
+    "id": "spawn-barbed-wire",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Wat gebeurt er als een spawn een gevecht wint met barbed wire"
+      }
+    ],
+    "expect": {
+      "includesAny": ["beide", "volgorde", "kwijt"],
+      "excludes": ["specifieke vraag", "nieuwe vechter komt", "new fighter stays", "zonder de effecten", "barbed wire gaat", "zichzelf uit het spel haalt", "retires itself"]
+    }
+  },
+  {
+    "id": "spawn-right-hook-end-of-round",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Mijn spawn transformeert terwijl de combo right hook erop ligt"
+      },
+      {
+        "role": "assistant",
+        "content": "Transformeert je Spawn nadat hij de strijd heeft gewonnen?"
+      },
+      {
+        "role": "user",
+        "content": "Ja"
+      }
+    ],
+    "expect": {
+      "includesAny": ["einde van de ronde", "end of the round"],
+      "excludes": ["niet meer op die nieuwe", "omdat de spawn een nieuwe", "no longer on that new", "fell off"]
+    }
+  },
+  {
+    "id": "smoke-bomb-retire",
+    "messages": [
+      {
+        "role": "user",
+        "content": "I have a smoke bomb when is it retire this from play and can i act in that dojo"
+      }
+    ],
+    "expect": {
+      "includesAny": ["action phase", "instead of playing"],
+      "excludes": ["when the fighter using it wins", "when the fighter wins the fight", "cannot add another fighter", "cannot add a fighter", "you cannot add", "not allowed to put a fighter"]
     }
   }
 ]

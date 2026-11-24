@@ -134,6 +134,15 @@ LEVEL: I
 BASE_POWER: 2
 CARD_TYPE: Fighter - Spawn
 ABILITY: This transforms when it wins the fight.
+COMMENTS:
+  - This trigger resolves at the end of the round.
+  - If Barbed Wire is in the same dojo, both win effects trigger. You choose the order. Either order, this fighter is lost. Barbed Wire stays; it does not retire itself.
+COMMENTS_NL:
+  - Dit gaat af aan het einde van de ronde.
+  - Ligt Barbed Wire in dezelfde dojo, dan gaan beide wineffecten af. Jij kiest de volgorde. In beide volgordes ben je deze vechter kwijt. Barbed Wire blijft liggen en haalt zichzelf niet uit het spel.
+COMMENTS_DE:
+  - Dieser Auslöser wird am Ende der Runde abgehandelt.
+  - Liegt Barbed Wire im selben Dojo, lösen beide Sieg-Effekte aus. Du bestimmst die Reihenfolge. In beiden Reihenfolgen verlierst du diesen Kämpfer. Barbed Wire bleibt liegen und entfernt sich nicht selbst.
 ----
 CARD: Black Toad
 LEVEL: I
@@ -285,6 +294,15 @@ LEVEL: II
 POWER: +4
 CARD_TYPE: Equipment
 ABILITY: Retire the fighter from play when it wins the fight.
+COMMENTS:
+  - This retires the fighter, never this equipment. Barbed Wire stays in the dojo.
+  - If the fighter is a Spawn that also transforms when it wins, you choose the order. Either order, that fighter is lost. A new fighter does not stay in the dojo.
+COMMENTS_NL:
+  - Dit haalt de vechter uit het spel, nooit deze uitrusting. Barbed Wire blijft in de dojo.
+  - Is de vechter een Spawn die ook transformeert bij winst, dan kies jij de volgorde. In beide volgordes ben je die vechter kwijt. Er blijft geen nieuwe vechter in de dojo.
+COMMENTS_DE:
+  - Dies entfernt den Kämpfer aus dem Spiel, niemals diese Ausrüstung. Barbed Wire bleibt im Dojo.
+  - Ist der Kämpfer ein Spawn, der bei einem Sieg ebenfalls transformiert, bestimmst du die Reihenfolge. In beiden Reihenfolgen verlierst du diesen Kämpfer. Es bleibt kein neuer Kämpfer im Dojo.
 ----
 CARD: Bullfrog
 LEVEL: II
@@ -388,6 +406,15 @@ POWER: +3
 CARD_TYPE: Equipment
 ABILITY: Retire this from play: The fighter gains +5.
 ACTION_ABILITY: TRUE
+COMMENTS:
+  - You retire this equipment when you activate it in the action phase, instead of playing a card from hand. Then the fighter gains +5. Playing the card does not retire it, and winning the fight does not retire it.
+  - The fighter stays. You can still act in that dojo and put a fighter there. “No fighter in this dojo this round” is Champion’s Belt only.
+COMMENTS_NL:
+  - Je haalt deze uitrusting uit het spel wanneer je hem in de actiefase activeert, in plaats van een kaart uit je hand te spelen. Daarna krijgt de vechter +5. De kaart opleggen haalt hem niet uit het spel, en het gevecht winnen ook niet.
+  - De vechter blijft. Je kunt in die dojo nog handelen en er een vechter neerzetten. “Geen vechter in deze dojo deze ronde” staat alleen op Champion’s Belt.
+COMMENTS_DE:
+  - Du entfernst diese Ausrüstung aus dem Spiel, wenn du sie in der Aktionsphase aktivierst, statt eine Karte aus der Hand zu spielen. Danach erhält der Kämpfer +5. Das Ausspielen entfernt sie nicht, und den Kampf zu gewinnen auch nicht.
+  - Der Kämpfer bleibt. Du kannst in diesem Dojo weiter handeln und dort einen Kämpfer einsetzen. „Kein Kämpfer in diesem Dojo in dieser Runde“ steht nur auf Champion’s Belt.
 ----
 CARD: Great Crocodile
 LEVEL: III
@@ -438,7 +465,7 @@ POWER: +2
 CARD_TYPE: Action - Combo Move
 ABILITY: Boomerang. You may switcheroo this fighter.
 COMMENTS:
-  - Boomerang puts this combo in the cooldown zone at the end of the round instead of the discard pile.
+  - When explaining Tag Team, say Boomerang puts this combo in the cooldown zone at the end of the round instead of the discard pile. Do not stop at the word Boomerang.
   - You may switcheroo the fighter this combo is on. The +2 stays on that fighter and moves with it.
 COMMENTS_NL:
   - Boomerang: deze combo gaat aan het einde van de ronde naar de cooldown zone in plaats van de aflegstapel.

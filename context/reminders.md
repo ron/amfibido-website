@@ -19,7 +19,16 @@ Switcheroo allows you to move or switch with a fighter or equipment to ANY of yo
 Fighters and equipment that **transform** become a **random** card of the **next level** of that type, using the **Transform** procedure in the full rules: retire the old card, reveal from the next level's deck until you find a card of the required type, place it in the dojo, and put the other revealed cards on the bottom in random order. (Level V transforms into another level V card of that type.)
 
 ## Spawn fighter
-**Spawn** is a fighter type. The **Spawn** card (e.g. level I) says it **transforms when it wins the fight** — that uses the **Transform** keyword, so the fighter becomes a **random** fighter of the **next** level, not a chosen or fixed card.
+**Spawn** is a fighter type. The **Spawn** card (e.g. level I) says it **transforms when it wins the fight**. That trigger resolves at the **end of the round**. By itself it uses the **Transform** keyword, so the fighter becomes a **random** fighter of the **next** level, not a chosen or fixed card.
+
+If another ability you control also triggers because that same fighter won, use the rule below. Do not answer with only “it becomes a random fighter of the next level.”
+
+## When two of your win effects conflict
+**Principle:** When two abilities you control both trigger because a fighter wins the fight, you choose the order. This is the same rule as Sparring Boots and Snapping Turtle.
+
+**Spawn and Barbed Wire:** Spawn transforms when it wins. Barbed Wire says “Retire the fighter from play when it wins the fight.” Either order, that fighter is lost. Do not say a new fighter stays in the dojo without Barbed Wire.
+
+Barbed Wire retires the **fighter**, never itself. Equipment stays in the dojo unless its own text retires that equipment, or it is replaced.
 
 ## Dice
 The dice included with Amfibido are used to **keep track of total powers** of fighters when totals get high later in the game. They are not for randomizing fight outcomes or house-rule variants. When a user asks about dice, always give this tracking answer (even if they ask about “spicing up” or variants).
@@ -28,7 +37,8 @@ The dice included with Amfibido are used to **keep track of total powers** of fi
 **Principle:** Combo moves attach to a **specific fighter** until end of round (or until that fighter leaves play in a way that discards/retires it).
 - **Moving that same fighter** (Switcheroo, or any effect that relocates the fighter without replacing it): combos **go with** the fighter. They do not stay in the old dojo and do not jump to a different fighter.
 - **Replacing / retiring / discarding that fighter** (a different fighter enters the dojo, or the fighter is retired/discarded): combos on the old fighter are **discarded**. They do not transfer to the new fighter.
-- **Transform:** the fighter becomes a new card in place; combos remain applicable on that fighter (per the rules tip), they are not treated like a replace-into-a-new-card discard.
+- **Transform earlier in the round** (before the fight is resolved): the fighter becomes a new card in place. Combo moves stay on that fighter until the end of the round, and their power still counts. Do not discard them just because the fighter transformed.
+- **Transform because the fighter won the fight** (Spawn, and any similar “when it wins, transform”): that happens at the end of the round. Combo moves are discarded in the normal end-of-round step (cooldown zone if they have boomerang). Their power was already counted when the fight was resolved. Do not say the combo fell off because the fighter became a new card.
 
 ## Classifying power (base vs ability vs combo)
 Total Power = Base power fighter + Base power equipment + Power from abilities + Power from combo moves.
@@ -55,7 +65,7 @@ Total Power = Base power fighter + Base power equipment + Power from abilities +
 
 **Other card text** can knock a fighter out regardless of win/loss/draw (e.g. “knocked out after the fight”, “even if it draws or wins”). Read the card; do not equate those with the Knockout keyword.
 
-**Sparring Boots** (and similar “when this wins, … unless knocked out”): the winner returns to hand only if they were **not** knocked out. Normal keyword Knockout on the opponent does not knock out your winner. Effects like Sucker Punch or Tipsy Turtle can knock out a winner/drawer and thus block that return-to-hand.
+**Sparring Boots** (and similar “when this wins, … unless knocked out”): the winner returns to hand only if they were **not** knocked out. Normal keyword Knockout on the opponent does not knock out your winner. Sucker Punch and Tipsy Turtle knock out a fighter after the fight even if it wins or draws, and that blocks the return to hand. When someone asks how a fighter can win and still be knocked out, name Sucker Punch and Tipsy Turtle. Do not answer with only the general rule.
 
 ## Action abilities
 **Principle:** A card has an action ability when its rules text states a **cost**, then a **colon**, then an effect (`Discard a card from your hand: This equipment gains +3`). Those cards are marked `ACTION_ABILITY: TRUE`. A colon that is not a cost is not an action ability (Focus’s “Pick a type: Fighter or Equipment”).
@@ -73,12 +83,16 @@ Pay the **cost**. Do not discard or retire the card that has the ability, unless
 
 Power gained this way is ability power. It resets to 0 at the end of the round. Equipment that stays in the dojo does not keep it. Knockout is resolved at the end of the round too, so the bonus is already gone when the fighter goes to the cooldown zone, and it is gone the next time that fighter is played.
 
-**Champion’s Belt:** Playing the belt does not activate it. You activate it later in the action phase, instead of playing a card from hand: retire the fighter in that dojo, then draw a level V card. The belt stays. After that you may not put a fighter in that dojo for the rest of the round, so you cannot pay the cost again that round. A later round can activate it again if a fighter is there. If someone asks whether it only triggers when the card is played, give this timing. Do not answer with only the once-per-round limit.
+**Champion’s Belt:** Playing the belt does not activate it. You activate it later in the action phase, instead of playing a card from hand: retire the fighter in that dojo, then draw a level V card. The belt stays. After that you may not put a fighter in that dojo for the rest of the round, so you cannot activate it again that round. Do not say you can use it again the same round if a fighter is there. A later round can activate it again if a fighter is there. If someone asks whether it only triggers when the card is played, give this timing. Do not answer with only the once-per-round limit.
+
+**Retiring equipment is not Champion’s Belt.** A cost of “Retire this from play” on an equipment card retires that equipment only. The fighter stays. You can still play cards and take actions in that dojo. Only a card that says you may not put a fighter there (Champion’s Belt) has that restriction. Do not copy it onto other retire costs.
+
+**Smoke Bomb:** `Retire this from play: The fighter gains +5.` Playing it does not retire it. You activate it in the action phase, instead of playing a card from hand: retire the Smoke Bomb, then the fighter gains +5. It does not retire when the fighter wins. Retiring it does not stop you from acting in that dojo or putting a fighter there.
 
 Playing an action or combo from hand is not an action ability. Examples: Meditate, Concentrate, and Open Palm Strike’s discard-to-give-boomerang, which is paid when you play that combo. Static text and “when/if” text are not action abilities either.
 
 ## Boomerang
-**Principle:** A combo move with Boomerang goes to the cooldown zone at the end of the round instead of the discard pile. It can be used again after the next round.
+**Principle:** A combo move with Boomerang goes to the cooldown zone at the end of the round instead of the discard pile. It can be used again after the next round. When you explain a combo that has Boomerang, such as Tag Team, say “cooldown zone”. Do not stop at the word Boomerang.
 
 Boomerang does not copy the combo onto every fighter of the same type. Copying a combo onto other fighters of the same type is Fists of Fury or Goliath Frog.
 

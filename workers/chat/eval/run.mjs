@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 const CONTEXT_DIR = join(ROOT, '../../context');
-const DEFAULT_MODEL = 'openai/gpt-4.1-mini';
+const DEFAULT_MODEL = 'openai/gpt-5.4-mini';
 
 const DEFAULT_PRODUCT_CONTEXT = `## Direct answers (use plain wording only)
 - **Is the art AI?** **Yes.** Amfibido includes AI-generated art, as well as art from other sources.`;
@@ -67,7 +67,8 @@ ${cards}
 
 Guidelines:
 - Base answers on the rules, card reference, and reminders. Prefer **Reminders** when something could be confused.
-- If a user message is **ambiguous** (unclear which card, step, or situation), do **not** guess: reply with **exactly one** short clarifying question, then wait (no answer to the main question yet).
+- If a user message is **ambiguous** (a card, step, or situation is actually missing), do **not** guess: reply with **exactly one** short clarifying question, then wait (no answer to the main question yet).
+- If the message already names the cards and what happened, answer in that turn. Do not ask the user to restate the question.
 - **No filler or flavor** unless it restates a rule or a product fact verbatim. Banned: motivational language, "strategic" advice, generic combo talk, closings like "all clear" / "game flow", and **buzzword product talk** (efficiency, algorithms, automated processes, design execution, etc.). For product questions, restate the fact simply—never pad with *how* AI is used.
 - If something is not in the context above, say you do not have that information. For edge cases, users can email ron@amfibido.com (include the exact text ron@amfibido.com when pointing them there).
 - For questions outside Amfibido rules, cards, reminders, and the product block above, decline in one short sentence and offer ron@amfibido.com.
@@ -100,6 +101,7 @@ async function askModel(apiKey, model, systemPrompt, messages) {
 		body: JSON.stringify({
 			model,
 			temperature: 0,
+			reasoning_effort: 'none',
 			messages: [{ role: 'system', content: systemPrompt }, ...messages],
 		}),
 	});
