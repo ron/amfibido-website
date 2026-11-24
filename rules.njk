@@ -1,5 +1,6 @@
 ---
 layout: base.njk
+noindex: true
 title: "Rules | Amfibido"
 description: "Download the official Amfibido game manual and learn how to play."
 permalink: /rules/
@@ -7,6 +8,13 @@ permalink: /rules/
 {# Entry point: redirect to /rules/en/, /rules/nl/, or /rules/de/ from geo + localStorage #}
 <section class="py-16 bg-[#fafaf8] min-h-[40vh] flex items-center justify-center">
   <p class="text-gray-500 text-sm">Loading rules…</p>
+  <noscript>
+    <nav aria-label="Rules languages">
+      <a href="/rules/en/" hreflang="en" lang="en">English</a>
+      <a href="/rules/nl/" hreflang="nl" lang="nl">Nederlands</a>
+      <a href="/rules/de/" hreflang="de" lang="de">Deutsch</a>
+    </nav>
+  </noscript>
 </section>
 <script>
 (function () {

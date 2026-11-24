@@ -8,13 +8,16 @@
     "build:css:prod": "npx postcss css/style.css -o _site/css/style.css --env=production --verbose",
     "watch:css": "npx postcss css/style.css -o _site/css/style.css --watch --env=development",
     "start:eleventy": "ELEVENTY_ENV=development eleventy --serve",
-    "start": "npm-run-all build:css --parallel start:eleventy watch:css",
+    "start": "npm-run-all generate:home-images build:css --parallel start:eleventy watch:css",
     "build:eleventy": "ELEVENTY_ENV=development eleventy",
     "build:eleventy:prod": "ELEVENTY_ENV=production eleventy",
-    "build": "npm-run-all generate:card-thumbs build:eleventy build:css",
-    "build:prod": "npm-run-all generate:card-thumbs build:eleventy:prod build:css:prod",
+    "build": "npm-run-all clean generate:card-thumbs generate:home-images build:eleventy build:css",
+    "build:prod": "npm-run-all clean generate:card-thumbs generate:home-images build:eleventy:prod build:css:prod",
     "optimize:images": "node optimize-images.js",
-    "generate:card-thumbs": "node scripts/generate-card-thumbs.js"
+    "generate:card-thumbs": "node scripts/generate-card-thumbs.js",
+    "generate:home-images": "node scripts/generate-home-images.js",
+    "check:seo": "node scripts/check-seo.js",
+    "clean": "node -e \"require('node:fs').rmSync('_site', { recursive: true, force: true })\""
   },
   "keywords": [
     "eleventy",

@@ -13,3 +13,6 @@ images-backup-*/
 # Optional system files
 .DS_Store
 npm-debug.log*
+
+# Generated homepage image variants
+images/optimized/

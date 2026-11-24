@@ -20,7 +20,12 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy(".nojekyll");
   // Copy SEO files
   eleventyConfig.addPassthroughCopy("robots.txt");
-  eleventyConfig.addPassthroughCopy("sitemap.xml");
+  eleventyConfig.addFilter("structuredData", require("./lib/seo").structuredData);
+  eleventyConfig.addCollection("sitemapPages", (collection) =>
+    collection.getAll().filter((item) =>
+      item.data.layout === "base.njk" && !item.data.noindex && item.url
+    ).sort((a, b) => a.url.localeCompare(b.url))
+  );
 
   // Make sure the processed CSS directory exists
   eleventyConfig.on('eleventy.before', async () => {

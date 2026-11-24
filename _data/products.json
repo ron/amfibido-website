@@ -1,0 +1,20 @@
+{
+  "game": {
+    "name": "Amfibido Game",
+    "price": "22.99",
+    "image": "/images/shop/amfibido-game.png",
+    "description": "The complete Amfibido card game including Dojo cards. Everything you need to play in one box."
+  },
+  "game-playmats": {
+    "name": "Amfibido Game + 2 Playmats",
+    "price": "33.99",
+    "image": "/images/shop/amfibido-game-playmats.png",
+    "description": "The complete Amfibido card game plus 2 premium soft rubber playmats (40\u00d725 cm)."
+  },
+  "bundle": {
+    "name": "Amfibido Complete Bundle",
+    "price": "39.99",
+    "image": "/images/shop/amfibido-game-playmats-dice.png",
+    "description": "The complete Amfibido card game, 2 playmats, and a dice bag with dice for tracking power."
+  }
+}

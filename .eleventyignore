@@ -1,2 +1,9 @@
 # Unreleased card designs: keep them off the public site
 card-designs/
+
+# Internal documentation and tooling are not public HTML pages.
+README.md
+scripts/
+workers/
+context/
+docs/

@@ -16,7 +16,7 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
       </div>
 
       <!-- Loading State -->
-      <div id="shop-loading" class="text-center py-16">
+      <div id="shop-loading" class="hidden text-center py-4" role="status">
         <div class="inline-block w-8 h-8 border-4 border-[#2d5a27]/20 border-t-[#2d5a27] rounded-full animate-spin"></div>
         <p class="mt-4 text-gray-600">Loading shop...</p>
       </div>
@@ -46,7 +46,7 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
       </div>
 
       <!-- Products Grid -->
-      <div id="shop-products" class="hidden">
+      <div id="shop-products">
       <div class="grid md:grid-cols-3 gap-8 mb-16">
         <!-- Product 1: Amfibido Game -->
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col transition-transform duration-300 hover:scale-[1.02] hover:shadow-xl">
@@ -54,15 +54,15 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
             <img src="{{ '/images/shop/amfibido-game.png' | url }}" alt="Amfibido Game" class="w-full h-full object-contain">
           </div>
           <div class="p-6 flex flex-col flex-grow">
-            <h2 class="text-xl font-headings font-bold text-[#2d5a27] mb-2">Amfibido Game</h2>
+            <h2 id="game" class="text-xl font-headings font-bold text-[#2d5a27] mb-2">Amfibido Game</h2>
             <p class="text-gray-600 mb-4 flex-grow">
               The complete Amfibido card game including Dojo cards. Everything you need to play in one box.
             </p>
             <div class="flex items-center justify-between mt-auto">
-              <span class="text-2xl font-bold text-[#2d5a27]">€22,99</span>
-              <a href="#" class="btn btn-primary px-6 py-2 buy-btn" data-product="game">
-                View & Buy
-              </a>
+              <span class="text-2xl font-bold text-[#2d5a27]">€{{ products['game'].price | replace('.', ',') }}</span>
+              <button type="button" disabled aria-disabled="true" class="btn btn-primary px-6 py-2 buy-btn pointer-events-none opacity-50" data-product="game">
+                View &amp; Buy
+              </button>
             </div>
           </div>
         </div>
@@ -73,15 +73,15 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
             <img src="{{ '/images/shop/amfibido-game-playmats.png' | url }}" alt="Amfibido Game + 2 Playmats" class="w-full h-full object-contain">
           </div>
           <div class="p-6 flex flex-col flex-grow">
-            <h2 class="text-xl font-headings font-bold text-[#2d5a27] mb-2">Amfibido Game + 2 Playmats</h2>
+            <h2 id="game-playmats" class="text-xl font-headings font-bold text-[#2d5a27] mb-2">Amfibido Game + 2 Playmats</h2>
             <p class="text-gray-600 mb-4 flex-grow">
               The complete card game plus 2 premium soft rubber playmats (40×25 cm). Perfect playing surface for your dojo battles.
             </p>
             <div class="flex items-center justify-between mt-auto">
-              <span class="text-2xl font-bold text-[#2d5a27]">€33,99</span>
-              <a href="#" class="btn btn-primary px-6 py-2 buy-btn" data-product="game-playmats">
-                View & Buy
-              </a>
+              <span class="text-2xl font-bold text-[#2d5a27]">€{{ products['game-playmats'].price | replace('.', ',') }}</span>
+              <button type="button" disabled aria-disabled="true" class="btn btn-primary px-6 py-2 buy-btn pointer-events-none opacity-50" data-product="game-playmats">
+                View &amp; Buy
+              </button>
             </div>
           </div>
         </div>
@@ -96,15 +96,15 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
             <img src="{{ '/images/shop/amfibido-game-playmats-dice.png' | url }}" alt="Amfibido Game + 2 Playmats + Dice Bag" class="w-full h-full object-contain">
           </div>
           <div class="p-6 flex flex-col flex-grow">
-            <h2 class="text-xl font-headings font-bold text-[#2d5a27] mb-2">Amfibido Complete Bundle</h2>
+            <h2 id="bundle" class="text-xl font-headings font-bold text-[#2d5a27] mb-2">Amfibido Complete Bundle</h2>
             <p class="text-gray-600 mb-4 flex-grow">
               The ultimate package: complete card game, 2 soft rubber playmats (40×25 cm), plus a dice bag with 6× D6, 6× D12, and 6× D20 dice.
             </p>
             <div class="flex items-center justify-between mt-auto">
-              <span class="text-2xl font-bold text-[#2d5a27]">€39,99</span>
-              <a href="#" class="btn btn-accent px-6 py-2 buy-btn" data-product="bundle">
-                View & Buy
-              </a>
+              <span class="text-2xl font-bold text-[#2d5a27]">€{{ products['bundle'].price | replace('.', ',') }}</span>
+              <button type="button" disabled aria-disabled="true" class="btn btn-accent px-6 py-2 buy-btn pointer-events-none opacity-50" data-product="bundle">
+                View &amp; Buy
+              </button>
             </div>
           </div>
         </div>
@@ -120,7 +120,7 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
 
       <!-- Terms & Privacy Link -->
       <div class="mt-8 text-center">
-        <a href="{{ '/terms' | url }}" class="inline-flex items-center text-gray-600 hover:text-[#2d5a27] transition-colors">
+        <a href="{{ '/terms/' | url }}" class="inline-flex items-center text-gray-600 hover:text-[#2d5a27] transition-colors">
           <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
           </svg>
@@ -200,7 +200,7 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
           <label class="flex items-start gap-3 cursor-pointer group">
             <input type="checkbox" id="terms-checkbox" class="mt-1 w-5 h-5 rounded border-gray-300 text-[#2d5a27] focus:ring-[#2d5a27] cursor-pointer">
             <span class="text-gray-700 text-sm">
-              I agree to the <a href="{{ '/terms' | url }}" target="_blank" class="text-[#2d5a27] hover:underline font-medium">Terms, Conditions & Privacy Policy</a>
+              I agree to the <a href="{{ '/terms/' | url }}" target="_blank" class="text-[#2d5a27] hover:underline font-medium">Terms, Conditions & Privacy Policy</a>
             </span>
           </label>
           <p id="terms-error" class="text-red-500 text-sm mt-2 hidden">Please accept the terms and conditions to continue.</p>
@@ -271,8 +271,8 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
 
   const PRODUCT_DATA = {
     game: {
-      title: 'Amfibido Game',
-      price: '€22,99',
+      title: {{ products['game'].name | json | safe }},
+      price: '€{{ products['game'].price | replace('.', ',') }}',
       images: [
         '{{ "/images/shop/amfibido-game.png" | url }}',
         '{{ "/images/shop/game-content.png" | url }}'
@@ -284,8 +284,8 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
       ]
     },
     'game-playmats': {
-      title: 'Amfibido Game + 2 Playmats',
-      price: '€33,99',
+      title: {{ products['game-playmats'].name | json | safe }},
+      price: '€{{ products['game-playmats'].price | replace('.', ',') }}',
       images: [
         '{{ "/images/shop/amfibido-game-playmats.png" | url }}',
         '{{ "/images/shop/game-content.png" | url }}',
@@ -299,8 +299,8 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
       ]
     },
     bundle: {
-      title: 'Amfibido Complete Bundle',
-      price: '€39,99',
+      title: {{ products['bundle'].name | json | safe }},
+      price: '€{{ products['bundle'].price | replace('.', ',') }}',
       images: [
         '{{ "/images/shop/amfibido-game-playmats-dice.png" | url }}',
         '{{ "/images/shop/game-content.png" | url }}',
@@ -468,6 +468,12 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
 
   function showShop(countryCode, isSupported) {
     currentCountry = countryCode;
+    document.querySelectorAll('.buy-btn').forEach(btn => {
+      btn.classList.remove('pointer-events-none', 'opacity-50');
+      btn.removeAttribute('aria-disabled');
+      btn.disabled = false;
+      btn.textContent = 'View & Buy';
+    });
     document.getElementById('shop-loading').classList.add('hidden');
     document.getElementById('shop-products').classList.remove('hidden');
 
@@ -481,16 +487,19 @@ description: "Buy Amfibido, the strategic 2-player card game. Get the complete g
     } else {
       document.getElementById('shop-unavailable').classList.remove('hidden');
       document.querySelectorAll('.buy-btn').forEach(btn => {
-        btn.removeAttribute('href');
+        btn.disabled = true;
+        btn.setAttribute('aria-disabled', 'true');
         btn.classList.add('opacity-50', 'cursor-not-allowed', 'pointer-events-none');
         btn.textContent = 'Unavailable';
       });
     }
   }
 
-  fetch('https://ipapi.co/json/')
-    .then(res => res.json())
+  document.getElementById('shop-loading').classList.remove('hidden');
+  fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(5000) })
+    .then(res => { if (!res.ok) throw new Error('Shipping lookup failed'); return res.json(); })
     .then(data => {
+      if (!data.country_code) throw new Error('Shipping country missing');
       const country = data.country_code;
       const countryName = data.country_name;
       const isSupported = SUPPORTED_COUNTRIES.includes(country);

@@ -54,6 +54,9 @@ jobs:
           echo "Site directory structure:"
           find _site -type d | sort
 
+      - name: Check generated SEO metadata
+        run: npm run check:seo
+
       - name: Setup Pages 📄
         uses: actions/configure-pages@v4
 

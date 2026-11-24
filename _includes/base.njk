@@ -7,14 +7,19 @@
     <meta name="description" content="{{ description or "Amfibido is an exhilarating 2-player card game where amphibians and reptiles collide in epic battles. Strategize, transform, and knock out your opponent's champions to become the ultimate dojo master." }}">
 
     <!-- Additional SEO Meta Tags -->
-    <meta name="keywords" content="card game, 2-player game, strategy game, tabletop game, amphibians, reptiles, dojo, martial arts, board game">
-    <meta name="author" content="Gnome on the Phone Studios">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
-    <meta name="revisit-after" content="7 days">
+    <meta name="author" content="Roca Games">
+    <meta name="robots" content="{% if noindex %}noindex, follow{% else %}index, follow{% endif %}">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://amfibido.com{{ page.url }}">
+
+    {% if lang and page.url.indexOf('/rules/') == 0 %}
+    {% set languageSuffix = 'reference/' if page.url.indexOf('/reference/') != -1 else '' %}
+    {% for alternate in ['en', 'nl', 'de'] %}
+    <link rel="alternate" hreflang="{{ alternate }}" href="https://amfibido.com/rules/{{ alternate }}/{{ languageSuffix }}">
+    {% endfor %}
+    <link rel="alternate" hreflang="x-default" href="https://amfibido.com/rules/en/{{ languageSuffix }}">
+    {% endif %}
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -40,35 +45,8 @@
     <link rel="icon" href="{{ '/images/favicon.png' | url }}" type="image/png">
     <link rel="apple-touch-icon" href="{{ '/images/favicon.png' | url }}">
 
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Game",
-      "name": "Amfibido: A Dojo Duel",
-      "description": "Amfibido is an exhilarating 2-player card game where amphibians and reptiles collide in epic battles. Strategize, transform, and knock out your opponent's champions to become the ultimate dojo master.",
-      "url": "https://amfibido.com{{ page.url }}",
-      "image": "https://amfibido.com{{ '/images/logo.png' | url }}",
-      "genre": "Card Game",
-      "numberOfPlayers": "2",
-      "playTime": "30-45 minutes",
-      "ageRange": "10+",
-      "gameLocation": "Tabletop",
-      "publisher": {
-        "@type": "Organization",
-        "name": "Roca games",
-      },
-      "offers": {
-        "@type": "Offer",
-        "availability": "https://schema.org/PreOrder",
-        "price": "0",
-        "priceCurrency": "USD",
-        "description": "Currently in development"
-      },
-      "gamePlatform": "Tabletop",
-      "gameItem": "Card Game"
-    }
-    </script>
+    <!-- Structured data is serialized to keep JSON valid and script-safe. -->
+    <script type="application/ld+json">{{ page.url | structuredData(title, description, lang or 'en') | safe }}</script>
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5R1CRKZ1F"></script>
@@ -191,16 +169,16 @@
           <!-- Desktop Navigation - Right -->
           <div class="hidden xl:flex items-center absolute right-0">
             <div class="flex items-center bg-black/20 backdrop-blur-sm rounded-full px-2 py-1 border border-white/10">
-              <a href="{{ '/fighters' | url }}" class="nav-link px-5 py-2 text-base font-semibold rounded-full transition-all duration-200 {% if page.url == '/fighters/' %}text-white bg-white/20{% else %}text-white/90 hover:text-white hover:bg-white/15{% endif %}">
+              <a href="{{ '/fighters/' | url }}" class="nav-link px-5 py-2 text-base font-semibold rounded-full transition-all duration-200 {% if page.url == '/fighters/' %}text-white bg-white/20{% else %}text-white/90 hover:text-white hover:bg-white/15{% endif %}">
                 Fighters
               </a>
-              <a href="{{ '/gameplay' | url }}" class="nav-link px-5 py-2 text-base font-semibold rounded-full transition-all duration-200 {% if page.url == '/gameplay/' %}text-white bg-white/20{% else %}text-white/90 hover:text-white hover:bg-white/15{% endif %}">
+              <a href="{{ '/gameplay/' | url }}" class="nav-link px-5 py-2 text-base font-semibold rounded-full transition-all duration-200 {% if page.url == '/gameplay/' %}text-white bg-white/20{% else %}text-white/90 hover:text-white hover:bg-white/15{% endif %}">
                 Gameplay
               </a>
-              <a href="{{ '/shop' | url }}" class="nav-link px-5 py-2 text-base font-semibold rounded-full transition-all duration-200 {% if page.url == '/shop/' %}text-white bg-white/20{% else %}text-white/90 hover:text-white hover:bg-white/15{% endif %}">
+              <a href="{{ '/shop/' | url }}" class="nav-link px-5 py-2 text-base font-semibold rounded-full transition-all duration-200 {% if page.url == '/shop/' %}text-white bg-white/20{% else %}text-white/90 hover:text-white hover:bg-white/15{% endif %}">
                 Shop
               </a>
-              <a href="{{ '/agenda' | url }}" class="nav-link px-5 py-2 text-base font-semibold rounded-full transition-all duration-200 {% if page.url == '/agenda/' %}text-white bg-white/20{% else %}text-white/90 hover:text-white hover:bg-white/15{% endif %}">
+              <a href="{{ '/agenda/' | url }}" class="nav-link px-5 py-2 text-base font-semibold rounded-full transition-all duration-200 {% if page.url == '/agenda/' %}text-white bg-white/20{% else %}text-white/90 hover:text-white hover:bg-white/15{% endif %}">
                 Agenda
               </a>
             </div>
@@ -227,10 +205,10 @@
       <!-- Mobile Menu (positioned to overlay content) -->
       <div class="xl:hidden hidden absolute left-0 right-0 top-full z-50 px-4 pb-4" id="mobile-menu">
         <div class="py-4 bg-[#1a4a1c]/95 backdrop-blur-md rounded-2xl border border-white/10 shadow-xl">
-          <a href="{{ '/fighters' | url }}" class="block px-6 py-3 text-base font-semibold transition-all duration-200 {% if page.url == '/fighters/' %}text-white bg-white/15{% else %}text-white/90 hover:text-white hover:bg-white/10{% endif %}">Fighters</a>
-          <a href="{{ '/gameplay' | url }}" class="block px-6 py-3 text-base font-semibold transition-all duration-200 {% if page.url == '/gameplay/' %}text-white bg-white/15{% else %}text-white/90 hover:text-white hover:bg-white/10{% endif %}">Gameplay</a>
-          <a href="{{ '/shop' | url }}" class="block px-6 py-3 text-base font-semibold transition-all duration-200 {% if page.url == '/shop/' %}text-white bg-white/15{% else %}text-white/90 hover:text-white hover:bg-white/10{% endif %}">Shop</a>
-          <a href="{{ '/agenda' | url }}" class="block px-6 py-3 text-base font-semibold transition-all duration-200 {% if page.url == '/agenda/' %}text-white bg-white/15{% else %}text-white/90 hover:text-white hover:bg-white/10{% endif %}">Agenda</a>
+          <a href="{{ '/fighters/' | url }}" class="block px-6 py-3 text-base font-semibold transition-all duration-200 {% if page.url == '/fighters/' %}text-white bg-white/15{% else %}text-white/90 hover:text-white hover:bg-white/10{% endif %}">Fighters</a>
+          <a href="{{ '/gameplay/' | url }}" class="block px-6 py-3 text-base font-semibold transition-all duration-200 {% if page.url == '/gameplay/' %}text-white bg-white/15{% else %}text-white/90 hover:text-white hover:bg-white/10{% endif %}">Gameplay</a>
+          <a href="{{ '/shop/' | url }}" class="block px-6 py-3 text-base font-semibold transition-all duration-200 {% if page.url == '/shop/' %}text-white bg-white/15{% else %}text-white/90 hover:text-white hover:bg-white/10{% endif %}">Shop</a>
+          <a href="{{ '/agenda/' | url }}" class="block px-6 py-3 text-base font-semibold transition-all duration-200 {% if page.url == '/agenda/' %}text-white bg-white/15{% else %}text-white/90 hover:text-white hover:bg-white/10{% endif %}">Agenda</a>
           <div class="border-t border-white/10 mt-2 pt-2">
             <a href="https://instagram.com/amfibido" target="_blank" rel="noopener noreferrer" class="flex items-center px-6 py-3 text-white/90 hover:text-white hover:bg-white/10 transition-all duration-200">
               <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -318,7 +296,7 @@
             <!-- Footer Bottom -->
             <div class="mt-8 text-center">
               <p class="text-white/70 text-sm mb-2">© Amfibido 2026. All Rights Reserved.</p>
-              <a href="{{ '/terms' | url }}" class="text-white/50 hover:text-white/70 text-xs transition-colors">Terms, Conditions & Privacy</a>
+              <a href="{{ '/terms/' | url }}" class="text-white/50 hover:text-white/70 text-xs transition-colors">Terms, Conditions & Privacy</a>
               <p class="text-white/40 text-xs mt-3">Roca Games · Kraijenhoffstraat 52, 5612 PZ Eindhoven, Netherlands · KvK 98612654</p>
             </div>
           </div>

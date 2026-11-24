@@ -31,7 +31,7 @@
   }
 
   function resolveLang() {
-    return getStoredLang() || pageLangHint() || "en";
+    return pageLangHint() || getStoredLang() || "en";
   }
 
   function loadTranslations() {
@@ -91,39 +91,14 @@
       var btnLang = btn.getAttribute("data-set-lang");
       var active = btnLang === lang;
       btn.classList.toggle("is-active", active);
-      btn.setAttribute("aria-pressed", active ? "true" : "false");
+      if (active) btn.setAttribute("aria-current", "page");
+      else btn.removeAttribute("aria-current");
     });
   }
 
-  function rulesUrlForLang(lang) {
-    if (SUPPORTED.indexOf(lang) === -1) lang = "en";
-    return "/rules/" + lang + "/";
-  }
-
-  function referenceUrlForLang(lang) {
-    if (SUPPORTED.indexOf(lang) === -1) lang = "en";
-    return "/rules/" + lang + "/reference/";
-  }
-
   function maybeRedirectRules() {
-    var path = window.location.pathname || "";
-    var match = path.match(/^\/rules\/(en|nl|de)\/?$/);
-    var isRulesRoot = path === "/rules" || path === "/rules/";
-    if (!isRulesRoot && !match) return Promise.resolve(false);
-
-    // Root /rules/ has its own redirect script; skip here.
-    if (isRulesRoot) return Promise.resolve(false);
-
-    var pageLang = match[1];
-    var stored = getStoredLang();
-
-    if (stored && SUPPORTED.indexOf(stored) !== -1 && stored !== pageLang) {
-      window.location.replace(rulesUrlForLang(stored));
-      return Promise.resolve(true);
-    }
-    if (stored) return Promise.resolve(false);
-
-    setStoredLang(pageLang);
+    var explicitLang = pageLangHint();
+    if (explicitLang) setStoredLang(explicitLang);
     return Promise.resolve(false);
   }
 
@@ -177,33 +152,9 @@
   }
 
   function bindFlags() {
-    document.querySelectorAll("[data-set-lang]").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var lang = btn.getAttribute("data-set-lang");
-        if (!lang) return;
-        setStoredLang(lang);
-        var path = window.location.pathname || "";
-        var onReference = path.indexOf("/reference") !== -1;
-
-        if (onReference) {
-          var refTarget = referenceUrlForLang(lang);
-          if (path === refTarget || path === refTarget.slice(0, -1)) {
-            updateFlagButtons(lang);
-            applyChat(lang);
-            applyCardReference(lang);
-            return;
-          }
-          window.location.href = refTarget;
-          return;
-        }
-
-        var target = rulesUrlForLang(lang);
-        if (path === target || path === target.slice(0, -1)) {
-          updateFlagButtons(lang);
-          applyChat(lang);
-          return;
-        }
-        window.location.href = target;
+    document.querySelectorAll("[data-set-lang]").forEach(function (link) {
+      link.addEventListener("click", function () {
+        setStoredLang(link.getAttribute("data-set-lang"));
       });
     });
   }

@@ -1,29 +1,32 @@
 <div class="lang-switcher inline-flex items-center gap-1 rounded-full border border-gray-200 bg-white p-1 shadow-sm" role="group" aria-label="{{ (i18n[lang] or i18n.en).lang.switchLabel }}">
-  <button
-    type="button"
+  <a
+    href="/rules/en/{% if page.url.indexOf('/reference/') != -1 %}reference/{% endif %}"
+    hreflang="en"
     class="lang-switcher__btn inline-flex items-center justify-center w-9 h-9 rounded-full text-lg leading-none transition hover:bg-gray-100"
     data-set-lang="en"
     aria-label="{{ (i18n[lang] or i18n.en).lang.en }}"
-    aria-pressed="{% if lang == 'en' %}true{% else %}false{% endif %}"
-  >🇬🇧</button>
-  <button
-    type="button"
+    {% if lang == 'en' %}aria-current="page"{% endif %}
+  >🇬🇧</a>
+  <a
+    href="/rules/nl/{% if page.url.indexOf('/reference/') != -1 %}reference/{% endif %}"
+    hreflang="nl"
     class="lang-switcher__btn inline-flex items-center justify-center w-9 h-9 rounded-full text-lg leading-none transition hover:bg-gray-100"
     data-set-lang="nl"
     aria-label="{{ (i18n[lang] or i18n.en).lang.nl }}"
-    aria-pressed="{% if lang == 'nl' %}true{% else %}false{% endif %}"
-  >🇳🇱</button>
-  <button
-    type="button"
+    {% if lang == 'nl' %}aria-current="page"{% endif %}
+  >🇳🇱</a>
+  <a
+    href="/rules/de/{% if page.url.indexOf('/reference/') != -1 %}reference/{% endif %}"
+    hreflang="de"
     class="lang-switcher__btn inline-flex items-center justify-center w-9 h-9 rounded-full text-lg leading-none transition hover:bg-gray-100"
     data-set-lang="de"
     aria-label="{{ (i18n[lang] or i18n.en).lang.de }}"
-    aria-pressed="{% if lang == 'de' %}true{% else %}false{% endif %}"
-  >🇩🇪</button>
+    {% if lang == 'de' %}aria-current="page"{% endif %}
+  >🇩🇪</a>
 </div>
 <style>
   .lang-switcher__btn.is-active,
-  .lang-switcher__btn[aria-pressed="true"] {
+  .lang-switcher__btn[aria-current="page"] {
     background-color: rgba(45, 90, 39, 0.12);
     box-shadow: inset 0 0 0 1px #2d5a27;
   }
